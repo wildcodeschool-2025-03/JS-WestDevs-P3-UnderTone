@@ -22,18 +22,12 @@ import SplashScreen from "./pages/SplashScreen/SplashScreen";
 const router = createBrowserRouter([
   {
     path: "/", // The root path
-    element: <App />, // Renders the App component for the home page
-    children: [
-      {
-        path: "",
-        element: <SplashScreen />,
-      },
-      {
-        path: "app/",
-        // element: ,
-        // children: ,
-      },
-    ],
+    element: <SplashScreen />, // Renders the App component for the home page
+  },
+  {
+    path: "app/",
+    element: <App />,
+    // children: ,
   },
 ]);
 
