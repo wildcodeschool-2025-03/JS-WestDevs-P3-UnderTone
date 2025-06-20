@@ -25,7 +25,7 @@ const router = createBrowserRouter([
     element: <SplashScreen />, // Renders the App component for the home page
   },
   {
-    path: "app/",
+    path: "/app/",
     element: <App />,
     // children: ,
   },
