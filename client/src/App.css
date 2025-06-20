@@ -1,3 +1,18 @@
+@font-face {
+  font-family: "StickNoBills";
+  src: url("/src/assets/fonts/StickNoBills-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "Sen";
+  src: url("/src/assets/fonts/Sen-VariableFont_wght.ttf");
+}
+
+:root {
+  --primary-color: #282828;
+  --text-color: #ededed;
+}
+
 * {
   margin: 0;
   box-sizing: border-box;
@@ -5,4 +20,9 @@
 
 body {
   margin: 0;
+}
+
+#root {
+  background-color: black;
+  min-height: 100vh;
 }
