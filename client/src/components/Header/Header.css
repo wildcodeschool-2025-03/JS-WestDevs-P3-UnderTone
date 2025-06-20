@@ -1,0 +1,12 @@
+.navbar {
+  background-color: burlywood;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar_link {
+  color: white;
+  display: flex;
+}
