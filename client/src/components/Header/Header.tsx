@@ -1,6 +1,6 @@
-import { useState } from "react";
-import "./Header.css";
 import { Link } from "react-router";
+import "./Header.css";
+import { useState } from "react";
 
 /*function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -59,44 +59,47 @@ import { Link } from "react-router";
 export default Header;*/
 
 function Header() {
-  const NavBar = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showLinks, setShowLinks] = useState(false);
 
-    const toggleMenu = () => {
-      setIsMenuOpen(!isMenuOpen);
-    };
-  };
+  const handleSowLinks = () => setShowLinks(!showLinks);
 
   return (
     <>
       <header>
-        <nav className="navbar">
+        <nav className={`navbar ${showLinks ? "show-nav" : "hide-nav"} `}>
           <div className="navbar_logo">
-            <img src="./images" alt="Logo représentant un casque" />
+            <img
+              src="images/Logo_UnderTone.svg"
+              alt="Logo représentant un casque"
+            />
           </div>
 
-          <ul>
-            <li>
-              <a href=" ">
-                EVENEMENT <img src="client/src/assets/images/+.svg" alt="" />
-              </a>
+          <ul className="navbar_links">
+            <li className="navbar_item">
+              <Link to="/event">
+                EVENEMENT <img src="/images/+.svg" alt="" />
+              </Link>
             </li>
 
             <li>
-              <a href=" ">RECHERCHE</a>
+              <Link to="/search">RECHERCHE</Link>
             </li>
 
             <li>
-              <a href=" ">CONTACT</a>
+              <Link to="/contact">CONTACT</Link>
             </li>
             <li>
-              <a href=" ">
+              <Link to="/login">
                 <img src="images/Generic avatar.svg" alt="Connexion icon" />
-              </a>
+              </Link>
             </li>
           </ul>
-          <button type="button">
-            <span> </span>
+          <button
+            className="navbar_burger"
+            type="button"
+            onClick={handleSowLinks}
+          >
+            <span className="burger_bar"> </span>
           </button>
         </nav>
       </header>
