@@ -1,13 +1,51 @@
-.container {
+.signinForm-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(/images/freepik__the-style-is-modern-and-it-is-a-detailed-illustrat__71022.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  .signin-button {
+    color: whitesmoke;
+    margin: 15px;
+    height: 35px;
+    width: 150px;
+    border-radius: 20px;
+    padding: 5px 5px 5px 5px;
+    background-color: rgba(86, 59, 111, 1);
+    border: rgba(86, 59, 111, 1) 1px solid;
+  }
+  a {
+    text-decoration: none;
+    color: whitesmoke;
+  }
+  h2 {
+    color: whitesmoke;
+  }
+}
+.form-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: rgba(63, 63, 63, 0.8);
+  padding: 25px;
+  border-radius: 30px;
 }
 
 .signinform {
   display: flex;
   flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+  input {
+    border-radius: 10px;
+    height: 30px;
+    width: 200px;
+    border: rgba(86, 59, 111, 1) 1px solid;
+  }
 }
 
 .customRadioHolder {

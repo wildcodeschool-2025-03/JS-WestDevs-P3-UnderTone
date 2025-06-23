@@ -8,7 +8,7 @@ import { RouterProvider, createBrowserRouter } from "react-router";
 // Import the main app component
 import App from "./App";
 import SplashScreen from "./pages/SplashScreen/SplashScreen";
-import SignInForm from "./components/SignIn/SignInForm";
+import SignInForm from "./pages/SignIn/SignInForm";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -22,24 +22,18 @@ import SignInForm from "./components/SignIn/SignInForm";
 // You can add more routes as you build out your app!
 const router = createBrowserRouter([
   {
-    path: "/", // The root path
+    path: "/",
     element: <SplashScreen />,
-  },
-  {
-    // Renders the App component for the home page
-    path: "/app",
-    element: <App />,
-    children: [
-      {
-        path: "/signin-page",
-        element: <SignInForm />,
-      },
-    ],
   },
   {
     path: "/app/",
     element: <App />,
-    // children: ,
+    children: [
+      {
+        path: "signin-page",
+        element: <SignInForm />,
+      },
+    ],
   },
 ]);
 
