@@ -1,22 +1,21 @@
 .navbar {
-  background-color: rgb(50, 48, 46);
+  background-color: rgb(28, 28, 28);
   display: flex;
-  flex-wrap: wrap;
+  /*flex-wrap: wrap;*/
   align-items: center;
-  justify-content: inherit;
-  position: fixed;
-  width: 100%;
+  justify-content: space-between;
+  /* position: fixed;*/
+  /*width: 100%;*/
   min-height: 75px;
   padding: 1rem;
   color: #fff;
   gap: 200px;
 }
-
-.navbar_links {
-  display: flex;
+header nav ul li:first-child {
+  background-color: blue;
 }
-
-.navbar_item {
+header nav ul {
+  display: flex;
   list-style: none;
 }
 
@@ -27,6 +26,7 @@ a {
 }
 
 .navbar_burger {
+  display: none;
   width: 40px;
   height: 40px;
   background: transparent;
@@ -34,8 +34,12 @@ a {
   color: inherit;
 }
 
+header nav ul li:last-child {
+  display: block;
+}
+
 @media screen and (max-width: 768px) {
-  .navbar_links {
+  header nav ul {
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -47,7 +51,21 @@ a {
     padding: 2rem;
     background-color: black;
   }
-  .show-nav .navbar_links {
+  header nav ul li:last-child {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 101;
+    display: inline-block;
+    visibility: visible;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    margin: 0;
+    transition: all 0.5s ease-in-out;
+  }
+
+  header .navbar.show-nav ul {
     right: 0;
     width: 100vw;
     visibility: visible;
