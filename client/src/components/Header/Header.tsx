@@ -40,7 +40,7 @@ function Header() {
           type="button"
           onClick={handleSowLinks}
         >
-          <span className="burger_bar"> </span>
+          <span className="burger_bar" />n
         </button>
       </nav>
     </header>

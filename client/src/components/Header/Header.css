@@ -1,5 +1,5 @@
 .navbar {
-  background-color: rgb(28, 28, 28);
+  background-color: var(--primary-color);
   display: flex;
   /*flex-wrap: wrap;*/
   align-items: center;
@@ -8,15 +8,27 @@
   /*width: 100%;*/
   min-height: 75px;
   padding: 1rem;
-  color: #fff;
-  gap: 200px;
+  color: #ededed;
+  /*gap: 200px;*/
+}
+header nav ul li {
+  font-size: 1.5rem;
 }
 header nav ul li:first-child {
-  background-color: blue;
+  background-color: rgba(217, 217, 217, 0.1);
 }
+
+header nav ul li:first-child img {
+  background: #ededed;
+  height: 15px;
+  width: 15px;
+}
+
 header nav ul {
   display: flex;
   list-style: none;
+  align-items: center;
+  gap: 5px;
 }
 
 a {
@@ -37,6 +49,10 @@ a {
 header nav ul li:last-child {
   display: block;
 }
+header nav ul li:last-child img {
+  height: 50px;
+  width: 50; /*  ??  */
+}
 
 @media screen and (max-width: 768px) {
   header nav ul {
@@ -49,20 +65,25 @@ header nav ul li:last-child {
     bottom: 0;
     height: 100vh;
     padding: 2rem;
-    background-color: black;
+    background-color: var(--primary-color);
   }
   header nav ul li:last-child {
     position: fixed;
-    top: 1rem;
-    left: 1rem;
-    z-index: 101;
-    display: inline-block;
-    visibility: visible;
+    top: 0rem;
+    right: 5rem;
+    /* left: auto; */
+    /* z-index: 101; */
+    /* display: inline-block; */
+    /* visibility: visible; */
     width: 40px;
     height: 40px;
     padding: 0;
     margin: 0;
     transition: all 0.5s ease-in-out;
+    img {
+      height: 40px;
+      width: 40px;
+    }
   }
 
   header .navbar.show-nav ul {
@@ -78,7 +99,7 @@ header nav ul li:last-child {
   .navbar_burger {
     display: block;
     position: fixed;
-    top: 1rem;
+    top: 1.4rem;
     right: 1rem;
   }
   .navbar_burger:hover {
