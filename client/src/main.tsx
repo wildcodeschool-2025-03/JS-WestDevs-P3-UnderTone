@@ -7,8 +7,8 @@ import { RouterProvider, createBrowserRouter } from "react-router";
 
 // Import the main app component
 import App from "./App";
-import SplashScreen from "./pages/SplashScreen/SplashScreen";
 import Login from "./pages/Login/Login";
+import SplashScreen from "./pages/SplashScreen/SplashScreen";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
