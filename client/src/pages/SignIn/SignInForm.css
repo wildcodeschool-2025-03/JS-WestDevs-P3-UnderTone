@@ -7,24 +7,32 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  .signin-button {
-    color: whitesmoke;
-    margin: 15px;
-    height: 35px;
-    width: 150px;
-    border-radius: 20px;
-    padding: 5px 5px 5px 5px;
-    background-color: rgba(86, 59, 111, 1);
-    border: rgba(86, 59, 111, 1) 1px solid;
-  }
+
   a {
+    font-family: "Sen", sans-serif;
     text-decoration: none;
-    color: whitesmoke;
+    color: var(--text-color);
   }
+
   h2 {
-    color: whitesmoke;
+    font-family: "Sen", sans-serif;
+    color: var(--text-color);
   }
 }
+
+.signin-button {
+  font-family: "Sen", sans-serif;
+  color: var(--text-color);
+  margin: 15px;
+  height: 35px;
+  width: 150px;
+  border-radius: 20px;
+  padding: 5px 5px 5px 5px;
+  background-color: rgba(86, 59, 111, 1);
+  border: rgba(86, 59, 111, 1) 1px solid;
+  box-shadow: 6px 4px 4px 0 rgba(0, 0, 0, 0.4);
+}
+
 .form-container {
   display: flex;
   justify-content: center;
@@ -33,6 +41,10 @@
   background-color: rgba(63, 63, 63, 0.8);
   padding: 25px;
   border-radius: 30px;
+  box-shadow:
+    inset -4px -7px 5px 0px var(--primary-color),
+    inset 2px 7px 5px 0px rgba(217, 217, 217, 50),
+    0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .signinform {
