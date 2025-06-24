@@ -1,23 +1,11 @@
 .login-page {
-  color: white;
-  height: 90vh;
-  display: grid;
-  place-items: center;
-
-  input,
-  label,
-  button {
-    display: block;
-    font-size: 1.2rem;
-  }
-
-  input {
-    margin: 8px 0;
-  }
-
-  button {
-    padding: 8px;
-    margin: 0 0 0 auto;
-    cursor: pointer;
-  }
+  min-height: calc(100vh - 86px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(/images/freepik__the-style-is-modern-and-it-is-a-detailed-illustrat__71022.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 32px;
 }

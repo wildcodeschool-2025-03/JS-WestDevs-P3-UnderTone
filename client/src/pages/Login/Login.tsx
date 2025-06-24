@@ -1,26 +1,36 @@
+import { Link } from "react-router";
+
 function Login() {
   return (
     <main className="login-page">
-      <form>
-        <label htmlFor="email">Identifiant</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Ex: bamba@gmail.com"
-        />
+      <section>
+        <h1>Connexion</h1>
+        <form>
+          <label htmlFor="email">Identifiant</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Ex: bamba@gmail.com"
+          />
 
-        <label htmlFor="password">Mot de passe</label>
-        <input type="password" name="password" placeholder="***********" />
+          <label htmlFor="password">Mot de passe</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="***********"
+          />
 
-        <a href="/reset-password">mot de passe oublié ?</a>
+          <Link to="/app/reset-password">mot de passe oublié ?</Link>
 
-        <button type="submit">Se connecter</button>
+          <button type="submit">Se connecter</button>
 
-        <p>
-          Pas encore inscrit ? <a href="/register">Créer un compte</a>
-        </p>
-      </form>
+          <p>
+            Pas encore inscrit ? <Link to="/app/register">Créer un compte</Link>
+          </p>
+        </form>
+      </section>
     </main>
   );
 }

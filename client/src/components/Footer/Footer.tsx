@@ -5,7 +5,7 @@ function Footer() {
     <footer>
       <section>
         <a href="https://twiter.com" target="_blank" rel="noreferrer">
-          <img src="images/logo_x.svg" alt="logo x" />
+          <img src="/images/logo_x.svg" alt="logo x" />
         </a>
         <ul>
           <li>
