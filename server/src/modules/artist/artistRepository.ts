@@ -1,5 +1,6 @@
 import databaseClient from "../../../database/client";
 import type { Result, Rows } from "../../../database/client";
+import type { Photo } from "../artistPhoto/artistPhotoRepository";
 
 type Artist = {
   user_id: number;
@@ -14,6 +15,7 @@ type Artist = {
   deezer_link: string;
   spotify_link: string;
   youtube_link: string;
+  artistPhoto?: Photo[];
 };
 
 class artistRepository {

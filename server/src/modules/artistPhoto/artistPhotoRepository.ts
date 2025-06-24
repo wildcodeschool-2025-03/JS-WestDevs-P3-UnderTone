@@ -2,7 +2,7 @@ import databaseClient from "../../../database/client";
 
 import type { Result, Rows } from "../../../database/client";
 
-type Photo = {
+export type Photo = {
   id: number;
   imgSrc: string;
   date: string;
