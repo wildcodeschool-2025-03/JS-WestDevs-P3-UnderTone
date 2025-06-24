@@ -99,4 +99,8 @@
     min-height: calc(100vh - 56px);
     justify-content: right;
   }
+
+  .formlogin-container {
+    margin-right: 10rem;
+  }
 }

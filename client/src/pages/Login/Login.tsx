@@ -9,21 +9,11 @@ function Login() {
         <form className="login-form">
           <div className="label-input">
             <label htmlFor="email">Identifiant</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              // placeholder="Ex: bamba@gmail.com"
-            />
+            <input type="email" id="email" name="email" />
           </div>
           <div className="label-input">
             <label htmlFor="password">Mot de passe</label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              // placeholder="***********"
-            />
+            <input type="password" name="password" id="password" />
           </div>
 
           <Link to="/app/reset-password">mot de passe oublié ?</Link>
