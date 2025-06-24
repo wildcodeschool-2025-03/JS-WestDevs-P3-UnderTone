@@ -68,22 +68,21 @@ header nav ul li:last-child img {
 
   header nav ul {
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    position: fixed;
-    width: 50vh;
-    /*left: 0;*/
+    position: absolute;
+    right: 0;
+    height: calc(100vh 59px 86px);
     visibility: hidden;
     top: 59px;
-    height: 45%; /*calc(100vh - 59px - 86px);*/
     padding: 2rem;
     background-color: var(--primary-color);
     z-index: 9;
   }
 
   header .navbar.show-nav ul {
-    right: 0;
     visibility: visible;
+    width: 50vw;
   }
 
   .navbar_burger {
@@ -132,5 +131,11 @@ header nav ul li:last-child img {
   }
   .show-nav .burger_bar {
     background: transparent;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  header .navbar.show-nav ul {
+    width: 80vw;
   }
 }
