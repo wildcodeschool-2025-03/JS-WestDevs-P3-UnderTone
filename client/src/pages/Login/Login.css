@@ -8,4 +8,95 @@
   background-size: cover;
   background-position: center;
   padding: 32px;
+
+  a {
+    font-family: "Sen", sans-serif;
+    text-decoration: none;
+    color: var(--text-color);
+  }
+
+  h1 {
+    font-family: "Sen", sans-serif;
+    color: var(--text-color);
+  }
+}
+
+.login-button {
+  font-family: "Sen", sans-serif;
+  color: var(--text-color);
+  margin: 15px;
+  height: 35px;
+  width: 150px;
+  border-radius: 20px;
+  padding: 5px;
+  background-color: rgba(86, 59, 111, 1);
+  border: rgba(86, 59, 111, 1) 1px solid;
+  box-shadow: 6px 4px 4px 0 rgba(0, 0, 0, 0.4);
+}
+
+.formlogin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(63, 63, 63, 0.8);
+  padding: 25px;
+  border-radius: 30px;
+  box-shadow:
+    inset -4px -7px 5px 0px var(--primary-color),
+    inset 2px 7px 5px 0px rgba(217, 217, 217, 50),
+    0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.login-form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.label-input {
+  font-family: "Segoe UI", sans-serif;
+  margin: 1em 0 1em 0;
+  max-width: 190px;
+  position: relative;
+}
+
+.label-input input {
+  font-size: 100%;
+  padding: 0.8em;
+  outline: none;
+  border: 2px solid rgb(200, 200, 200);
+  background-color: transparent;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.label-input label {
+  font-size: 100%;
+  position: absolute;
+  left: 0;
+  padding: 0.8em;
+  margin-left: 0.5em;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  color: rgb(200, 200, 200);
+}
+
+.label-input :is(input:focus, input:valid) ~ label {
+  transform: translateY(-80%) scale(0.9);
+  margin: 0em;
+  margin-left: 1.3em;
+  padding: 0.4em;
+  background-color: transparent;
+}
+
+.label-input :is(input:focus, input:valid) {
+  border-color: rgba(86, 59, 111, 1);
+}
+
+@media (min-width: 768px) {
+  .login-page {
+    min-height: calc(100vh - 56px);
+    justify-content: right;
+  }
 }
