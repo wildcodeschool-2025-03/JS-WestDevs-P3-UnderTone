@@ -8,12 +8,24 @@ function Login() {
         <h1>Connexion</h1>
         <form className="login-form">
           <div className="label-input">
+            <input
+              type="email"
+              required
+              autoComplete="on"
+              id="email"
+              name="email"
+            />
             <label htmlFor="email">Identifiant</label>
-            <input type="email" id="email" name="email" />
           </div>
           <div className="label-input">
+            <input
+              type="password"
+              required
+              autoComplete="on"
+              name="password"
+              id="password"
+            />
             <label htmlFor="password">Mot de passe</label>
-            <input type="password" name="password" id="password" />
           </div>
 
           <Link to="/app/reset-password">mot de passe oublié ?</Link>
