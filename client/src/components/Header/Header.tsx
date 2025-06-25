@@ -5,7 +5,7 @@ import { useState } from "react";
 function Header() {
   const [showLinks, setShowLinks] = useState(false);
 
-  const handleSowLinks = () => setShowLinks(!showLinks);
+  const handleShowLinks = () => setShowLinks(!showLinks);
 
   return (
     <header>
@@ -20,20 +20,20 @@ function Header() {
         <div className="nav-wrapper">
           <ul>
             <li>
-              <Link to="/app" onClick={handleSowLinks}>
+              <Link to="/app" onClick={handleShowLinks}>
                 EVENEMENT
                 <span />
               </Link>
             </li>
 
             <li>
-              <Link to="/app" onClick={handleSowLinks}>
+              <Link to="/app" onClick={handleShowLinks}>
                 RECHERCHE
               </Link>
             </li>
 
             <li>
-              <Link to="/app" onClick={handleSowLinks}>
+              <Link to="/app" onClick={handleShowLinks}>
                 CONTACT
               </Link>
             </li>
@@ -44,7 +44,7 @@ function Header() {
           <button
             className="navbar_burger"
             type="button"
-            onClick={handleSowLinks}
+            onClick={handleShowLinks}
           >
             <span className="burger_bar" />
           </button>
