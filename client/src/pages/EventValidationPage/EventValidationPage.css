@@ -1,0 +1,40 @@
+.event_validation {
+  figure {
+    text-align: center;
+  }
+  section {
+    text-align: center;
+    font-family: url("/src/assets/fonts/Sen-VariableFont_wght.ttf") sans-serif;
+  }
+  h1 {
+    margin: 10px;
+  }
+  h2 {
+    margin: 10px;
+  }
+}
+.event_validation section:first-child {
+  display: inline;
+}
+.validate_event {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-color);
+  gap: 50px;
+  padding: 15px;
+  button {
+    border-radius: 15px;
+    box-shadow: 6px 4px 4px 0 rgba(0, 0, 0, 0.4);
+    height: 35px;
+    width: 130px;
+  }
+}
+
+.validate_event :first-child {
+  background-color: rgba(194, 194, 194, 1);
+}
+.validate_event :last-child {
+  background-color: rgba(86, 59, 111, 1);
+  color: var(--text-color);
+}
