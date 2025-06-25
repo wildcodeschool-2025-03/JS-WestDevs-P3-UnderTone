@@ -1,0 +1,141 @@
+.navbar {
+  background-color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+}
+
+header img {
+  display: block;
+}
+
+header .nav-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-right: 8px;
+}
+
+header nav ul {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  gap: 16px;
+  padding: 0;
+}
+
+header nav ul li {
+  font-size: 1.2rem;
+}
+header nav ul li:first-child {
+  background-color: rgba(217, 217, 217, 0.1);
+  padding: 6px 12px;
+  border-radius: 8px;
+
+  span {
+    color: var(--primary-color);
+    background-image: url("images/+.svg");
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: var(--text-color);
+    margin-left: 8px;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    padding: 3px;
+    display: inline-block;
+    transform: translateY(2px);
+  }
+}
+
+.navbar_burger {
+  display: none;
+}
+
+header nav ul li:last-child {
+  display: block;
+}
+header nav ul li:last-child img {
+  width: 30px;
+}
+
+@media screen and (max-width: 768px) {
+  header nav > img {
+    width: 43px;
+  }
+
+  header nav ul {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    height: calc(100vh 59px 86px);
+    visibility: hidden;
+    top: 59px;
+    padding: 2rem;
+    background-color: var(--primary-color);
+    z-index: 9;
+  }
+
+  header .navbar.show-nav ul {
+    visibility: visible;
+    width: 50vw;
+  }
+
+  .navbar_burger {
+    width: 36px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    display: block;
+    padding: 0;
+  }
+
+  .burger_bar {
+    position: relative;
+  }
+
+  .burger_bar,
+  .burger_bar::before,
+  .burger_bar::after {
+    display: block;
+    width: 36px;
+    height: 6px;
+    border-radius: 3px;
+    background: #d9d9d9;
+    transition: all .3s ease-in-out;
+  }
+
+  .burger_bar::before,
+  .burger_bar::after {
+    content: "";
+    position: absolute;
+    left: 0;
+  }
+
+  .burger_bar::before {
+    transform: translateY(-12px);
+  }
+
+  .burger_bar::after {
+    transform: translateY(12px);
+  }
+  .show-nav .burger_bar::before {
+    transform: rotate(-45deg);
+  }
+  .show-nav .burger_bar::after {
+    transform: rotate(45deg);
+  }
+  .show-nav .burger_bar {
+    background: transparent;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  header .navbar.show-nav ul {
+    width: 80vw;
+  }
+}

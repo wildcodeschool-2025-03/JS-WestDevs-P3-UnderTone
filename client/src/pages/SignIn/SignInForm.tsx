@@ -47,7 +47,7 @@ function SignInForm() {
 
         <form className="signin-form">
           <div className="input-group">
-            <input type="text" required autoComplete="off" />
+            <input type="text" />
             <label htmlFor="name">Name</label>
           </div>
           <div className="input-group">
