@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import Carousel from "../../components/Carousel/Carousel";
 import MusicStyles from "../../components/MusicStyles/MusicStyles";
+import ProfilePicturePlayFavorite from "../../components/ProfilePicturePlayFavorite/ProfilePicturePlayFavorite";
 import SocialNetworks from "../../components/SocialNetworks/SocialNetworks";
 import "./Artist.css";
-import { useParams } from "react-router";
 
 function Artist() {
   const { id } = useParams();
@@ -14,27 +15,22 @@ function Artist() {
       .then((response) => response.json())
       .then((data) => setArtist(data));
   }, [id]);
+
   return (
     <main className="artist-page">
       {artist && (
         <>
           <h1>{artist.name}</h1>
-          <figure>
-            <input
-              type="checkbox"
-              name="favorite"
-              id="favorite"
-              aria-label="Ajouter aux favoris"
-              // checked
-            />
-            <img src={artist.profile_picture} alt={artist.name} />
-            <button type="button" className="play-pause" />
-          </figure>
+          <ProfilePicturePlayFavorite
+            profilePicture={artist.profile_picture}
+            name={artist.name}
+            demo={artist.demo}
+          />
           {id && <MusicStyles params={id} />}
-          <p>{artist.description}</p>
+          <p style={{ whiteSpace: "pre-wrap" }}>{artist.description}</p>
           <SocialNetworks artist={artist} />
           <a href={artist.web_site} target="_blank" rel="noreferrer">
-            {artist.name}.com
+            {artist.name.split(" ").join("-")}.com
           </a>
           <Carousel />
         </>

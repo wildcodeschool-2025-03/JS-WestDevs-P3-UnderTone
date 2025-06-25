@@ -9,6 +9,7 @@ function SocialNetworks(props: { artist: Artist }) {
     spotify_link,
     youtube_link,
   } = props.artist;
+
   return (
     <ul className="social-networks">
       {facebook_link && (
