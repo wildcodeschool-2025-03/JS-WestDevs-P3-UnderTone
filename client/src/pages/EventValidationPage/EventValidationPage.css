@@ -1,4 +1,6 @@
 .event_validation {
+  margin: 0;
+  padding-bottom: 10px;
   figure {
     text-align: center;
   }
@@ -7,21 +9,41 @@
     font-family: url("/src/assets/fonts/Sen-VariableFont_wght.ttf") sans-serif;
   }
   h1 {
-    margin: 10px;
+    font-size: 1.2rem;
   }
   h2 {
-    margin: 10px;
+    font-size: 1.2rem;
   }
 }
-.event_validation section:first-child {
-  display: inline;
+.event_validation section :first-child {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  p {
+    margin: 0;
+  }
 }
+
+.event_validation section :nth-child(2) {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+}
+
 .validate_event {
   display: flex;
   justify-content: center;
   align-items: center;
   color: var(--text-color);
-  gap: 50px;
+  gap: 40px;
   padding: 15px;
   button {
     border-radius: 15px;
@@ -37,4 +59,15 @@
 .validate_event :last-child {
   background-color: rgba(86, 59, 111, 1);
   color: var(--text-color);
+}
+
+@media screen and (min-width: 769px) {
+  .event_validation {
+    background-color: blue;
+    background-position: center;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
 }

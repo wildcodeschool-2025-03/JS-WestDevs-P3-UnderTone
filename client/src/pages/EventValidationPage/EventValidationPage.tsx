@@ -13,8 +13,11 @@ function EventValidationPage() {
       <section>
         <article>
           <h1>Vent Débarasse</h1>
-          <p>vous invite pour son évènement</p>
-          <h2>Soirée Funk !</h2>
+          <p>vous invite pour</p>
+        </article>
+        <article>
+          <p>son évènement</p>
+          <h2>Soirée Funk!</h2>
         </article>
         <h3>21 juin 2025</h3>
         <h3>20h</h3>
