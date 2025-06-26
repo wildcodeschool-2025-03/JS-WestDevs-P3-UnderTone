@@ -14,7 +14,7 @@ last_signin_date DATE DEFAULT NULL
 INSERT INTO user
 (username, birthdate, profile_picture, email, identifier, password, status, signup_date)
 VALUES
-('Benji', '1989-07-16', 'https://randomuser.me/api/portraits/men/75.jpg', 'benjamin.rambrant@gmail.com', 'Benji1989', 'P@ssword!', 'artist', '2025-06-20');
+('Benji', '1989-07-16', 'https://randomuser.me/api/portraits/men/75.jpg', 'benjamin.rambrant@gmail.com', 'Benji1989', '$argon2id$v=19$m=16,t=2,p=1$S3ZSTW95YUNHdHFOdVI5Nw$j2Iamkw4GqOH/YPN70XtAw', 'artist', '2025-06-20');
 
 CREATE TABLE artist (
 user_id INT PRIMARY KEY NOT NULL,

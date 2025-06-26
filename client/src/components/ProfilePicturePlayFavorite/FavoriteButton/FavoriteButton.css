@@ -6,6 +6,7 @@
   align-items: center;
   border-radius: 50%;
   background-color: var(--primary-color);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .love-heart:before,
@@ -125,11 +126,8 @@ input:checked + .love-heart .bottom {
   border-radius: 0px 0px 0px 5px;
 }
 
-@media screen and (min-width: 891px) {
-  .love-heart {
-    transform: rotate(-45deg);
-  }
-  .love {
-    transform: scale(1.2);
+@media screen and (min-width: 760px) {
+  .favorite-toggle-container {
+    transform: scale(1.8) translate(-30%, 30%);
   }
 }

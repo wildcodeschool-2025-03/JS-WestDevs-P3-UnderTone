@@ -1,0 +1,20 @@
+.social-networks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  width: 80%;
+  margin: 24px auto;
+
+  li a img {
+    width: 50px;
+    display: block;
+  }
+}
+
+@media screen and (min-width: 760px) {
+  .social-networks {
+    margin: 48px auto;
+    gap: 32px;
+  }
+}

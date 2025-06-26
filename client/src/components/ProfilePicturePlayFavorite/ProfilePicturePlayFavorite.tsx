@@ -1,5 +1,5 @@
-import FavoriteButton from "../FavoriteButton/FavoriteButton";
-import PlayPause from "../PlayPause/PlayPause";
+import FavoriteButton from "./FavoriteButton/FavoriteButton";
+import PlayPause from "./PlayPause/PlayPause";
 import "./ProfilePicturePlayFavorite.css";
 
 interface Props {
@@ -20,4 +20,3 @@ function ProfilePicturePlayFavorite({ profilePicture, name, demo }: Props) {
 }
 
 export default ProfilePicturePlayFavorite;
-//

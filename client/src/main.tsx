@@ -8,6 +8,7 @@ import { RouterProvider, createBrowserRouter } from "react-router";
 // Import the main app component
 import App from "./App";
 import Artist from "./pages/Artist/Artist";
+import Login from "./pages/Login/Login";
 import SignInForm from "./pages/SignIn/SignInForm";
 import SplashScreen from "./pages/SplashScreen/SplashScreen";
 
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "signin-page",
         element: <SignInForm />,
+      },
+      {
+        path: "login",
+        element: <Login />,
       },
       {
         path: "artist/:id",

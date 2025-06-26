@@ -1,7 +1,7 @@
 import "./Carousel.css";
 
 function Carousel() {
-  return <></>;
+  return <div className="carousel" />;
 }
 
 export default Carousel;

@@ -27,10 +27,11 @@ function Artist() {
             demo={artist.demo}
           />
           {id && <MusicStyles params={id} />}
-          <p style={{ whiteSpace: "pre-wrap" }}>{artist.description}</p>
+          <p>{artist.description}</p>
           <SocialNetworks artist={artist} />
           <a href={artist.web_site} target="_blank" rel="noreferrer">
-            {artist.name.split(" ").join("-")}.com
+            {artist.name.split(" ").join("-")}
+            <span>.com</span>
           </a>
           <Carousel />
         </>

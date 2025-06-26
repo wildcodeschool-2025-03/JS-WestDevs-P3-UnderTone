@@ -1,4 +1,96 @@
 .artist-page {
   background-color: var(--primary-color);
   text-align: center;
+  padding: 32px 0;
+
+  h1 {
+    font-family: AntonSC, sans-serif;
+    font-weight: normal;
+    margin: 0 auto 16px;
+    text-shadow: 3px 2px 2px rgb(115, 115, 115);
+  }
+
+  p {
+    width: 92%;
+    margin: 16px auto;
+    white-space: pre-wrap;
+  }
+
+  & > a {
+    font-family: var(--website-font);
+    font-size: 2.5rem;
+    display: block;
+    width: 92vw;
+    overflow-wrap: break-word;
+    margin: 0 auto;
+
+    span {
+      font-family: inherit;
+      overflow-wrap: normal;
+    }
+  }
+}
+
+@media screen and (min-width: 760px) {
+  .artist-page {
+    padding-top: 16px;
+
+    h1 {
+      font-size: 4.5rem;
+      text-shadow: 4px 3px 3px rgb(115, 115, 115);
+    }
+
+    p {
+      width: 80%;
+      max-width: 800px;
+      font-size: 1.1rem;
+      margin: 32px auto;
+    }
+
+    & > a {
+      font-size: 3rem;
+    }
+  }
+}
+@media screen and (min-width: 1470px) {
+  .artist-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "name carousel"
+      "pppf carousel"
+      "pppf p"
+      "styles p"
+      "sn p"
+      "sn ws";
+
+    h1 {
+      grid-area: name;
+    }
+
+    figure {
+      grid-area: pppf;
+    }
+
+    .music-styles {
+      grid-area: styles;
+    }
+
+    p {
+      grid-area: p;
+      width: 40%;
+    }
+
+    .social-networks {
+      grid-area: sn;
+    }
+
+    & > a {
+      grid-area: ws;
+    }
+
+    .carousel {
+      grid-area: carousel;
+    }
+  }
 }

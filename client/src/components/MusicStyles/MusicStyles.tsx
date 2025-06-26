@@ -14,6 +14,11 @@ function MusicStyles({ params }: { params: string }) {
       {styles?.map((el) => (
         <li key={el.id}>{el.name}</li>
       ))}
+      <li>Funk</li>
+      <li>Funk</li>
+      <li>Funk</li>
+      <li>Funk</li>
+      <li>Funk</li>
     </ul>
   );
 }
