@@ -8,13 +8,33 @@
   src: url("/src/assets/fonts/Sen-VariableFont_wght.ttf");
 }
 
+@font-face {
+  font-family: "AntonSC";
+  src: url("/src/assets/fonts/AntonSC.ttf");
+}
+
+@font-face {
+  font-family: "DMSans";
+  src: url("/src/assets/fonts/DMSans.ttf");
+}
+
+@font-face {
+  font-family: "LibreBarcode39Text";
+  src: url("/src/assets/fonts/LibreBarcode39Text.ttf");
+}
+
 :root {
   --primary-color: #282828;
   --text-color: #ededed;
+
+  --text-font: DMSans, sans-serif;
+  --website-font: LibreBarcode39Text, sans-serif;
+  --name-font: AntonSC, sans-serif;
 }
 
 * {
   box-sizing: border-box;
+  font-family: var(--text-font);
 }
 
 body {
@@ -30,4 +50,9 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+ul {
+  list-style: none;
+  padding: unset;
 }

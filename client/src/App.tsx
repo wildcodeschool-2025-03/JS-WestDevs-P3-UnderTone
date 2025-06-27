@@ -1,5 +1,6 @@
 import { Outlet } from "react-router";
 import "./App.css";
+import { ToastContainer } from "react-toastify";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 
@@ -9,6 +10,7 @@ function App() {
       <Header />
       <Outlet />
       <Footer />
+      <ToastContainer />
     </>
   );
 }

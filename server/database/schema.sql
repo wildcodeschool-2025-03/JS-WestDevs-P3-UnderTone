@@ -7,8 +7,8 @@ email VARCHAR(60) NOT NULL UNIQUE,
 identifier VARCHAR(25) NOT NULL,
 password VARCHAR(200) NOT NULL,
 status ENUM('artist', 'concert_place', 'user', 'admin') NOT NULL,
-signup_date DATE NOT NULL,
-last_signin_date DATE DEFAULT NULL
+signup_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+last_signin_date DATE DEFAULT NULL 
 );
 
 INSERT INTO user
