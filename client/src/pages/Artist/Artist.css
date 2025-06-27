@@ -78,12 +78,10 @@
 
     .music-styles {
       grid-area: styles;
-      /* place-self: center; */
     }
 
     p {
       grid-area: p;
-      /* place-self: center; */
     }
 
     .social-networks {
