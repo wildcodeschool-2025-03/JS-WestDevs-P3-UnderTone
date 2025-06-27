@@ -17,5 +17,8 @@ type Artist = {
   deezer_link: string;
   spotify_link: string;
   youtube_link: string;
-  artistPhoto?: Photo[];
+  artistPhotos?: Photo[];
+  styles: {
+    name: string;
+  };
 };

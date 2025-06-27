@@ -11,15 +11,12 @@ router.post("/register", signInActions.add);
 // Define item-related routes
 import itemActions from "./modules/item/itemActions";
 
-router.get("/api/items", itemActions.browse);
-router.get("/api/items/:id", itemActions.read);
-router.post("/api/items", itemActions.add);
+router.get("/items", itemActions.browse);
+router.get("/items/:id", itemActions.read);
+router.post("/items", itemActions.add);
 
 import artistActions from "./modules/artist/artistActions";
-router.get("/api/artist/:id", artistActions.read);
-
-import artistStyleActions from "./modules/artistStyle/artistStyleActions";
-router.get("/api/artist:id/styles", artistStyleActions.read);
+router.get("/artist/:id", artistActions.read);
 /* ************************************************************************* */
 
 export default router;
