@@ -81,16 +81,40 @@
     color: rgb(200, 200, 200);
   }
 
-  .input-group :is(input:focus, input:valid) ~ label {
+  .input-group :is(input:focus, input:valid, input:filled) ~ label {
     transform: translateY(-80%) scale(0.9);
     margin: 0em;
     margin-left: 1.3em;
     padding: 0.4em;
     background-color: transparent;
   }
+
   #password:user-invalid:not(:focus),
   #confirmPassword:user-invalid:not(:focus) {
     border: 2px solid red;
+  }
+
+  .input-group:has(#password) p {
+    display: none;
+  }
+  .input-group:has(#password:user-invalid:not(:focus)) p {
+    display: block;
+  }
+  .input-group:has(#confirmPassword) ul {
+    list-style: none;
+  }
+  .input-group:has(#confirmPassword) li {
+    display: none;
+  }
+  .input-group:has(#confirmPassword:is(:user-invalid)) li:first-of-type {
+    display: block;
+  }
+
+  .input-group:has(#confirmPassword.different-passwords:user-valid)
+    li:last-of-type,
+  .input-group:has(#confirmPassword.different-passwords:user-invalid)
+    li:last-of-type {
+    display: block;
   }
 
   .input-group :is(input:focus, input:valid) {

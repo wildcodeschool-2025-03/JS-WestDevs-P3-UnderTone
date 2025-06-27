@@ -52,6 +52,7 @@ function SignInForm() {
             </label>
 
             <input
+              defaultChecked={true}
               className="custom-radio-input"
               id="user"
               type="radio"
@@ -111,7 +112,9 @@ function SignInForm() {
           </div>
           <div className="input-group">
             <input
-              title="8-16 caractères avec au moins une majuscule, une minuscule, un chiffre et un caractère spécial"
+              className={
+                password !== confirmPassword ? "different-passwords" : undefined
+              }
               type="password"
               id="password"
               name="password"
@@ -119,12 +122,20 @@ function SignInForm() {
               autoComplete="off"
               onChange={handlePassword}
               value={password}
-              pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[?%*.#@&~$!+=:;/])[A-Za-z\d?%*.#@&~$!+=:;/]{8,16}$"
+              pattern="^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$"
             />
             <label htmlFor="password">Mot de passe</label>
+            <p>
+              Le mot de passe doit contenir entre 8 et 16 caractères, inclure
+              des majuscules, des minuscules, des chiffres et des caractères
+              spéciaux, sans espaces.
+            </p>
           </div>
           <div className="input-group">
             <input
+              className={
+                password !== confirmPassword ? "different-passwords" : undefined
+              }
               type="password"
               id="confirmPassword"
               name="confirmPassword"
@@ -132,9 +143,17 @@ function SignInForm() {
               autoComplete="off"
               onChange={handleConfirmPassword}
               value={confirmPassword}
-              pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[?%*.#@&~$!+=:;/])[A-Za-z\d?%*.#@&~$!+=:;/]{8,16}$"
+              pattern="^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$"
             />
-            <label htmlFor="verified-password">Vérifier mot de passe</label>
+            <label htmlFor="confirmPassword">Vérifier mot de passe</label>
+            <ul>
+              <li>
+                Le mot de passe doit contenir entre 8 et 16 caractères, inclure
+                des majuscules, des minuscules, des chiffres et des caractères
+                spéciaux, sans espaces.
+              </li>
+              <li>Les mots de passe ne correspondent pas</li>
+            </ul>
           </div>
 
           <button type="submit" className="signin-button">
