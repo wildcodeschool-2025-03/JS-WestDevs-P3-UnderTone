@@ -1,58 +1,89 @@
 import { Link } from "react-router";
 import "./SignInForm.css";
+import { useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function SignInForm() {
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
+  const handleConfirmPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setConfirmPassword(e.target.value);
+  };
+
+  const handleSubmit = (formData: FormData) => {
+    const data = JSON.stringify(Object.fromEntries(formData));
+
+    if (data.password !== data.confirmPassword) {
+      toast.error("Les mots de passe ne correspondent pas");
+      return;
+    }
+
+    fetch("http://localhost:3310/api/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: data,
+    }).then((res) =>
+      res.ok
+        ? toast.success("Félicitations, votre compte a été créé")
+        : toast.error("Erreur lors de l'inscription"),
+    );
+  };
+
   return (
     <main className="signin-page">
       <section className="form-container">
         <h1>Inscription</h1>
 
-        <div className="custom-radio-holder">
-          <input
-            className="custom-radio-input"
-            id="artist"
-            type="radio"
-            name="role"
-            value="artist"
-          />
-          <label className="custom-radio-wrapper" htmlFor="artist">
-            <div className="custom-radio">
-              <div className="inner">Artiste</div>
-            </div>
-          </label>
+        <form className="signin-form" action={handleSubmit}>
+          <div className="custom-radio-holder">
+            <input
+              className="custom-radio-input"
+              id="artist"
+              type="radio"
+              name="role"
+              value="artist"
+            />
+            <label className="custom-radio-wrapper" htmlFor="artist">
+              <div className="custom-radio">
+                <div className="inner">Artiste</div>
+              </div>
+            </label>
 
-          <input
-            className="custom-radio-input"
-            id="user"
-            type="radio"
-            name="role"
-            value="user"
-          />
-          <label className="custom-radio-wrapper" htmlFor="user">
-            <div className="custom-radio">
-              <div className="inner">User</div>
-            </div>
-          </label>
+            <input
+              className="custom-radio-input"
+              id="user"
+              type="radio"
+              name="role"
+              value="user"
+            />
 
-          <input
-            className="custom-radio-input"
-            id="place"
-            type="radio"
-            name="role"
-            value="place"
-          />
-          <label className="custom-radio-wrapper" htmlFor="place">
-            <div className="custom-radio">
-              <div className="inner">Lieux</div>
-            </div>
-          </label>
-        </div>
+            <label className="custom-radio-wrapper" htmlFor="user">
+              <div className="custom-radio">
+                <div className="inner">User</div>
+              </div>
+            </label>
 
-        <form
-          className="signin-form"
-          action="http://localhost:3310/api/register"
-          method="POST"
-        >
+            <input
+              className="custom-radio-input"
+              id="place"
+              type="radio"
+              name="role"
+              value="place"
+            />
+            <label className="custom-radio-wrapper" htmlFor="place">
+              <div className="custom-radio">
+                <div className="inner">Lieux</div>
+              </div>
+            </label>
+          </div>
+
           <div className="input-group">
             <input
               type="text"
@@ -90,16 +121,22 @@ function SignInForm() {
               name="password"
               required
               autoComplete="off"
+              onChange={handlePassword}
+              value={password}
+              pattern="/^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9])(?=\S*?[?%*.#@&~$!+=:;/]).{8,16})\S$/"
             />
             <label htmlFor="password">Mot de passe</label>
           </div>
           <div className="input-group">
             <input
               type="password"
-              id="verified-password"
+              id="confirmPassword"
               name="confirmPassword"
               required
               autoComplete="off"
+              onChange={handleConfirmPassword}
+              value={confirmPassword}
+              pattern="/^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9])(?=\S*?[?%*.#@&~$!+=:;/]).{8,})\S$/"
             />
             <label htmlFor="verified-password">Vérifier mot de passe</label>
           </div>
