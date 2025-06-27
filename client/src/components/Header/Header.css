@@ -35,7 +35,7 @@ header nav ul li:first-child {
 
   span {
     color: var(--primary-color);
-    background-image: url("./images/+.svg");
+    background-image: url("/images/+.svg");
     background-size: 15px;
     background-repeat: no-repeat;
     background-position: center;
