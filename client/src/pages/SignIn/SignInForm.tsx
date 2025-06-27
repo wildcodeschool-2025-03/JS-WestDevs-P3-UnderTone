@@ -18,11 +18,6 @@ function SignInForm() {
   const handleSubmit = (formData: FormData) => {
     const data = JSON.stringify(Object.fromEntries(formData));
 
-    if (data.password !== data.confirmPassword) {
-      toast.error("Les mots de passe ne correspondent pas");
-      return;
-    }
-
     fetch("http://localhost:3310/api/register", {
       method: "POST",
       headers: {
