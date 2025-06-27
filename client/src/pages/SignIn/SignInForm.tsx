@@ -118,7 +118,7 @@ function SignInForm() {
               autoComplete="off"
               onChange={handlePassword}
               value={password}
-              pattern="/^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9])(?=\S*?[?%*.#@&~$!+=:;/]).{8,16})\S$/"
+              pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[?%*.#@&~$!+=:;/])[A-Za-z\d?%*.#@&~$!+=:;/]{8,16}$"
             />
             <label htmlFor="password">Mot de passe</label>
           </div>
@@ -131,7 +131,7 @@ function SignInForm() {
               autoComplete="off"
               onChange={handleConfirmPassword}
               value={confirmPassword}
-              pattern="/^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9])(?=\S*?[?%*.#@&~$!+=:;/]).{8,16})\S$/"
+              pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[?%*.#@&~$!+=:;/])[A-Za-z\d?%*.#@&~$!+=:;/]{8,16}$"
             />
             <label htmlFor="verified-password">Vérifier mot de passe</label>
           </div>
