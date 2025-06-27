@@ -7,6 +7,7 @@
   border-radius: 50%;
   background-color: var(--primary-color);
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  border: none;
 }
 
 .love-heart:before,
@@ -19,6 +20,7 @@
   height: 15px;
   margin-top: 2px;
   position: relative;
+  transform: translateX(-25%);
 }
 
 .love-heart,

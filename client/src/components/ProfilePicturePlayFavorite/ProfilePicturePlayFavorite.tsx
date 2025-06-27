@@ -2,13 +2,11 @@ import FavoriteButton from "./FavoriteButton/FavoriteButton";
 import PlayPause from "./PlayPause/PlayPause";
 import "./ProfilePicturePlayFavorite.css";
 
-interface Props {
-  profilePicture: string;
-  name: string;
-  demo: string;
-}
-
-function ProfilePicturePlayFavorite({ profilePicture, name, demo }: Props) {
+function ProfilePicturePlayFavorite({
+  profilePicture,
+  name,
+  demo,
+}: ProfilePicturePlayFavoriteProps) {
   return (
     <figure>
       <FavoriteButton />

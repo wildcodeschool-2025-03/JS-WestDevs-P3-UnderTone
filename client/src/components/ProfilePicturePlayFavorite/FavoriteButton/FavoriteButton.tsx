@@ -8,7 +8,7 @@ function FavoriteButton() {
   };
 
   return (
-    <div className="favorite-toggle-container">
+    <button type="button" className="favorite-toggle-container">
       <div className="love">
         <input
           id="switch"
@@ -24,7 +24,7 @@ function FavoriteButton() {
           <div className="round" />
         </label>
       </div>
-    </div>
+    </button>
   );
 }
 

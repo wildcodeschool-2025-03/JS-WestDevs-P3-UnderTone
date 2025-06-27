@@ -24,3 +24,9 @@ type ArtistStyle = {
   id: number;
   name: string;
 };
+
+type ProfilePicturePlayFavoriteProps = {
+  profilePicture: string;
+  name: string;
+  demo: string;
+};
