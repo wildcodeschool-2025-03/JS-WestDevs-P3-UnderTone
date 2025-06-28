@@ -1,5 +1,5 @@
 .login-page {
-  min-height: calc(100vh - 86px);
+  min-height: calc(100vh - 86px - 75px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,12 +7,13 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  padding: 32px;
+  padding: 32px 16px;
 
   section {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     flex-direction: column;
     background-color: rgba(63, 63, 63, 0.8);
     padding: 25px;
@@ -24,95 +25,33 @@
   }
 
   h1 {
-    font-family: "Sen", sans-serif;
+    margin: 16px auto 16px;
+    font-size: 40px;
     color: var(--text-color);
   }
 
-  form {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-
-    div {
-      font-family: "Segoe UI", sans-serif;
-      margin: 1em 0;
-      max-width: 190px;
-      position: relative;
-      width: 100%;
-
-      input {
-        font-size: 100%;
-        padding: 0.8em;
-        outline: none;
-        border: 2px solid rgb(200, 200, 200);
-        background-color: transparent;
-        border-radius: 20px;
-        width: 100%;
-      }
-
-      label {
-        font-size: 100%;
-        position: absolute;
-        left: 0;
-        padding: 0.8em;
-        margin-left: 0.5em;
-        pointer-events: none;
-        transition: all 0.3s ease;
-        color: rgb(200, 200, 200);
-      }
-
-      input:focus ~ label,
-      input:valid ~ label {
-        transform: translateY(-80%) scale(0.9);
-        margin: 0;
-        margin-left: 1.3em;
-        padding: 0.4em;
-        background-color: transparent;
-      }
-
-      input:focus,
-      input:valid {
-        border-color: rgba(86, 59, 111, 1);
-      }
-    }
-
-    a {
-      font-family: "Sen", sans-serif;
-      text-decoration: none;
-      color: var(--text-color);
-      margin-top: 1em;
-    }
-
-    button {
-      font-family: "Sen", sans-serif;
-      color: var(--text-color);
-      margin: 15px;
-      height: 35px;
-      width: 150px;
-      border-radius: 20px;
-      padding: 5px;
-      background-color: rgba(86, 59, 111, 1);
-      border: rgba(86, 59, 111, 1) 1px solid;
-      box-shadow: 6px 4px 4px 0 rgba(0, 0, 0, 0.4);
-    }
-
-    p {
-      margin-top: 1em;
-      color: var(--text-color);
-
-      a {
-        color: var(--text-color);
-        font-weight: bold;
-      }
-    }
+  &:has(input:user-invalid) p {
+    display: block;
+    margin: 12px auto 0;
+    font-size: 0.8rem;
   }
 
-  @media (min-width: 768px) {
+  p {
+    margin-top: 1em;
+
+    a {
+      font-weight: bold;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .login-page {
     justify-content: flex-end;
+    min-height: calc(100vh - 85px - 56px);
 
     section {
-      margin-right: 10rem;
+      margin-right: 20vw;
     }
   }
 }
