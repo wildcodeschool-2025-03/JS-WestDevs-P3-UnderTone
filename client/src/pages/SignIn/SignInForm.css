@@ -1,5 +1,5 @@
 .signin-page {
-  min-height: calc(100vh - 86px);
+  min-height: calc(100vh - 86px - 75px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,33 +9,13 @@
   background-position: center;
   padding: 32px;
 
-  a {
-    font-family: "Sen", sans-serif;
-    text-decoration: none;
-    color: var(--text-color);
-  }
-
   h1 {
-    font-family: "Sen", sans-serif;
-    color: var(--text-color);
-  }
-
-  .signin-button {
-    font-family: "Sen", sans-serif;
-    color: var(--text-color);
-    margin: 15px;
-    height: 35px;
-    width: 150px;
-    border-radius: 20px;
-    padding: 5px;
-    background-color: rgba(86, 59, 111, 1);
-    border: rgba(86, 59, 111, 1) 1px solid;
-    box-shadow: 6px 4px 4px 0 rgba(0, 0, 0, 0.4);
+    font-size: 40px;
+    margin: 16px auto;
   }
 
   .form-container {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     background-color: rgba(63, 63, 63, 0.8);
@@ -45,66 +25,29 @@
       inset -4px -7px 5px 0px var(--primary-color),
       inset 2px 7px 5px 0px rgba(217, 217, 217, 50),
       0 4px 15px rgba(0, 0, 0, 0.3);
-  }
-
-  .signin-form {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
+    text-align: center;
   }
 
   .input-group {
-    font-family: "Segoe UI", sans-serif;
-    margin: 1em 0 1em 0;
-    max-width: 190px;
-    position: relative;
-  }
-
-  .input-group input {
-    font-size: 100%;
-    padding: 0.8em;
-    outline: none;
-    border: 2px solid rgb(200, 200, 200);
-    background-color: transparent;
-    border-radius: 20px;
-    width: 100%;
-  }
-
-  .input-group label {
-    font-size: 100%;
-    position: absolute;
-    left: 0;
-    padding: 0.8em;
-    margin-left: 0.5em;
-    pointer-events: none;
-    transition: all 0.3s ease;
-    color: rgb(200, 200, 200);
-  }
-
-  .input-group :is(input:focus, input:valid, input:filled) ~ label {
-    transform: translateY(-80%) scale(0.9);
-    margin: 0em;
-    margin-left: 1.3em;
-    padding: 0.4em;
-    background-color: transparent;
-  }
-
-  #password:user-invalid:not(:focus),
-  #confirmPassword:user-invalid:not(:focus) {
-    border: 2px solid red;
+    width: 200px;
   }
 
   .input-group:has(#password) p {
     display: none;
   }
-  .input-group:has(#password:user-invalid:not(:focus)) p {
+  .input-group:has(#password:user-invalid) p {
     display: block;
+    margin-bottom: 0;
+    font-size: 0.8rem;
   }
   .input-group:has(#confirmPassword) ul {
     list-style: none;
+    margin: 0;
   }
   .input-group:has(#confirmPassword) li {
     display: none;
+    margin: 16px;
+    font-size: 0.8rem;
   }
   .input-group:has(#confirmPassword:is(:user-invalid)) li:first-of-type {
     display: block;
@@ -117,12 +60,8 @@
     display: block;
   }
 
-  .input-group :is(input:focus, input:valid) {
-    border-color: rgba(86, 59, 111, 1);
-  }
-
   .custom-radio-holder {
-    margin: 5px;
+    margin: 0 0 16px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -160,12 +99,12 @@
       rgba(255, 255, 255, 0.17) 0px 1px 1px 0px;
     outline: none;
     justify-content: center;
-    min-width: 55px;
+    min-width: 65px;
   }
 
   .custom-radio .inner {
     text-align: center;
-    width: 70px;
+    width: 110px;
     font-size: 18px;
     font-weight: 900;
     pointer-events: none;
@@ -249,14 +188,8 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media screen and (min-width: 768px) {
   .signin-page {
-    min-height: calc(100vh - 56px);
-  }
-}
-
-@media (min-width: 1024px) {
-  .signin-page {
-    min-height: calc(100vh - 56px);
+    min-height: calc(100vh - 56px - 85px);
   }
 }
