@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Carousel from "../../components/Carousel/Carousel";
-import MusicStyles from "../../components/MusicStyles/MusicStyles";
+import StylesTypes from "../../components/StylesTypes/StylesTypes";
+
 import ProfilePicturePlayFavorite from "../../components/ProfilePicturePlayFavorite/ProfilePicturePlayFavorite";
 import SocialNetworks from "../../components/SocialNetworks/SocialNetworks";
 import "./Artist.css";
@@ -26,13 +27,15 @@ function Artist() {
             name={artist.name}
             demo={artist.demo}
           />
-          {id && <MusicStyles params={id} />}
+          {artist.styles && <StylesTypes stylesTypes={artist.styles} />}
           <p>{artist.description}</p>
           <SocialNetworks artist={artist} />
-          <a href={artist.web_site} target="_blank" rel="noreferrer">
-            {artist.name.split(" ").join("-")}
-            <span>.com</span>
-          </a>
+          {artist.web_site && (
+            <a href={artist.web_site} target="_blank" rel="noreferrer">
+              {artist.name.split(" ").join("-")}
+              <span>.com</span>
+            </a>
+          )}
           <Carousel />
         </>
       )}
