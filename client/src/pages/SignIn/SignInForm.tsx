@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import "../../assets/styles/forms.css";
 import "./SignInForm.css";
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -62,7 +63,7 @@ function SignInForm() {
 
             <label className="custom-radio-wrapper" htmlFor="user">
               <div className="custom-radio">
-                <div className="inner">User</div>
+                <div className="inner">Spectateur</div>
               </div>
             </label>
 
@@ -71,11 +72,11 @@ function SignInForm() {
               id="place"
               type="radio"
               name="role"
-              value="place"
+              value="concert_place"
             />
             <label className="custom-radio-wrapper" htmlFor="place">
               <div className="custom-radio">
-                <div className="inner">Lieux</div>
+                <div className="inner">Lieu</div>
               </div>
             </label>
           </div>
@@ -87,18 +88,9 @@ function SignInForm() {
               id="username"
               required
               autoComplete="off"
+              placeholder=""
             />
-            <label htmlFor="username">Name</label>
-          </div>
-          <div className="input-group">
-            <input
-              type="text"
-              id="identifier"
-              name="identifier"
-              required
-              autoComplete="off"
-            />
-            <label htmlFor="identifier">Identifiant</label>
+            <label htmlFor="username">Pseudo</label>
           </div>
           <div className="input-group">
             <input
@@ -107,6 +99,7 @@ function SignInForm() {
               name="email"
               required
               autoComplete="on"
+              placeholder=""
             />
             <label htmlFor="email">Email</label>
           </div>
@@ -123,6 +116,7 @@ function SignInForm() {
               onChange={handlePassword}
               value={password}
               pattern="^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$"
+              placeholder=""
             />
             <label htmlFor="password">Mot de passe</label>
             <p>
@@ -144,6 +138,7 @@ function SignInForm() {
               onChange={handleConfirmPassword}
               value={confirmPassword}
               pattern="^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$"
+              placeholder=""
             />
             <label htmlFor="confirmPassword">Vérifier mot de passe</label>
             <ul>
@@ -152,16 +147,15 @@ function SignInForm() {
                 des majuscules, des minuscules, des chiffres et des caractères
                 spéciaux, sans espaces.
               </li>
-              <li>Les mots de passe ne correspondent pas</li>
+              <li>Les mots de passe ne correspondent pas.</li>
             </ul>
           </div>
 
-          <button type="submit" className="signin-button">
-            S'inscrire
-          </button>
+          <button type="submit">S'inscrire</button>
+          <p>
+            Déjà inscrit(e) ? <Link to="/login">Connectez-vous</Link>
+          </p>
         </form>
-
-        <Link to="/login-page">Déjà un compte ? Connectez-vous</Link>
       </section>
     </main>
   );
