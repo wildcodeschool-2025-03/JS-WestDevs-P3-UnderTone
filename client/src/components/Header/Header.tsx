@@ -13,7 +13,7 @@ function Header() {
         <Link to="/app">
           <img
             className="logo"
-            src="./images/Logo_UnderTone.svg"
+            src="/images/Logo_UnderTone.svg"
             alt="Logo représentant un casque"
           />
         </Link>
@@ -39,7 +39,7 @@ function Header() {
             </li>
           </ul>
           <Link to=" ">
-            <img src="./images/Generic avatar.svg" alt="Connexion icon" />
+            <img src="/images/Generic avatar.svg" alt="Connexion icon" />
           </Link>
           <button
             className="navbar_burger"

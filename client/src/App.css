@@ -26,6 +26,7 @@
 :root {
   --primary-color: #282828;
   --text-color: #ededed;
+  --secondary-color: rgba(86, 59, 111, 1);
 
   --text-font: DMSans, sans-serif;
   --website-font: LibreBarcode39Text, sans-serif;
