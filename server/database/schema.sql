@@ -95,6 +95,7 @@ INSERT INTO artist_music_style
 (artist_id, music_style_id)
 VALUES
 (1, 4),
+(1, 13),
 (1, 14), 
 (1, 16);
 
@@ -111,6 +112,11 @@ menu VARCHAR(500) DEFAULT NULL,
 CONSTRAINT fk_concert_place_user_id
 FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE 
 );
+
+INSERT INTO concert_place
+(name, description, web_site, profile_picture, facebook_link, instagram_link, x_link, menu) 
+VALUES
+("Vent Débarasse", "Vent Débarasse vous invite à savourer des plats faits maison, principalements maritimes, au rythme de la musique live. Chaque soir, des artistes montent sur scène pour accompagner votre repas de notes jazz, soul ou pop ! 🍹 🪇 🎵", "vent-debarasse.fr", "facebook.com", "instagram.com", "twitter.com", "http://localhost:3310/assets/menus/vent-debarasse.pdf")
 
 CREATE TABLE favorite_concert_place (
 user_id INT NOT NULL,
@@ -134,6 +140,17 @@ CREATE TABLE opening_hour (
   CONSTRAINT fk_opening_hour_concert_place
   FOREIGN KEY (concert_place_id) REFERENCES concert_place(user_id) ON DELETE CASCADE
 );
+
+INSERT INTO opening_hour
+(concert_place_id, week_day, opening_hour_noon, closing_hour_noon, opening_hour_evening, closing_hour_evening) 
+VALUES 
+(1, "Lundi", "", "", "", ""),
+(1, "Mardi", "12:00", "14:30", "19:00", "22:30"),
+(1, "Mercredi", "12:00", "14:30", "19:00", "22:30"),
+(1, "Jeudi", "12:00", "14:30", "19:00", "22:30"),
+(1, "Vendredi", "12:00", "14:30", "19:00", "23:30"),
+(1, "Samedi", "12:00", "15:30", "19:00", "23:30"),
+(1, "Dimanche", "", "", "", ""),
 
 CREATE TABLE concert_place_photo (
 id INT PRIMARY KEY AUTO_INCREMENT,
