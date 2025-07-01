@@ -1,3 +1,0 @@
-type SocialNetworks = {
-  artist: Artist;
-};
