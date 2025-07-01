@@ -1,8 +1,8 @@
 import express from "express";
-import auth from "./utils/auth";
-import validation from "./utils/validation";
 import artistActions from "./modules/artist/artistActions";
 import itemActions from "./modules/item/itemActions";
+import auth from "./utils/auth";
+import validation from "./utils/validation";
 
 const router = express.Router();
 
