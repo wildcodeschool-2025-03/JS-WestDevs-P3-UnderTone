@@ -2,15 +2,15 @@ import "./EventValidationPage.css";
 
 function EventValidationPage() {
   return (
-    <section className="event_validation">
+    <main className="event-validation">
       <div>
         <img
           src="images/Photo event.svg"
           alt="un batteur avec ses instruments"
         />
 
-        <section className="event_text">
-          <p>
+        <section className="event-text">
+          <p className="first-text">
             <strong>Vent Débarasse</strong>&nbsp;
             <span>vous invite pour son évènement</span>&nbsp;
             <span>
@@ -24,13 +24,13 @@ function EventValidationPage() {
             <strong>20h</strong>
           </p>
           <p>Serez-vous présent?</p>
-          <article className="validate_event">
+          <article className="validate-event">
             <button type="button">Refuser</button>
             <button type="button">Accepter</button>
           </article>
         </section>
       </div>
-    </section>
+    </main>
   );
 }
 export default EventValidationPage;
