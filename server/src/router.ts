@@ -1,25 +1,31 @@
 import express from "express";
-import auth from "./Utils/auth";
-import userValidation from "./Utils/validation";
+import auth from "./utils/auth";
+import validation from "./utils/validation";
 import artistActions from "./modules/artist/artistActions";
 import itemActions from "./modules/item/itemActions";
 
 const router = express.Router();
 
 /* ************************************************************************* */
-// Routes API
-/* ************************************************************************* */
+// Define Your API Routes Here
+import signInActions from "./modules/signIn/signInActions";
+router.post(
+  "/register",
+  validation.userValidation,
+  auth.hashPassword,
+  signInActions.add,
+);
 
-// Routes pour les items
 router.get("/items", itemActions.browse);
 router.get("/items/:id", itemActions.read);
 router.post("/items", itemActions.add);
 
-// Routes pour les artistes
 router.get("/artist/:id", artistActions.read);
 
-// Route de login (avec validation)
-router.post("/login", userValidation.userValidation, auth.login);
+import concertPlaceActions from "./modules/concertPlace/concertPlaceActions";
+router.get("/concert-place/:id", concertPlaceActions.read);
+
+router.post("/login", validation.userValidation, auth.login);
 
 /* ************************************************************************* */
 

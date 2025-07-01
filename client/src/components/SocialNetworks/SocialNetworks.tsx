@@ -1,6 +1,6 @@
 import "./SocialNetworks.css";
 
-function SocialNetworks(profileDatas: SocialNetworks) {
+function SocialNetworks({ profileDatas }: { profileDatas: SocialNetworks }) {
   const {
     facebook_link,
     instagram_link,
@@ -8,7 +8,7 @@ function SocialNetworks(profileDatas: SocialNetworks) {
     deezer_link,
     spotify_link,
     youtube_link,
-  } = profileDatas.artist;
+  } = profileDatas;
 
   return (
     <ul className="social-networks">

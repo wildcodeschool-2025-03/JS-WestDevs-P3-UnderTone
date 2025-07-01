@@ -3,16 +3,9 @@ import signInRepository from "./signInRepository";
 
 const add: RequestHandler = async (req, res, next) => {
   try {
-    const { username, email, password, confirmPassword, identifier } = req.body;
+    const { username, email, password, role } = req.body;
 
-    if (req.body.password !== req.body.confirmPassword) {
-      res
-        .status(400)
-        .json({ error: "Les mots de passe ne correspondent pas." });
-      return;
-    }
-
-    const newUser = { username, email, password, identifier };
+    const newUser = { username, email, password, role };
 
     const insertNewUser = await signInRepository.create(newUser);
 
