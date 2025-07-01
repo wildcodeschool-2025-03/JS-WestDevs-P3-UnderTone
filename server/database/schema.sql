@@ -4,17 +4,17 @@ username VARCHAR(50) NOT NULL UNIQUE,
 birthdate DATE DEFAULT NULL,
 profile_picture VARCHAR(500) DEFAULT NULL,
 email VARCHAR(60) NOT NULL UNIQUE,
-identifier VARCHAR(25) NOT NULL,
 password VARCHAR(200) NOT NULL,
 status ENUM('artist', 'concert_place', 'user', 'admin') NOT NULL,
-signup_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-last_signin_date DATE DEFAULT NULL 
+signup_date DATETIME NOT NULL,
+last_signin_date DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 INSERT INTO user
-(username, birthdate, profile_picture, email, identifier, password, status, signup_date)
+(username, birthdate, profile_picture, email, password, status, signup_date)
 VALUES
-('Benji', '1989-07-16', 'https://randomuser.me/api/portraits/men/75.jpg', 'benjamin.rambrant@gmail.com', 'Benji1989', '$argon2id$v=19$m=16,t=2,p=1$S3ZSTW95YUNHdHFOdVI5Nw$j2Iamkw4GqOH/YPN70XtAw', 'artist', '2025-06-20');
+('Benji', '1989-07-16', 'https://randomuser.me/api/portraits/men/75.jpg', 'benjamin.rambrant@gmail.com', '$argon2id$v=19$m=16,t=2,p=1$S3ZSTW95YUNHdHFOdVI5Nw$j2Iamkw4GqOH/YPN70XtAw', 'artist', '2025-06-20'), 
+('Tristant', '2000-07-24', 'https://randomuser.me/api/portraits/men/73.jpg', 'tristant.zubiarrain@gmail.com', '$argon2id$v=19$m=16,t=2,p=1$M09nRnRNTTl4ZnJ3VlMzVQ$8z2YrHdnjz0QwUxk1baSJQ', 'concert_place', '2025-06-21');
 
 CREATE TABLE artist (
 user_id INT PRIMARY KEY NOT NULL,
@@ -42,7 +42,7 @@ Nous sommes *Funkology*, et on est là pour vous faire bouger et vibrer au rythm
 
 Imaginez des basses qui groovent, des cuivres qui swinguent et des mélodies qui vous collent à la peau. Chaque concert est une fête où on vous invite à danser, chanter et partager notre énergie avec vous, alors venez nous rejoindre pour une soirée inoubliable. 
 
-Préparez-vous à vivre la musique comme jamais auparavant. On se voit bientôt ! 🎶🔥', 'http://localhost:3310/assets/audios/demo/1funkologie.mp3', 'funkologie.fr', 'http://localhost:3310/assets/images/artist-profile-picture/IMG_20250514_103311.png', 'https://www.instagram.com/');
+Préparez-vous à vivre la musique comme jamais auparavant. On se voit bientôt ! 🎶🔥', 'http://localhost:3310/assets/audios/demo/1funkologie.mp3', 'funkologie.fr', 'http://localhost:3310/assets/images/artist-profile-picture/IMG_20250514_103311.jpg', 'https://www.instagram.com/');
 
 CREATE TABLE favorite_artist (
 user_id INT NOT NULL,
@@ -95,6 +95,7 @@ INSERT INTO artist_music_style
 (artist_id, music_style_id)
 VALUES
 (1, 4),
+(1, 13),
 (1, 14), 
 (1, 16);
 
@@ -108,9 +109,15 @@ facebook_link VARCHAR(200) DEFAULT NULL,
 instagram_link VARCHAR(200) DEFAULT NULL,
 x_link VARCHAR(200) DEFAULT NULL,
 menu VARCHAR(500) DEFAULT NULL,
+address VARCHAR(200) NOT NULL,
 CONSTRAINT fk_concert_place_user_id
 FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE 
 );
+
+INSERT INTO concert_place
+(user_id, name, description, web_site, profile_picture, facebook_link, instagram_link, x_link, menu, address) 
+VALUES
+(2, "Vent Débarasse", "Vent Débarasse vous invite à savourer des plats faits maison, principalements maritimes, au rythme de la musique live. \n\nChaque soir, des artistes montent sur scène pour accompagner votre repas de notes jazz, soul ou pop ! 🍹 🪇 🎵", "vent-debarasse.fr", "http://localhost:3310/assets/images/concert-place-profile-picture/vent-debarasse.jpg", "facebook.com", "instagram.com", "twitter.com", "http://localhost:3310/assets/menus/vent-debarasse.pdf", '3 rue Erik Satie\n44400 Rezé');
 
 CREATE TABLE favorite_concert_place (
 user_id INT NOT NULL,
@@ -135,6 +142,17 @@ CREATE TABLE opening_hour (
   FOREIGN KEY (concert_place_id) REFERENCES concert_place(user_id) ON DELETE CASCADE
 );
 
+INSERT INTO opening_hour
+(concert_place_id, week_day, opening_hour_noon, closing_hour_noon, opening_hour_evening, closing_hour_evening) 
+VALUES 
+(2, "Lundi", "", "", "", ""),
+(2, "Mardi", "12:00", "14:30", "19:00", "22:30"),
+(2, "Mercredi", "12:00", "14:30", "19:00", "22:30"),
+(2, "Jeudi", "12:00", "14:30", "19:00", "22:30"),
+(2, "Vendredi", "12:00", "14:30", "19:00", "23:30"),
+(2, "Samedi", "12:00", "15:30", "19:00", "23:30"),
+(2, "Dimanche", "", "", "", "");
+
 CREATE TABLE concert_place_photo (
 id INT PRIMARY KEY AUTO_INCREMENT,
 image VARCHAR(500) NOT NULL,
@@ -143,6 +161,14 @@ concert_place_id INT NOT NULL,
 CONSTRAINT fk_concert_place_photo_concert_place_id
 FOREIGN KEY (concert_place_id) REFERENCES concert_place(user_id)
 );
+
+INSERT INTO concert_place_photo
+(image, date, concert_place_id)
+VALUES
+('http://localhost:3310/assets/images/concert-place-photo/vent-debarasse-fishNchips.jpeg', '2025-06-21', 2),
+('http://localhost:3310/assets/images/concert-place-photo/vent-debarasse-moules.jpeg', '2025-06-21', 2),
+('http://localhost:3310/assets/images/concert-place-photo/vent-debarasse-saumon.jpg', '2025-06-21', 2),
+('http://localhost:3310/assets/images/concert-place-photo/vent-debarasse-saumon2.jpeg', '2025-06-21', 2);
 
 CREATE TABLE type (
 id INT PRIMARY KEY AUTO_INCREMENT,
@@ -162,6 +188,11 @@ FOREIGN KEY (concert_place_id) REFERENCES concert_place(user_id),
 CONSTRAINT fk_concert_place_type_type
 FOREIGN KEY (type_id) REFERENCES type(id)
 ); 
+
+INSERT INTO concert_place_type
+(concert_place_id, type_id)
+VALUES
+(2, 1);
 
 CREATE TABLE event (
 id INT PRIMARY KEY AUTO_INCREMENT,

@@ -1,0 +1,15 @@
+import databaseClient from "../../../database/client";
+import type { Rows } from "../../../database/client";
+
+class EventRepository {
+  async read(id: number) {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT e.user_id, e.name, e.description, e.adresse, , a.instagram_link, a.x_link, a.deezer_link, a.spotify_link, a.youtube_link, (SELECT JSON_ARRAYAGG(JSON_OBJECT('id', ap.id, 'image', ap.image, 'date', ap.date)) FROM artist_photo AS ap WHERE a.user_id = ap.artist_id) AS artistPhotos, (SELECT JSON_ARRAYAGG(JSON_OBJECT('name', ms.name, 'id', ms.id)) FROM music_style AS ms JOIN artist_music_style AS ams ON ms.id = ams.music_style_id WHERE a.user_id = ams.artist_id) AS styles FROM artist AS a WHERE a.user_id = ?;",
+      [id],
+    );
+
+    return rows[0] as Event;
+  }
+}
+
+export default new EventRepository();
