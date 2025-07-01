@@ -1,6 +1,7 @@
 import express from "express";
-import validation from "./utils/validation";
 import auth from "./utils/auth";
+import validation from "./utils/validation";
+
 const router = express.Router();
 
 /* ************************************************************************* */
