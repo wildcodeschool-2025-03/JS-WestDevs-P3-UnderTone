@@ -10,9 +10,9 @@ import App from "./App";
 import Artist from "./pages/Artist/Artist";
 import ConcertPlace from "./pages/ConcertPlace/ConcertPlace";
 import Login from "./pages/Login/Login";
+import Research from "./pages/Research/Research";
 import SignInForm from "./pages/SignIn/SignInForm";
 import SplashScreen from "./pages/SplashScreen/SplashScreen";
-import Research from "./pages/Research/Research";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
