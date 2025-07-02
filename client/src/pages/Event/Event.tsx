@@ -17,11 +17,11 @@ function Event() {
       {event && (
         <>
           <h1>{event.name}</h1>
-          <img src="" alt="affiche de la soirée" />
-          <p>date</p>
+          <img src={event.image} alt="affiche de la soirée" />
+          <p>{event.date_hour}</p>
           <p>artiste invité</p>
           <p>adresse</p>
-          <p>description</p>
+          <p>{event.description}</p>
         </>
       )}
     </main>
