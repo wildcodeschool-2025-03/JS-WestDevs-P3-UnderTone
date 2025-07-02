@@ -1,11 +1,14 @@
 import { Link } from "react-router";
 import "./Header.css";
 import { useState } from "react";
+import { useAuth } from "../../services/AuthContext";
 
 function Header() {
   const [showLinks, setShowLinks] = useState(false);
 
   const handleShowLinks = () => setShowLinks(!showLinks);
+
+  const { isLogged } = useAuth();
 
   return (
     <header>
@@ -38,9 +41,13 @@ function Header() {
               </Link>
             </li>
           </ul>
-          <Link to=" ">
-            <img src="/images/Generic avatar.svg" alt="Connexion icon" />
-          </Link>
+          {!isLogged ? (
+            <Link to="/login">
+              <img src="/images/Generic avatar.svg" alt="Connexion icon" />
+            </Link>
+          ) : (
+            <button type="button">Se déconnecter</button>
+          )}
           <button
             className="navbar_burger"
             type="button"

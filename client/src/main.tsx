@@ -12,6 +12,7 @@ import ConcertPlace from "./pages/ConcertPlace/ConcertPlace";
 import Login from "./pages/Login/Login";
 import SignInForm from "./pages/SignIn/SignInForm";
 import SplashScreen from "./pages/SplashScreen/SplashScreen";
+import { AuthProvider } from "./services/AuthContext";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -63,7 +64,9 @@ if (rootElement == null) {
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>,
 );
 
