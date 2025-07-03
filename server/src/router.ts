@@ -1,4 +1,6 @@
 import express from "express";
+import artistActions from "./modules/artist/artistActions";
+import itemActions from "./modules/item/itemActions";
 import auth from "./utils/auth";
 import validation from "./utils/validation";
 
@@ -13,16 +15,10 @@ router.post(
   auth.hashPassword,
   signInActions.add,
 );
-/* ************************************************************************* */
-
-// Define item-related routes
-import itemActions from "./modules/item/itemActions";
 
 router.get("/items", itemActions.browse);
 router.get("/items/:id", itemActions.read);
 router.post("/items", itemActions.add);
-
-import artistActions from "./modules/artist/artistActions";
 
 router.get("/artist/:id", artistActions.read);
 
@@ -33,6 +29,9 @@ router.get("/concert-place/:id", concertPlaceActions.read);
 import eventAction from "./modules/event/eventActions";
 
 router.get("/event/:id", eventAction.read);
+
+router.post("/login", validation.userValidation, auth.login);
+
 /* ************************************************************************* */
 
 export default router;

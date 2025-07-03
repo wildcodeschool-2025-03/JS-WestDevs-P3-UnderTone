@@ -27,7 +27,7 @@ function Header() {
             </li>
 
             <li>
-              <Link to="/app" onClick={handleShowLinks}>
+              <Link to="research" onClick={handleShowLinks}>
                 RECHERCHE
               </Link>
             </li>

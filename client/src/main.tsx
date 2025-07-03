@@ -10,6 +10,7 @@ import App from "./App";
 import Artist from "./pages/Artist/Artist";
 import ConcertPlace from "./pages/ConcertPlace/ConcertPlace";
 import Login from "./pages/Login/Login";
+import Research from "./pages/Research/Research";
 import SignInForm from "./pages/SignIn/SignInForm";
 import SplashScreen from "./pages/SplashScreen/SplashScreen";
 import Event from "./pages/Event/Event";
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "event/:id",
         element: <Event />,
+      },
+      {
+        path: "research",
+        element: <Research />,
       },
     ],
   },
