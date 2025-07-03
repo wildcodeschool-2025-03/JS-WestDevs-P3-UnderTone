@@ -4,4 +4,5 @@ type EventData = {
   description: string;
   image: string;
   date_hour: string;
+  adress: string;
 };

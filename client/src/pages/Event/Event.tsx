@@ -20,7 +20,7 @@ function Event() {
           <img src={event.image} alt="affiche de la soirée" />
           <p>{event.date_hour}</p>
           <p>artiste invité</p>
-          <p>adresse</p>
+          <p>{event.adress}</p>
           <p>{event.description}</p>
         </>
       )}
