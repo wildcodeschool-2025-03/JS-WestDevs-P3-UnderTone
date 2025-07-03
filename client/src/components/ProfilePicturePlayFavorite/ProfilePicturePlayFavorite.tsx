@@ -18,7 +18,7 @@ function ProfilePicturePlayFavorite({
   }, [location]);
 
   return (
-    <figure>
+    <figure className="profile-picture-play-favorite">
       <FavoriteButton />
       <img
         src={profilePicture ? profilePicture : srcNoProfilePicture}

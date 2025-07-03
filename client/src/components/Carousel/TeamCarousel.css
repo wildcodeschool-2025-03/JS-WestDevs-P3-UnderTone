@@ -79,19 +79,9 @@
   filter: none;
 }
 
-.card.left-2 {
-  z-index: 1;
-  transform: translateX(-400px) scale(0.8) translateZ(-300px);
-  opacity: 0.7;
-}
-
-.card.left-2 img {
-  filter: grayscale(100%);
-}
-
 .card.left-1 {
   z-index: 5;
-  transform: translateX(-200px) scale(0.9) translateZ(-100px);
+  transform: translateX(-300px) scale(0.9) translateZ(-100px);
   opacity: 0.9;
 }
 
@@ -101,21 +91,11 @@
 
 .card.right-1 {
   z-index: 5;
-  transform: translateX(200px) scale(0.9) translateZ(-100px);
+  transform: translateX(300px) scale(0.9) translateZ(-100px);
   opacity: 0.9;
 }
 
 .card.right-1 img {
-  filter: grayscale(100%);
-}
-
-.card.right-2 {
-  z-index: 1;
-  transform: translateX(400px) scale(0.8) translateZ(-300px);
-  opacity: 0.7;
-}
-
-.card.right-2 img {
   filter: grayscale(100%);
 }
 
@@ -191,20 +171,12 @@
     height: 280px;
   }
 
-  .card.left-2 {
-    transform: translateX(-250px) scale(0.8) translateZ(-300px);
-  }
-
   .card.left-1 {
-    transform: translateX(-120px) scale(0.9) translateZ(-100px);
+    transform: translateX(-180px) scale(0.9) translateZ(-100px);
   }
 
   .card.right-1 {
-    transform: translateX(120px) scale(0.9) translateZ(-100px);
-  }
-
-  .card.right-2 {
-    transform: translateX(250px) scale(0.8) translateZ(-300px);
+    transform: translateX(180px) scale(0.9) translateZ(-100px);
   }
 
   .member-name {

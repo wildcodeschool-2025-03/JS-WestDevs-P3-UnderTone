@@ -1,6 +1,6 @@
-import "./Carousel.css";
-import { useCallback, useEffect, useRef, useState } from "react";
 import type React from "react";
+import { useCallback, useRef, useState } from "react";
+import "./Carousel.css";
 import "./TeamCarousel.css"; // Assurez-vous que le chemin est correct
 
 const teamMembers = [
@@ -42,43 +42,22 @@ function Carousel() {
 
   const updateCarousel = useCallback(
     (newIndex: number) => {
-      // Cette condition vérifie la valeur la plus à jour de isAnimating
-      // au moment où updateCarousel est appelée.
       if (isAnimating) return;
-      setIsAnimating(true); // Met à jour l'état et déclenche un re-rendu
+      setIsAnimating(true);
 
       const normalizedIndex =
         (newIndex + teamMembers.length) % teamMembers.length;
       setCurrentIndex(normalizedIndex);
 
       setTimeout(() => {
-        console.log("setTimeout déclenché !"); // Ce log devrait maintenant s'afficher
-        setIsAnimating(false); // Réinitialise l'état après le délai
+        console.log("setTimeout déclenché !");
+        setIsAnimating(false);
       }, 800);
     },
-    [isAnimating], // Seul currentIndex est nécessaire ici.
-    // teamMembers.length est une constante, donc pas besoin de la mettre en dépendance.
+    [isAnimating],
   );
 
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      // Change here: Use KeyboardEvent
-      if (e.key === "ArrowLeft") {
-        updateCarousel(currentIndex - 1);
-      } else if (e.key === "ArrowRight") {
-        updateCarousel(currentIndex + 1);
-      }
-    };
-
-    document.addEventListener("keydown", handleKeyDown); // Change here: Listen to 'keydown'
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown); // Change here: Remove 'keydown' listener
-    };
-  }, [currentIndex, updateCarousel]);
-
-  // Handle touch swipe
   const touchStartX = useRef(0);
-
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     touchStartX.current = e.changedTouches[0].screenX;
   };
@@ -105,12 +84,8 @@ function Carousel() {
       cardClass = "center";
     } else if (offset === 1) {
       cardClass = "right-1";
-      // } else if (offset === 2) {
-      //   cardClass = "right-2";
     } else if (offset === teamMembers.length - 1) {
       cardClass = "left-1";
-      // } else if (offset === teamMembers.length - 2) {
-      //   cardClass = "left-2";
     } else {
       cardClass = "hidden";
     }
