@@ -3,7 +3,9 @@ import eventRepository from "./eventRepository";
 
 const read: RequestHandler = async (req, res, next) => {
   try {
+    console.log(req.params.id);
     const eventId = Number(req.params.id);
+    console.log(eventId);
     const event = await eventRepository.read(eventId);
 
     if (event == null) {
