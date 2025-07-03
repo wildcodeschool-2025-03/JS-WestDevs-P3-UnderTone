@@ -227,6 +227,9 @@ CONSTRAINT fk_event_validation_artist_id
 FOREIGN KEY (artist_id) REFERENCES artist(user_id)
 );
 
+INSERT INTO event_validation (event_id, artist_id)
+VALUES (1, 1);
+
 CREATE TABLE favorite_event (
 user_id INT NOT NULL,
 event_id INT NOT NULL,
