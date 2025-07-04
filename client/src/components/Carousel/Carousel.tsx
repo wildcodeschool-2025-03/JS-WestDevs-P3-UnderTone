@@ -1,7 +1,7 @@
 import type React from "react";
 import { useCallback, useRef, useState } from "react";
+// import "./TeamCarousel.css"; // Assurez-vous que le chemin est correct
 import "./Carousel.css";
-import "./TeamCarousel.css"; // Assurez-vous que le chemin est correct
 
 const teamMembers = [
   {

@@ -70,13 +70,14 @@
     h1 {
       grid-area: name;
       margin: unset;
+      line-height: 66px;
     }
 
     figure {
       grid-area: pppf;
     }
 
-    .music-styles {
+    .styles-types {
       grid-area: styles;
     }
 
@@ -86,6 +87,7 @@
 
     .social-networks {
       grid-area: sn;
+      align-self: start;
     }
 
     & > a {
@@ -93,13 +95,8 @@
       width: unset;
     }
 
-    .carousel {
+    .dots-carousel-container {
       grid-area: carousel;
-      width: 46.4vw;
-      height: 22.3vw;
-      max-width: 891px;
-      max-height: 429px;
-      margin: auto;
     }
   }
 }

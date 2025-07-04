@@ -4,6 +4,7 @@
   justify-content: center;
   gap: 16px;
   width: 80%;
+  height: 50px;
   margin: 24px auto;
 
   li a img {
@@ -14,7 +15,7 @@
 
 @media screen and (min-width: 760px) {
   .social-networks {
-    margin: 48px auto;
+    margin: 0 auto;
     gap: 32px;
   }
 }
