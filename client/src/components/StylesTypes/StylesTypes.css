@@ -1,4 +1,4 @@
-.music-styles {
+.styles-types {
   list-style: none;
   padding: 0 40px;
   display: flex;
@@ -10,11 +10,5 @@
     background-color: rgba(217, 217, 217, 0.15);
     padding: 2px 14px;
     border-radius: 3px;
-  }
-}
-
-@media screen and (min-width: 760px) {
-  .music-styles {
-    margin: 24px 0 32px;
   }
 }

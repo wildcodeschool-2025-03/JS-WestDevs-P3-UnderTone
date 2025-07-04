@@ -54,7 +54,9 @@ function Artist() {
             </a>
           )}
 
-          <Carousel />
+          {artist.artistPhotos && (
+            <Carousel photosDatas={artist.artistPhotos} />
+          )}
         </>
       )}
     </main>

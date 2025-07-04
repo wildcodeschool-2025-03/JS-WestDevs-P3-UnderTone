@@ -9,7 +9,9 @@ import { RouterProvider, createBrowserRouter } from "react-router";
 import App from "./App";
 import Artist from "./pages/Artist/Artist";
 import ConcertPlace from "./pages/ConcertPlace/ConcertPlace";
+import Event from "./pages/Event/Event";
 import Login from "./pages/Login/Login";
+import Research from "./pages/Research/Research";
 import SignInForm from "./pages/SignIn/SignInForm";
 import SplashScreen from "./pages/SplashScreen/SplashScreen";
 import { AuthProvider } from "./services/AuthContext";
@@ -48,6 +50,14 @@ const router = createBrowserRouter([
       {
         path: "concert-place/:id",
         element: <ConcertPlace />,
+      },
+      {
+        path: "research",
+        element: <Research />,
+      },
+      {
+        path: "event/:id",
+        element: <Event />,
       },
     ],
   },

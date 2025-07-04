@@ -58,7 +58,9 @@ function ConcertPlace() {
 
           {concertPlace.menu && <Menu />}
 
-          {concertPlace.concertPlacePhotos && <Carousel />}
+          {concertPlace.concertPlacePhotos && (
+            <Carousel photosDatas={concertPlace.concertPlacePhotos} />
+          )}
 
           <OpeningHours />
 

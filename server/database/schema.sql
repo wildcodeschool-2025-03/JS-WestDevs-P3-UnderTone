@@ -199,11 +199,23 @@ id INT PRIMARY KEY AUTO_INCREMENT,
 name VARCHAR(100) NOT NULL,
 date_hour DATETIME NOT NULL,
 image VARCHAR(500),
+description VARCHAR(500),
 is_validated BOOLEAN NOT NULL,
 concert_place_id INT NOT NULL,
 CONSTRAINT fk_event_concert_place_id
 FOREIGN KEY (concert_place_id) REFERENCES concert_place(user_id)
 );
+
+INSERT INTO event (name, date_hour, image, is_validated, concert_place_id, description)
+VALUES (
+  'Soirée Rock & Chill',
+  '2025-07-10 20:00:00',
+  'http://localhost:3310/assets/images/artist-photo/pexels-meline-waxx-44315-165971.png',
+  TRUE,
+  2,
+  'Une soirée inoubliable de rock avec des artistes locaux et de la bonne ambiance.'
+);
+
 
 CREATE TABLE event_validation (
 event_id INT NOT NULL,
@@ -214,6 +226,9 @@ FOREIGN KEY (event_id) REFERENCES event(id),
 CONSTRAINT fk_event_validation_artist_id
 FOREIGN KEY (artist_id) REFERENCES artist(user_id)
 );
+
+INSERT INTO event_validation (event_id, artist_id)
+VALUES (1, 1);
 
 CREATE TABLE favorite_event (
 user_id INT NOT NULL,
