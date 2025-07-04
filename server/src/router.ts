@@ -23,7 +23,12 @@ router.post("/items", itemActions.add);
 router.get("/artist/:id", artistActions.read);
 
 import concertPlaceActions from "./modules/concertPlace/concertPlaceActions";
+
 router.get("/concert-place/:id", concertPlaceActions.read);
+
+import eventAction from "./modules/event/eventActions";
+
+router.get("/event/:id", eventAction.read);
 
 router.post("/login", validation.userValidation, auth.login);
 
