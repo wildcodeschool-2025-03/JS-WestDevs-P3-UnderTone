@@ -12,7 +12,16 @@ type SingleDayOpeningHours = {
   closingHourEvening: string | null;
 };
 
+type DayOpeningHours = {
+  week_day: string;
+  opening_hour_noon: string | null;
+  closing_hour_noon: string | null;
+  opening_hour_evening: string | null;
+  closing_hour_evening: string | null;
+};
+
 type ConcertPlace = {
+  DayOpeningHours: DayOpeningHours[];
   user_id: number;
   name: string;
   description: string | null;
@@ -25,4 +34,8 @@ type ConcertPlace = {
   concertPlacePhotos: Photo[];
   types: Types[];
   openingHours: SingleDayOpeningHours[];
+};
+
+type OpeningHoursProps = {
+  hours: DayOpeningHours[];
 };
