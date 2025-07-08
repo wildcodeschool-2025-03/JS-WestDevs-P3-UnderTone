@@ -1,44 +1,63 @@
-import { formatTime } from "../../utils/utils";
 import "./OpeningHours.css";
 
+type OpeningHoursProps = {
+  hours: {
+    weekDay: string;
+    openingHourNoon: string | null;
+    closingHourNoon: string | null;
+    openingHourEvening: string | null;
+    closingHourEvening: string | null;
+  }[];
+};
+
+function formatHour(time: string | null): string | null {
+  if (!time) return null;
+  const cleaned = time.split(":").slice(0, 2).join(":");
+  return cleaned === "00:00" ? null : cleaned;
+}
+
 function OpeningHours({ hours }: OpeningHoursProps) {
+  if (!hours || hours.length === 0) return null;
+
   return (
-    <section>
+    <section className="opening-hours">
       <h2>Horaires d'ouverture</h2>
       <ul>
         {hours.map((day) => {
           const {
-            week_day,
-            opening_hour_noon,
-            closing_hour_noon,
-            opening_hour_evening,
-            closing_hour_evening,
+            weekDay,
+            openingHourNoon,
+            closingHourNoon,
+            openingHourEvening,
+            closingHourEvening,
           } = day;
 
-          const isClosed =
-            !opening_hour_noon &&
-            !closing_hour_noon &&
-            !opening_hour_evening &&
-            !closing_hour_evening;
+          const noonStart = formatHour(openingHourNoon);
+          const noonEnd = formatHour(closingHourNoon);
+          const eveningStart = formatHour(openingHourEvening);
+          const eveningEnd = formatHour(closingHourEvening);
 
-          const noon =
-            opening_hour_noon && closing_hour_noon
-              ? `${formatTime(opening_hour_noon)} - ${formatTime(closing_hour_noon)}`
-              : null;
+          const hasNoon = noonStart && noonEnd;
+          const hasEvening = eveningStart && eveningEnd;
 
-          const evening =
-            opening_hour_evening && closing_hour_evening
-              ? `${formatTime(opening_hour_evening)} - ${formatTime(closing_hour_evening)}`
-              : null;
+          let displayText = "";
+
+          if (!hasNoon && !hasEvening) {
+            displayText = "Fermé";
+          } else {
+            const parts = [];
+            if (hasNoon) {
+              parts.push(`de ${noonStart} à ${noonEnd}`);
+            }
+            if (hasEvening) {
+              parts.push(`de ${eveningStart} à ${eveningEnd}`);
+            }
+            displayText = parts.join(" et ");
+          }
 
           return (
-            <li key={week_day}>
-              <span>{week_day} :</span>{" "}
-              <span>
-                {isClosed
-                  ? "Fermé"
-                  : [noon, evening].filter(Boolean).join(" / ")}
-              </span>
+            <li key={weekDay} className="day-line">
+              <strong>{weekDay}</strong> : {displayText}
             </li>
           );
         })}

@@ -60,16 +60,10 @@ function ConcertPlace() {
 
           {concertPlace.concertPlacePhotos && <Carousel />}
 
-          {concertPlace.openingHours && (
-            <OpeningHours hours={concertPlace.DayOpeningHours} />
-          )}
-
-          {concertPlace.address && (
-            <section>
-              <h2>Adresse</h2>
-              <p>{concertPlace.address}</p>
-            </section>
-          )}
+          {concertPlace.openingHours &&
+            concertPlace.openingHours.length > 0 && (
+              <OpeningHours hours={concertPlace.openingHours} />
+            )}
 
           <Maps />
         </>

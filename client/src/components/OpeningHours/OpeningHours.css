@@ -1,0 +1,36 @@
+.opening-hours {
+  margin: 1.5rem 1rem;
+  font-family: Arial, sans-serif;
+  color: #222;
+}
+
+.opening-hours h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.opening-hours ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.opening-hours .day-line {
+  margin: 0 1rem 1 rem 0.6rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-size: 1rem;
+}
+
+.opening-hours .day-line strong {
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .opening-hours {
+    margin: 2rem auto;
+    max-width: 400px;
+  }
+}
