@@ -1,7 +1,7 @@
 import { Link } from "react-router";
-import "./UserMenu.css";
 import { useAuth } from "../../../services/AuthContext";
 import type { UserMenuProps } from "../../../types/userMenu";
+import "./UserMenu.css";
 
 function UserMenu({ showPopover, setShowPopover }: UserMenuProps) {
   const { isLogged, setIsLogged, user } = useAuth();
