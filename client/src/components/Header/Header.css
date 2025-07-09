@@ -63,7 +63,6 @@ header nav ul li:last-child img {
   width: 30px;
 }
 
-/* ----- Responsive ----- */
 @media screen and (max-width: 768px) {
   header nav > img {
     width: 43px;
@@ -149,11 +148,11 @@ header nav ul li:last-child img {
 .avatar-button {
   all: unset;
   cursor: pointer;
-}
 
-.avatar-icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  display: block;
+  img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: block;
+  }
 }

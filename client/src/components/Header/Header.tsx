@@ -51,11 +51,7 @@ function Header() {
             onClick={handleAvatarToggle}
             className="avatar-button"
           >
-            <img
-              src="/images/Generic avatar.svg"
-              alt="Connexion icon"
-              className="avatar-icon"
-            />
+            <img src="/images/Generic avatar.svg" alt="Connexion icon" />
           </button>
           <UserMenu showPopover={showPopover} setShowPopover={setShowPopover} />
 
