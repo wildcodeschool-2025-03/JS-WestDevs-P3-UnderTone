@@ -1,13 +1,37 @@
+import { toast } from "react-toastify";
 import "../../assets/styles/forms.css";
+import { useAuth } from "../../services/AuthContext";
 import "./Login.css";
 import { Link } from "react-router";
 
 function Login() {
+  const { setIsLogged } = useAuth();
+
+  const handleSubmit = (formData: FormData) => {
+    const data = Object.fromEntries(formData);
+
+    fetch("http://localhost:3310/api/login", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then((res) => {
+      if (res.ok) {
+        toast.success("Félicitation, vous êtes connecté !");
+        setIsLogged(true);
+      } else {
+        toast.error("Connexion échouée");
+      }
+    });
+  };
+
   return (
     <main className="login-page">
       <section>
         <h1>Connexion</h1>
-        <form>
+        <form action={handleSubmit}>
           <div className="input-group">
             <input
               type="email"

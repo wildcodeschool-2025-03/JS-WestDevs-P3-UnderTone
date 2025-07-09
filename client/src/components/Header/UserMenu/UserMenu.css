@@ -1,0 +1,41 @@
+.popover {
+  position: absolute;
+  top: 66px;
+  right: 10px;
+  background-color: var(--primary-color);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 12px;
+  min-width: 160px;
+}
+
+.popover-link {
+  display: block;
+  padding: 8px 12px;
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+}
+
+.popover-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.popover-button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  border-radius: 6px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.popover-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
