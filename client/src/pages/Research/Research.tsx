@@ -1,31 +1,57 @@
+import { useState } from "react";
 import "./Research.css";
+import EventSearchForm from "../../components/EventForm/EventSearchForm";
 
 function Research() {
+  const [selectedRole, setSelectedRole] = useState("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedRole(e.target.value);
+  };
+
   return (
     <main className="research-page">
       <form>
         <div>
-          <input type="radio" id="Artiste" name="recherche" value="Artiste" />
-          <label htmlFor="Artiste">
+          <input
+            type="radio"
+            id="artist"
+            name="research"
+            value="artist"
+            onChange={handleChange}
+            checked={selectedRole === "artist"}
+          />
+          <label htmlFor="artist">
             <span>Artiste</span>
           </label>
 
           <input
             type="radio"
-            id="Evenement"
-            name="recherche"
-            value="Évènement"
+            id="event"
+            name="research"
+            value="event"
+            onChange={handleChange}
+            checked={selectedRole === "event"}
           />
-          <label htmlFor="Evenement">
+          <label htmlFor="event">
             <span>Évènement</span>
           </label>
 
-          <input type="radio" id="Lieu" name="recherche" value="Lieu" />
-          <label htmlFor="Lieu">
+          <input
+            type="radio"
+            id="concert-place"
+            name="research"
+            value="concert-place"
+            onChange={handleChange}
+            checked={selectedRole === "concert-place"}
+          />
+          <label htmlFor="concert-place">
             <span>Lieu</span>
           </label>
         </div>
       </form>
+
+      {selectedRole === "event" && <EventSearchForm />}
     </main>
   );
 }
