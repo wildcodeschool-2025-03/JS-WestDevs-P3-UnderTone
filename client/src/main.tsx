@@ -15,6 +15,7 @@ import Research from "./pages/Research/Research";
 import SignInForm from "./pages/SignIn/SignInForm";
 import SplashScreen from "./pages/SplashScreen/SplashScreen";
 import { AuthProvider } from "./services/AuthContext";
+import Home from "./pages/Home/Home";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -35,6 +36,11 @@ const router = createBrowserRouter([
     path: "/app/",
     element: <App />,
     children: [
+      {
+        path: "home",
+        element: <Home />,
+      },
+
       {
         path: "signin",
         element: <SignInForm />,
