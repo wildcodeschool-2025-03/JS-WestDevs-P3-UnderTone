@@ -1,26 +1,21 @@
 import "./ArtistSearchForm.css";
 
-function ArtistForm() {
+function ArtistSearchForm() {
   return (
     <form action="submit">
       <div className="input-group">
-        <input type="text" name="town" id="town" required autoComplete="off" />
-        <label htmlFor="town">Ville</label>
+        <input type="text" name="name" id="name" required autoComplete="off" />
+        <label htmlFor="name">nom</label>
       </div>
 
       <div className="input-group">
-        <select name="style" id="style" required autoComplete="off" />
-        <label htmlFor="rayon">Genre musical</label>
-      </div>
-
-      <div className="input-group">
-        <select
-          name="departement"
-          id="departement"
-          required
-          autoComplete="on"
-        />
-        <label htmlFor="date">Date</label>
+        <select name="style" id="style" required autoComplete="off">
+          <option value="">--Genre Musical--</option>
+          <option value="funk">funk</option>
+          <option value="rock">rock</option>
+          <option value="jazz">jazz</option>
+          <option value="musique du monde">musique du monde</option>
+        </select>
       </div>
 
       <button type="submit">Rechercher</button>
@@ -28,4 +23,4 @@ function ArtistForm() {
   );
 }
 
-export default ArtistForm;
+export default ArtistSearchForm;

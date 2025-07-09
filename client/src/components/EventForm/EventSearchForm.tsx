@@ -6,8 +6,19 @@ function EventSearchForm() {
   const handleRadius = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRadius(e.target.value);
   };
+  const handleSubmit = (formData: FormData) => {
+    const data = JSON.stringify(Object.fromEntries(formData));
+    fetch("http://localhost:3310/api/event/search", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: data,
+    }).then((res) => res.ok);
+  };
+
   return (
-    <form action="Submit">
+    <form action={handleSubmit}>
       <div className="input-group">
         <input type="text" name="town" id="town" required autoComplete="off" />
         <label htmlFor="town">Ville</label>
