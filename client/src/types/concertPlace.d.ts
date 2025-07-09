@@ -24,7 +24,7 @@ type ConcertPlace = {
   menu: string | null;
   concertPlacePhotos: Photo[];
   types: Types[];
-  address: string | null;
+  address: string;
   openingHours: SingleDayOpeningHours[];
 };
 

@@ -8,6 +8,7 @@ import OpeningHours from "../../components/OpeningHours/OpeningHours";
 import ProfilePicturePlayFavorite from "../../components/ProfilePicturePlayFavorite/ProfilePicturePlayFavorite";
 import SocialNetworks from "../../components/SocialNetworks/SocialNetworks";
 import StylesTypes from "../../components/StylesTypes/StylesTypes";
+import Address from "../../components/Address/Address";
 
 function ConcertPlace() {
   const params = useParams();
@@ -62,12 +63,8 @@ function ConcertPlace() {
             <Carousel photosDatas={concertPlace.concertPlacePhotos} />
           )}
 
-          {concertPlace.address && (
-            <p>
-              <strong>Address: </strong>
-              {concertPlace.address}
-            </p>
-          )}
+          {concertPlace.address && <Address address={concertPlace.address} />}
+
           {concertPlace.openingHours &&
             concertPlace.openingHours.length > 0 && (
               <OpeningHours hours={concertPlace.openingHours} />
