@@ -51,7 +51,6 @@ function Research() {
           </label>
         </div>
       </form>
-
       {selectedRole === "Évènement" && <EventForm />}
       {selectedRole === "Artiste" && <ArtistForm />}
     </main>
