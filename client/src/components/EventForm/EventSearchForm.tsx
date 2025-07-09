@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./EventForm.css";
+import "./EventSearchForm.css";
 
-function EventForm() {
+function EventSearchForm() {
   const [radius, setRadius] = useState("1");
   const handleRadius = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRadius(e.target.value);
@@ -46,4 +46,4 @@ function EventForm() {
   );
 }
 
-export default EventForm;
+export default EventSearchForm;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Research.css";
-import EventForm from "../../components/EventForm/EventSearchForm";
-import ArtistForm from "../../components/ArtistForm/ArtistForm";
+import EventSearchForm from "../../components/EventForm/EventSearchForm";
+import ArtistSearchForm from "../../components/ArtistForm/ArtistSearchForm";
 
 function Research() {
   const [selectedRole, setSelectedRole] = useState("");
@@ -16,43 +16,44 @@ function Research() {
         <div>
           <input
             type="radio"
-            id="Artiste"
-            name="recherche"
-            value="Artiste"
+            id="artist"
+            name="research"
+            value="artist"
             onChange={handleChange}
-            checked={selectedRole === "Artiste"}
+            checked={selectedRole === "artist"}
           />
-          <label htmlFor="Artiste">
+          <label htmlFor="artist">
             <span>Artiste</span>
           </label>
 
           <input
             type="radio"
-            id="Evenement"
-            name="recherche"
-            value="Évènement"
+            id="event"
+            name="research"
+            value="event"
             onChange={handleChange}
-            checked={selectedRole === "Évènement"}
+            checked={selectedRole === "event"}
           />
-          <label htmlFor="Evenement">
+          <label htmlFor="event">
             <span>Évènement</span>
           </label>
 
           <input
             type="radio"
-            id="Lieu"
-            name="recherche"
-            value="Lieu"
+            id="concert-place"
+            name="research"
+            value="concert-place"
             onChange={handleChange}
-            checked={selectedRole === "Lieu"}
+            checked={selectedRole === "concert-place"}
           />
-          <label htmlFor="Lieu">
+          <label htmlFor="concert-place">
             <span>Lieu</span>
           </label>
         </div>
       </form>
-      {selectedRole === "Évènement" && <EventForm />}
-      {selectedRole === "Artiste" && <ArtistForm />}
+
+      {selectedRole === "event" && <EventSearchForm />}
+      {selectedRole === "artist" && <ArtistSearchForm />}
     </main>
   );
 }

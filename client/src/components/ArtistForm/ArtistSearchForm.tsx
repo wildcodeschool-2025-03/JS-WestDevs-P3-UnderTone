@@ -1,4 +1,4 @@
-import "./ArtistForm.css";
+import "./ArtistSearchForm.css";
 
 function ArtistForm() {
   return (
