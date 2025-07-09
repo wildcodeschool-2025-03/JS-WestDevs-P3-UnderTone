@@ -15,37 +15,37 @@ function Research() {
         <div>
           <input
             type="radio"
-            id="artiste"
+            id="artist"
             name="research"
             value="artist"
             onChange={handleChange}
             checked={selectedRole === "artist"}
           />
-          <label htmlFor="artiste">
+          <label htmlFor="artist">
             <span>Artiste</span>
           </label>
 
           <input
             type="radio"
-            id="evenement"
+            id="event"
             name="research"
             value="event"
             onChange={handleChange}
             checked={selectedRole === "event"}
           />
-          <label htmlFor="evenement">
+          <label htmlFor="event">
             <span>Évènement</span>
           </label>
 
           <input
             type="radio"
-            id="lieu"
+            id="concert-place"
             name="research"
-            value="place"
+            value="concert-place"
             onChange={handleChange}
-            checked={selectedRole === "place"}
+            checked={selectedRole === "concert-place"}
           />
-          <label htmlFor="lieu">
+          <label htmlFor="concert-place">
             <span>Lieu</span>
           </label>
         </div>
