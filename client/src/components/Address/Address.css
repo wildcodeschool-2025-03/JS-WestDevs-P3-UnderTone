@@ -1,0 +1,8 @@
+.concert-address {
+  color: #ededed;
+  text-align: center;
+
+  h3 {
+    text-decoration: underline;
+  }
+}
