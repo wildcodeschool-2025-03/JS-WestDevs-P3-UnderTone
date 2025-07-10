@@ -133,6 +133,15 @@ function Home() {
         </form>
         {choicestatus && <div className="message-zone">{getMessage()}</div>}
       </div>
+      <div className="home-buttons">
+        <div>
+          <button type="button">Inscription</button>
+          <button type="button">Connexion</button>
+        </div>
+        <div>
+          <button type="button">Accéder à l'application</button>
+        </div>
+      </div>
     </main>
   );
 }
