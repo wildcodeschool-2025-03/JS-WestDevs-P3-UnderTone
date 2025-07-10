@@ -8,17 +8,75 @@ function Home() {
     setChoicestatus(e.target.value);
   };
 
-  // Texte personnalisé selon le statut sélectionné
   const getMessage = () => {
     switch (choicestatus) {
       case "spectateur":
-        return "Bienvenue cher spectateur ! Explorez les évènements à venir.";
+        return (
+          <p>
+            Grace à Undertone, il est désormais
+            <br />
+            possible de trouver une soirée
+            <br />
+            rapidement et facilement!
+            <span>
+              {" "}
+              Et la découverte? On est sûrs que vous
+              <br />
+              ne connaissez pas tous les <strong>artistes</strong> de
+              <br />
+              <strong>votre région!</strong>
+            </span>
+            <span>
+              Ici la <strong>musique</strong> est au premier plan!
+            </span>
+          </p>
+        );
+
       case "artist":
-        return "Bienvenue artiste ! Connectez-vous ou créez votre profil.";
+        return (
+          <p>
+            Grâce à Undertone, faites découvrir
+            <br />
+            votre univers musical <strong>au grand public</strong> !
+            <span>
+              {" "}
+              En jouant dans des établissements de votre région,
+              <br />
+              vous touchez de <strong>nouveaux publics</strong> à chaque
+              prestation.
+            </span>
+            <span>
+              Ici, <strong>les artistes</strong> sont visibles, écoutés, et
+              valorisés !
+            </span>
+          </p>
+        );
+
       case "ets-status":
-        return "Bienvenue établissement ! Inscrivez votre lieu et programmez vos concerts.";
+        return (
+          <p>
+            Grâce à Undertone, mettez en avant
+            <br />
+            votre lieu en accueillant des <strong>artistes locaux</strong>
+            <br />
+            et en animant vos soirées !
+            <span>
+              {" "}
+              Vous attirez de <strong>nouveaux publics</strong>
+              <br />
+              et faites vivre la scène musicale de votre région.
+            </span>
+            <span>
+              {" "}
+              Ici, <strong>votre établissement</strong> devient un
+              <br />
+              vrai lieu de découverte musicale !
+            </span>
+          </p>
+        );
+
       default:
-        return "";
+        return null;
     }
   };
 
@@ -73,79 +131,10 @@ function Home() {
             </label>
           </div>
         </form>
-
-        {/* Affichage du message */}
-        {choicestatus && (
-          <div className="message-zone">
-            <p>{getMessage()}</p>
-          </div>
-        )}
+        {choicestatus && <div className="message-zone">{getMessage()}</div>}
       </div>
     </main>
   );
 }
 
 export default Home;
-
-/*import { useState } from "react";
-import "./Home.css";
-
-function Home() {
-    const [choicestatus, setChoicestatus] = useState("");
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  return (
-    <>
-      <main className="status-user">
-        <div>
-          <img src="/images/home_image.svg" alt="" />
-
-          <form>
-            <p>
-              <strong>Je suis un</strong>
-            </p>
-            <div>
-              <input
-                type="radio"
-                id="spectateur"
-                name="status"
-                value="spectateur"
-                 onChange={handleChange}
-                checked={choicestatus === "Spectateur"}
-              />
-              <label htmlFor="spectateur">
-                <span>Spectateur</span>
-              </label>
-
-              <input
-                type="radio"
-                id="artist"
-                name="status"
-                value="artist"
-                // onChange={handleChange}
-                // checked={choicestatus === "artist"}
-              />
-              <label htmlFor="artist">
-                <span>Artiste</span>
-              </label>
-
-              <input
-                type="radio"
-                id="ets-status"
-                name="status"
-                value="ets-status"
-                // onChange={handleChange}
-                // checked={choicestatus === "ets-status"}
-              />
-              <label htmlFor="ets-status">
-                <span>Établissement</span>
-              </label>
-            </div>
-          </form>
-
-          {/* {choicestatus === "event" && <EventSearchForm />} 
-        </div>
-      </main>
-    </>
-  );
-}
-export default Home;*/
