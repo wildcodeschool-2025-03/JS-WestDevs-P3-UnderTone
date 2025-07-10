@@ -1,15 +1,21 @@
+import { useState } from "react";
 import { Link } from "react-router";
 import "./Header.css";
-import { useState } from "react";
+import UserMenu from "./UserMenu/UserMenu";
 
 function Header() {
   const [showLinks, setShowLinks] = useState(false);
+  const [showPopover, setShowPopover] = useState(false);
 
   const handleShowLinks = () => setShowLinks(!showLinks);
 
+  const handleAvatarToggle = () => {
+    setShowPopover((prev) => !prev);
+  };
+
   return (
     <header>
-      <nav className={`navbar ${showLinks ? "show-nav" : "hide-nav"} `}>
+      <nav className={`navbar ${showLinks ? "show-nav" : "hide-nav"}`}>
         <Link to="/app">
           <img
             className="logo"
@@ -17,6 +23,7 @@ function Header() {
             alt="Logo représentant un casque"
           />
         </Link>
+
         <div className="nav-wrapper">
           <ul>
             <li>
@@ -38,12 +45,19 @@ function Header() {
               </Link>
             </li>
           </ul>
-          <Link to=" ">
-            <img src="/images/Generic avatar.svg" alt="Connexion icon" />
-          </Link>
+
           <button
-            className="navbar_burger"
             type="button"
+            onClick={handleAvatarToggle}
+            className="avatar-button"
+          >
+            <img src="/images/Generic avatar.svg" alt="Connexion icon" />
+          </button>
+          <UserMenu showPopover={showPopover} setShowPopover={setShowPopover} />
+
+          <button
+            type="button"
+            className="navbar_burger"
             onClick={handleShowLinks}
           >
             <span className="burger_bar" />
@@ -53,4 +67,5 @@ function Header() {
     </header>
   );
 }
+
 export default Header;
