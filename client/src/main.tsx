@@ -10,11 +10,13 @@ import App from "./App";
 import Artist from "./pages/Artist/Artist";
 // import ArtistProfile from "./pages/ArtistProfile/ArtistProfile";
 import ConcertPlace from "./pages/ConcertPlace/ConcertPlace";
+import ConcertPlaceCreation from "./pages/ConcertPlaceCreation/ConcertPlaceCreation";
 import Event from "./pages/Event/Event";
 import Login from "./pages/Login/Login";
 import Research from "./pages/Research/Research";
 import SignInForm from "./pages/SignIn/SignInForm";
 import SplashScreen from "./pages/SplashScreen/SplashScreen";
+import { AuthProvider } from "./services/AuthContext";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -48,6 +50,10 @@ const router = createBrowserRouter([
         element: <Artist />,
       },
       {
+        path: "new/concert-place",
+        element: <ConcertPlaceCreation />,
+      },
+      {
         path: "concert-place/:id",
         element: <ConcertPlace />,
       },
@@ -78,7 +84,9 @@ if (rootElement == null) {
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>,
 );
 
