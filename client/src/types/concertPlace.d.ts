@@ -4,7 +4,7 @@ type Types = {
 };
 
 type SingleDayOpeningHours = {
-  id: number;
+  id?: number;
   weekDay: string;
   openingHourNoon: string | null;
   closingHourNoon: string | null;

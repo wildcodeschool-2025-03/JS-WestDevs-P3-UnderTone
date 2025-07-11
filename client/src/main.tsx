@@ -9,6 +9,7 @@ import { RouterProvider, createBrowserRouter } from "react-router";
 import App from "./App";
 import Artist from "./pages/Artist/Artist";
 import ConcertPlace from "./pages/ConcertPlace/ConcertPlace";
+import ConcertPlaceCreation from "./pages/ConcertPlaceCreation/ConcertPlaceCreation";
 import Event from "./pages/Event/Event";
 import Login from "./pages/Login/Login";
 import Research from "./pages/Research/Research";
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "artist/:id",
         element: <Artist />,
+      },
+      {
+        path: "new/concert-place",
+        element: <ConcertPlaceCreation />,
       },
       {
         path: "concert-place/:id",
