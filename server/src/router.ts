@@ -29,7 +29,7 @@ router.get("/concert-place/:id", concertPlaceActions.read);
 import eventActions from "./modules/event/eventActions";
 
 router.get("/event/:id", eventActions.read);
-router.get("/event/search", eventActions.searchEvent);
+router.get("/event/search");
 
 router.post("/login", validation.userValidation, auth.login);
 
