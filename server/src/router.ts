@@ -21,6 +21,7 @@ router.get("/items/:id", itemActions.read);
 router.post("/items", itemActions.add);
 
 router.get("/artist/:id", artistActions.read);
+router.post("/artist", artistActions.create);
 
 import concertPlaceActions from "./modules/concertPlace/concertPlaceActions";
 

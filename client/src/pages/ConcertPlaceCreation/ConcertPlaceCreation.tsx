@@ -1,17 +1,17 @@
 import { useState } from "react";
 import InputAddress from "../../components/FormInputs/InputAddress/InputAddress";
 import InputDescription from "../../components/FormInputs/InputDescription/InputDescription";
-import InputMenu from "./InputMenu/InputMenu";
 import InputName from "../../components/FormInputs/InputName/InputName";
 import InputPhotos from "../../components/FormInputs/InputPhotos/InputPhotos";
 import InputProfilePicture from "../../components/FormInputs/InputProfilePicture/InputProfilePicture";
 import InputWebsite from "../../components/FormInputs/InputWebsite/InputWebsite";
-import InputsType from "./InputsType/InputsType";
 import OpeningHoursForm from "../../components/FormInputs/OpeningHoursForm/OpeningHoursForm";
 import SocialNetworksForm, {
   type SocialNetwork,
 } from "../../components/FormInputs/SocialNetworksForm/SocialNetworksForm";
 import "./ConcertPlaceCreation.css";
+import InputMenu from "./InputMenu/InputMenu";
+import InputsType from "./InputsType/InputsType";
 
 function ConcertPlaceCreation() {
   const [openingHours, setOpeningHours] = useState<SingleDayOpeningHours[]>([]);

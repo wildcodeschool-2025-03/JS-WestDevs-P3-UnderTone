@@ -16,4 +16,20 @@ const read: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { read };
+const create: RequestHandler = async (req, res, next) => {
+  try {
+    const artist = req.body;
+
+    if (!artist.user_id || !artist.name) {
+      res.status(400).json("Champs obligatoires manquants (user_id ou name)");
+      return;
+    }
+
+    const insertedArtist = await artistRepository.create(artist);
+    res.status(201).json(insertedArtist);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { read, create };
