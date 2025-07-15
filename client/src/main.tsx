@@ -16,6 +16,7 @@ import Login from "./pages/Login/Login";
 import Research from "./pages/Research/Research";
 import SignInForm from "./pages/SignIn/SignInForm";
 import SplashScreen from "./pages/SplashScreen/SplashScreen";
+import UserCreation from "./pages/UserCreation/UserCreation";
 import { AuthProvider } from "./services/AuthContext";
 
 // Import additional components for new routes
@@ -46,6 +47,14 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
+        path: "new/user",
+        element: <UserCreation />,
+      },
+      {
+        path: "new/artist",
+        element: <ArtistProfile />,
+      },
+      {
         path: "artist/:id",
         element: <Artist />,
       },
@@ -64,10 +73,6 @@ const router = createBrowserRouter([
       {
         path: "event/:id",
         element: <Event />,
-      },
-      {
-        path: "new/artist",
-        element: <ArtistProfile />,
       },
     ],
   },
