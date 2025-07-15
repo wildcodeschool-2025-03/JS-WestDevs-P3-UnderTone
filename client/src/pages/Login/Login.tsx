@@ -5,7 +5,7 @@ import "./Login.css";
 import { Link } from "react-router";
 
 function Login() {
-  const { setIsLogged } = useAuth();
+  const { setIsLogged, setUser } = useAuth();
 
   const handleSubmit = (formData: FormData) => {
     const data = Object.fromEntries(formData);
@@ -17,14 +17,22 @@ function Login() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    }).then((res) => {
-      if (res.ok) {
-        toast.success("Félicitation, vous êtes connecté !");
-        setIsLogged(true);
-      } else {
-        toast.error("Connexion échouée");
-      }
-    });
+    })
+      .then((res) => {
+        if (!res.ok) {
+          toast.error("Connexion échouée");
+          throw new Error("Login failed");
+        }
+        if (res.ok) {
+          toast.success("Félicitation, vous êtes connecté !");
+          setIsLogged(true);
+          return res.json();
+        }
+      })
+      .then((data: UserData) => setUser(data.result))
+      .catch((err) => {
+        console.warn(err);
+      });
   };
 
   return (

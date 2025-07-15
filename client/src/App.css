@@ -25,6 +25,7 @@
 
 :root {
   --primary-color: #282828;
+  --lighter-primary-color: rgb(49, 49, 49);
   --text-color: #ededed;
   --darker-text-color: #c2c2c2;
   --secondary-color: rgba(86, 59, 111, 1);

@@ -26,9 +26,10 @@ import concertPlaceActions from "./modules/concertPlace/concertPlaceActions";
 
 router.get("/concert-place/:id", concertPlaceActions.read);
 
-import eventAction from "./modules/event/eventActions";
+import eventActions from "./modules/event/eventActions";
 
-router.get("/event/:id", eventAction.read);
+router.get("/event/:id", eventActions.read);
+router.get("/event/search");
 
 router.post("/login", validation.userValidation, auth.login);
 

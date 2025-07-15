@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Research.css";
+import ArtistSearchForm from "../../components/ArtistForm/ArtistSearchForm";
 import EventSearchForm from "../../components/EventForm/EventSearchForm";
 
 function Research() {
@@ -52,6 +53,7 @@ function Research() {
       </form>
 
       {selectedRole === "event" && <EventSearchForm />}
+      {selectedRole === "artist" && <ArtistSearchForm />}
     </main>
   );
 }

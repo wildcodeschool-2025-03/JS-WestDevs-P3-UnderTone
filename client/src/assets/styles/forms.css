@@ -33,9 +33,13 @@ form {
       left: 0;
       padding: 8px 13px;
       margin-left: 0.5em;
-      pointer-events: none;
       transition: all 0.3s ease;
       color: rgb(200, 200, 200);
+    }
+
+    label,
+    input {
+      cursor: pointer;
     }
 
     input:focus,

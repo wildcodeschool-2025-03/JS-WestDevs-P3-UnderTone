@@ -42,7 +42,12 @@ const login: RequestHandler = async (req, res) => {
       secure: false,
     });
 
-    res.status(200).json("Connection success");
+    const { id, status, username } = user;
+
+    res.status(200).json({
+      infos: "Connection success",
+      result: { id, status, username },
+    });
   } catch (err) {
     res.sendStatus(500);
   }
