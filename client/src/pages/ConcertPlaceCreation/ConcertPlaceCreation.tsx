@@ -24,9 +24,13 @@ function ConcertPlaceCreation() {
 
     formData.append("openingHours", JSON.stringify(openingHours));
     formData.append("socialNetworks", JSON.stringify(socialNetworks));
-
+    for (const [key, value] of formData.entries()) {
+      console.log(key, value);
+    }
+    console.log("formdata:", formData);
     fetch("http://localhost:3310/api/new/concert-place", {
       method: "POST",
+      credentials: "include",
       body: formData,
     }).then((res) => console.log("Ma réponse : ", res.ok));
   };

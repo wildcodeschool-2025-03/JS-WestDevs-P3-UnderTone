@@ -1,6 +1,6 @@
 import argon2 from "argon2";
 import type { RequestHandler } from "express";
-import jwt from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 import userRepository from "../modules/user/userRepository";
 
 const hashPassword: RequestHandler = async (req, res, next) => {
@@ -33,9 +33,13 @@ const login: RequestHandler = async (req, res) => {
     if (!secretKey) {
       throw new Error("A secret must be provided");
     }
-    const token = jwt.sign({ userId: user.id }, secretKey, {
-      expiresIn: "1h",
-    });
+    const token = jwt.sign(
+      { userId: user.id, userStatus: user.status },
+      secretKey,
+      {
+        expiresIn: "1h",
+      },
+    );
 
     res.cookie("token", token, {
       httpOnly: true,
@@ -53,4 +57,32 @@ const login: RequestHandler = async (req, res) => {
   }
 };
 
-export default { hashPassword, login };
+const verifyRequesterId: RequestHandler = async (req, res, next) => {
+  try {
+    const token = req.cookies.token;
+
+    if (!token) {
+      throw new Error("User isn't connected");
+    }
+    // console.warn(req.body);
+    // console.warn(token);
+
+    const secretKey = process.env.APP_SECRET;
+
+    if (!secretKey) {
+      throw new Error("A secret must be provided");
+    }
+
+    const verifyToken = jwt.verify(token, secretKey);
+    if (!verifyToken) {
+      throw new Error("Token as been modified ❌");
+    }
+
+    req.body.verifyToken = verifyToken;
+    next();
+  } catch (err) {
+    console.error((err as Error).message);
+  }
+};
+
+export default { hashPassword, login, verifyRequesterId };
