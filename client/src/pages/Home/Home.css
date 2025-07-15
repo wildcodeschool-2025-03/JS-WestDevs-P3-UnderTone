@@ -1,6 +1,6 @@
 .status-user {
   min-height: calc(100vh - 56px - 85px);
-  /* padding: 32px; */
+  padding: 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,13 +9,14 @@
   p {
     text-align: center;
     padding: 1rem;
+    line-height: 1.5;
   }
   img {
     display: none;
   }
 }
 
-.status-user form div {
+.status-user-form div {
   display: flex;
   gap: 0;
   label {
@@ -35,7 +36,7 @@
   user-select: none;
   padding: 2px 8px;
   background-color: rgba(0, 0, 0, 0.01);
-  /* border-radius: 0px; */
+  border-radius: 0px;
   color: rgba(255, 255, 255, 0.7);
   background-image: linear-gradient(
     -70deg,
@@ -53,7 +54,7 @@
   align-items: center;
   justify-content: center;
   min-width: 65px;
-  /* font-size: 18px; */
+  font-size: 18px;
   font-weight: 900;
   box-shadow: inset 0 2px 1px rgba(255, 255, 255, 0.17), inset 0 -2px 1px
     rgba(0, 0, 0, 0.15);
@@ -141,20 +142,32 @@
 }
 
 @media screen and (min-width: 768px) {
+  .status-user {
+    min-height: calc(100vh - 56px - 85px);
+    overflow: hidden;
+  }
   .status-user img {
     display: flex;
+    border-radius: 16px;
+    width: 50%;
+    height: auto;
   }
   .home-content {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    gap: 40px;
+    width: 80%;
+    padding: 1rem;
   }
-  .status-user form {
+  .status-user-form {
     width: 50%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+
+    align-items: center;
   }
 
   .status-user label {
