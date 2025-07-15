@@ -18,7 +18,7 @@ type Artist = {
   spotify_link: string | null;
   youtube_link: string | null;
   artistPhotos?: Photo[];
-  styles?: StyleType[];
+  styles?: StyleTypes[];
 };
 
 type ProfilePicturePlayFavoriteProps = {

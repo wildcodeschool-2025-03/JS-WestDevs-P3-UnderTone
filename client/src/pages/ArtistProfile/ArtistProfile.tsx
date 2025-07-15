@@ -1,20 +1,20 @@
 import { useState } from "react";
-import InputAddress from "../../components/FormInputs/InputAddress/InputAddress";
+import "./ArtistProfile.css";
 import InputDescription from "../../components/FormInputs/InputDescription/InputDescription";
 import InputName from "../../components/FormInputs/InputName/InputName";
 import InputPhotos from "../../components/FormInputs/InputPhotos/InputPhotos";
 import InputProfilePicture from "../../components/FormInputs/InputProfilePicture/InputProfilePicture";
 import InputWebsite from "../../components/FormInputs/InputWebsite/InputWebsite";
-import OpeningHoursForm from "../../components/FormInputs/OpeningHoursForm/OpeningHoursForm";
 import SocialNetworksForm, {
   type SocialNetwork,
 } from "../../components/FormInputs/SocialNetworksForm/SocialNetworksForm";
-import InputMenu from "./InputMenu/InputMenu";
-import InputsType from "./InputsType/InputsType";
-import "./ConcertPlaceCreation.css";
+import InputDemo from "./DemoUploader/InputDemo";
+import MusicalInfluencesForm from "./MusicalInfluencesForm/MusicalInfluencesForm";
 
-function ConcertPlaceCreation() {
-  const [openingHours, setOpeningHours] = useState<SingleDayOpeningHours[]>([]);
+function ArtistProfile() {
+  const [selectedStyles, setSelectedStyles] = useState<StyleArtistCreation[]>(
+    [],
+  );
   const [socialNetworks, setSocialNetworks] = useState<SocialNetwork[]>([]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -22,34 +22,35 @@ function ConcertPlaceCreation() {
 
     const formData = new FormData(e.currentTarget);
 
-    formData.append("openingHours", JSON.stringify(openingHours));
+    formData.append("selectedStyles", JSON.stringify(selectedStyles));
     formData.append("socialNetworks", JSON.stringify(socialNetworks));
 
-    fetch("http://localhost:3310/api/new/concert-place", {
+    fetch("http://localhost:3310/api/new/artist", {
       method: "POST",
       body: formData,
     }).then((res) => console.log("Ma réponse : ", res.ok));
   };
 
   return (
-    <main className="concert-place-creation">
-      <section>
-        <form method="post" onSubmit={handleSubmit}>
-          <InputName label={"Nom de l'établissement"} />
+    <main className="artist-profile-page">
+      <section className="artist-card">
+        <h1>Profil Artiste</h1>
+        <form onSubmit={handleSubmit}>
+          <InputName label={"Nom d'artiste"} />
           <InputProfilePicture />
-          <InputsType />
-          <InputDescription />
-          <OpeningHoursForm
-            openingHours={openingHours}
-            setOpeningHours={setOpeningHours}
+
+          <MusicalInfluencesForm
+            selectedStyles={selectedStyles}
+            setSelectedStyles={setSelectedStyles}
           />
-          <InputAddress />
+          <InputDescription />
           <SocialNetworksForm
             socialNetworks={socialNetworks}
             setSocialNetworks={setSocialNetworks}
           />
           <InputWebsite />
-          <InputMenu />
+
+          <InputDemo />
           <InputPhotos />
 
           <button type="submit">Valider</button>
@@ -59,4 +60,4 @@ function ConcertPlaceCreation() {
   );
 }
 
-export default ConcertPlaceCreation;
+export default ArtistProfile;
