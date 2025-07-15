@@ -12,6 +12,7 @@ import ArtistProfile from "./pages/ArtistProfile/ArtistProfile";
 import ConcertPlace from "./pages/ConcertPlace/ConcertPlace";
 import ConcertPlaceCreation from "./pages/ConcertPlaceCreation/ConcertPlaceCreation";
 import Event from "./pages/Event/Event";
+import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Research from "./pages/Research/Research";
 import SignInForm from "./pages/SignIn/SignInForm";
@@ -38,6 +39,11 @@ const router = createBrowserRouter([
     path: "/app/",
     element: <App />,
     children: [
+      {
+        path: "home",
+        element: <Home />,
+      },
+
       {
         path: "signin",
         element: <SignInForm />,
