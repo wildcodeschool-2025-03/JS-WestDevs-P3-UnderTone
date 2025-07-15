@@ -26,3 +26,8 @@ type ProfilePicturePlayFavoriteProps = {
   name: string;
   demo?: string | null;
 };
+
+type ArtistFormDataType = {
+  name: string;
+  musicStyle: string;
+};

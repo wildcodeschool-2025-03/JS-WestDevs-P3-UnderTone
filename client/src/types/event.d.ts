@@ -15,6 +15,6 @@ type EventData = {
   menu: string;
 };
 
-interface FormDataType {
+interface EventFormDataType {
   date: string;
 }

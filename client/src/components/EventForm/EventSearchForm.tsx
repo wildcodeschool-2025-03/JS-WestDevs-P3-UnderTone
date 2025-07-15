@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./EventSearchForm.css";
 
 function EventSearchForm() {
-  const [formObj, setFormObj] = useState<FormDataType | null>(null);
+  const [formObj, setFormObj] = useState<EventFormDataType | null>(null);
   const [filteredEventList, setFilteredEventList] = useState<EventData[]>([]);
 
   const handleChange = (e: React.ChangeEvent<HTMLFormElement>) => {

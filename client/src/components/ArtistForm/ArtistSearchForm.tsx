@@ -12,7 +12,7 @@ function SearchArtist() {
 
   const nameInputRef = useRef<HTMLInputElement>(null);
   const musicStyleInputRef = useRef<HTMLSelectElement>(null);
-  const [formObj, setFormObj] = useState<FormDataType | null>(null);
+  const [formObj, setFormObj] = useState<ArtistFormDataType | null>(null);
   const [filteredArtistList, setFilteredArtistList] = useState<
     FilteredArtistList[]
   >([]);

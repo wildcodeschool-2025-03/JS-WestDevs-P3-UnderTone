@@ -1,62 +1,86 @@
-import { useEffect, useState } from "react";
-import "./ConcertPlaceSearchForm.css";
+import { useEffect, useRef, useState } from "react";
 
 function ConcertPlaceSearchForm() {
-  const [formObj, setFormObj] = useState<FormDataType | null>(null);
+  const [typeList, setTypeList] = useState<StyleTypes[]>([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3310/api/types")
+      .then((res) => res.json())
+      .then((data) => setTypeList(data));
+  }, []);
+
+  const nameInputRef = useRef<HTMLInputElement>(null);
+  const typeInputRef = useRef<HTMLSelectElement>(null);
+  const [formObj, setFormObj] = useState<ConcertPlaceFormDataType | null>(null);
   const [filteredConcertPlaceList, setFilteredConcertPlaceList] = useState<
-    EventData[]
+    FilteredConcertPlaceList[]
   >([]);
 
   const handleChange = (e: React.ChangeEvent<HTMLFormElement>) => {
     const formData = new FormData(e.currentTarget);
-    const date = formData.get("date")?.toString() || "";
-    setFormObj({ date });
+    const name = formData.get("name")?.toString() || "";
+    const type = formData.get("type")?.toString() || "";
+
+    setFormObj({ name, type });
   };
 
   useEffect(() => {
     if (!formObj) return;
-
+    console.log(filteredConcertPlaceList);
     const params = new URLSearchParams();
 
     const queryTimer = setTimeout(() => {
       for (const [key, value] of Object.entries(formObj)) {
         params.append(key, value);
       }
-
-      fetch(`http://localhost:3310/api/search/event?${params.toString()}`)
+      fetch(`/api/search/artist?${params}`)
         .then((res) => res.json())
-        .then((data) => setFilteredConcertPlaceList(data))
-        .catch((error) =>
-          console.error("Erreur lors de la recherche :", error),
-        );
+        .then((data) => setFilteredConcertPlaceList(data));
     }, 1500);
 
     return () => clearTimeout(queryTimer);
-  }, [formObj]);
+  }, [formObj, filteredConcertPlaceList]);
 
   return (
     <form onChange={handleChange}>
       <div className="input-group">
         <input
-          type="date"
-          name="date"
-          id="date"
+          type="text"
+          name="name"
+          ref={nameInputRef}
+          id="name"
           required
-          autoComplete="on"
-          placeholder="date"
+          autoComplete="off"
         />
-        <label htmlFor="date">date</label>
+        <label htmlFor="name">nom</label>
       </div>
 
+      <div className="input-group">
+        <select
+          name="type"
+          id="type"
+          ref={typeInputRef}
+          required
+          autoComplete="off"
+        >
+          <option value="">--Type d'établissement--</option>
+          {typeList.length &&
+            typeList.map((type) => (
+              <option key={type.id} value={type.name}>
+                {type.name}
+              </option>
+            ))}
+        </select>
+      </div>
       <section>
         <h2>Résultats</h2>
         <ul>
           {filteredConcertPlaceList.length ? (
-            filteredConcertPlaceList.map((event) => (
-              <li key={event.id}>{event.name}</li>
+            filteredConcertPlaceList.map((concert_place) => (
+              <li key={concert_place.id}>{concert_place.name}</li>
             ))
           ) : (
-            <li>Aucun évènement ne correspond à la date indiquée</li>
+            <li>Aucun Lieu ne correspond à la recherche</li>
           )}
         </ul>
       </section>
