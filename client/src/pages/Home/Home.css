@@ -1,5 +1,6 @@
 .status-user {
   min-height: calc(100vh - 56px - 85px);
+  width: 100%;
   padding: 32px;
   display: flex;
   flex-direction: column;
@@ -143,8 +144,10 @@
 
 @media screen and (min-width: 768px) {
   .status-user {
-    min-height: calc(100vh - 56px - 85px);
     overflow: hidden;
+    p {
+      font-size: 1.25rem;
+    }
   }
   .status-user img {
     display: flex;
@@ -160,6 +163,8 @@
     gap: 40px;
     width: 80%;
     padding: 1rem;
+    margin: auto;
+    font-size: 1rem;
   }
   .status-user-form {
     width: 50%;
@@ -171,9 +176,8 @@
   }
 
   .status-user label {
-    font-size: 24px;
     height: 36px;
     align-items: center;
-    min-width: 110px;
+    min-width: 100px;
   }
 }
