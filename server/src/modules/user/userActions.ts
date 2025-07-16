@@ -12,17 +12,17 @@ const edit: RequestHandler = async (req, res, next) => {
       throw new Error("Vous n'êtes pas autorisé à modifier ce compte.");
     }
 
-    // const updateResult = await userRepository.update(
-    //   userId,
-    //   profile_picture,
-    //   birthdate,
-    // );
+    const updateResult = await userRepository.update(
+      userId,
+      profile_picture,
+      birthdate,
+    );
 
-    // if (updateResult) {
-    //   res.status(200).json("Votre compte a bien été mis à jour");
-    // } else {
-    //   res.status(404).json("Utilisateur non trouvé");
-    // }
+    if (updateResult) {
+      res.status(200).json("Votre compte a bien été mis à jour 🔥");
+    } else {
+      res.status(500).json("Echec de la mise à jour des données");
+    }
   } catch (error) {
     next(error);
   }

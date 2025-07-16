@@ -22,7 +22,8 @@ router.post(
 router.post("/login", validation.userValidation, auth.login);
 router.patch(
   "/complete/user/:id",
-  upload.any(),
+  files.uploadUserProfilePicture,
+  files.userProfilePicture,
   auth.verifyRequesterId,
   userActions.add,
 );
