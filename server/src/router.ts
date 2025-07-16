@@ -23,11 +23,18 @@ router.get("/items", itemActions.browse);
 router.get("/items/:id", itemActions.read);
 router.post("/items", itemActions.add);
 
+import * as files from "./utils/files";
+
 router.get("/artist/:id", artistActions.read);
-router.post("/artist", upload.any(), artistActions.create);
+router.post(
+  "/new/artist",
+  files.uploadArtistFiles,
+  files.artistFiles,
+  auth.verifyRequesterId,
+  artistActions.add,
+);
 
 import concertPlaceActions from "./modules/concertPlace/concertPlaceActions";
-import * as files from "./utils/files";
 
 router.get("/concert-place/:id", concertPlaceActions.read);
 router.post(

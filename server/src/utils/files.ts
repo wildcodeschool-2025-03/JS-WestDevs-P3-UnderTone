@@ -67,4 +67,60 @@ const concertPlaceFiles: RequestHandler = (req, res, next) => {
   }
 };
 
-export { uploadConcertPlaceFiles, concertPlaceFiles };
+const uploadArtistFiles: RequestHandler = (req, res, next) => {
+  const uploader = upload.fields([
+    { name: "profile_picture", maxCount: 1 },
+    { name: "demo", maxCount: 1 },
+    { name: "photos", maxCount: 5 },
+  ]);
+
+  uploader(req, res, (err) => {
+    if (err) {
+      if (err instanceof multer.MulterError) {
+        return res
+          .status(400)
+          .json({ message: `File upload error: ${err.message}` });
+      }
+      return next(err);
+    }
+    next();
+  });
+};
+
+const artistFiles: RequestHandler = (req, res, next) => {
+  try {
+    const profilePictureFile = (
+      req.files as { [fieldname: string]: Express.Multer.File[] }
+    )?.profile_picture?.[0];
+
+    if (profilePictureFile) {
+      req.body.profile_picture = `/uploads/${profilePictureFile.filename}`;
+    }
+
+    const demoFile = (
+      req.files as { [fieldname: string]: Express.Multer.File[] }
+    )?.demo?.[0];
+
+    if (demoFile) {
+      req.body.demo = `/uploads/${demoFile.filename}`;
+    }
+
+    const photosFiles = (
+      req.files as { [fieldname: string]: Express.Multer.File[] }
+    )?.photos;
+
+    if (photosFiles && photosFiles.length > 0) {
+      req.body.photos = photosFiles.map((file) => `/uploads/${file.filename}`);
+    }
+    next();
+  } catch (err) {
+    next(err);
+  }
+};
+
+export {
+  uploadConcertPlaceFiles,
+  concertPlaceFiles,
+  uploadArtistFiles,
+  artistFiles,
+};
