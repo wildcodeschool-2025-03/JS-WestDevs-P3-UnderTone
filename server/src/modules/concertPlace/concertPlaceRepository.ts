@@ -19,7 +19,7 @@ class ConcertPlaceRepository {
       ],
     );
 
-    return result.insertId;
+    return result.affectedRows;
   }
 
   async createOpeningHours(id: number, wd: SingleDayOpeningHours) {
@@ -42,6 +42,15 @@ class ConcertPlaceRepository {
     const [result] = await databaseClient.query<Result>(
       "INSERT INTO concert_place_type (concert_place_id, type_id) VALUES (?, ?)",
       [userId, typeId],
+    );
+
+    return result.affectedRows;
+  }
+
+  async createPhoto(concert_place_id: number, imgSrc: string) {
+    const [result] = await databaseClient.query<Result>(
+      "INSERT INTO concert_place_photo (image, date, concert_place_id) VALUES (?, NOW(), ?)",
+      [imgSrc, concert_place_id],
     );
 
     return result.affectedRows;

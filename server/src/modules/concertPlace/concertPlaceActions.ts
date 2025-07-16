@@ -22,8 +22,6 @@ const read: RequestHandler = async (req, res, next) => {
 const add: RequestHandler = async (req, res, next) => {
   try {
     const { userId, userStatus } = req.body.verifyToken as JwtPayload;
-    console.warn(req.body);
-    console.warn(req.files);
 
     if (userStatus === "concert_place") {
       let {
@@ -68,20 +66,20 @@ const add: RequestHandler = async (req, res, next) => {
         x_link,
       };
 
-      const newConcertPlaceInsertId =
+      const newConcertPlaceAffectedRows =
         await concertPlaceRepository.createConcertPlace(
           Number(userId),
           newConcertPlace,
         );
 
-      if (!newConcertPlaceInsertId) {
+      if (!newConcertPlaceAffectedRows) {
         throw new Error("Echec de l'inscription des données.");
       }
 
       let { openingHours } = req.body;
       openingHours = JSON.parse(openingHours);
 
-      const results = await Promise.all(
+      const resultsOpeningHours = await Promise.all(
         openingHours.map(async (wd: SingleDayOpeningHours) => {
           const affectedRows = await concertPlaceRepository.createOpeningHours(
             Number(userId),
@@ -91,8 +89,10 @@ const add: RequestHandler = async (req, res, next) => {
         }),
       );
 
-      const allSuccessful = results.every((affectedRows) => affectedRows === 1);
-      if (!allSuccessful) {
+      const allOpeningHoursSuccessful = resultsOpeningHours.every(
+        (affectedRows) => affectedRows === 1,
+      );
+      if (!allOpeningHoursSuccessful) {
         throw new Error(
           "Certaines heures d'ouverture n'ont pas pu être créées",
         );
@@ -107,6 +107,25 @@ const add: RequestHandler = async (req, res, next) => {
 
       if (!newConcertPlaceTypeSuccesful) {
         throw new Error("Echec de l'enregistrement du type.");
+      }
+
+      const { photos } = req.body;
+
+      const resultPhotos = await Promise.all(
+        photos.map(async (p: string) => {
+          const affectedRows = await concertPlaceRepository.createPhoto(
+            Number(userId),
+            p,
+          );
+          return affectedRows;
+        }),
+      );
+
+      const allPhotosSuccessful = resultPhotos.every(
+        (affectedRows) => affectedRows === 1,
+      );
+      if (!allPhotosSuccessful) {
+        throw new Error("Certaines photos n'ont pas pu être enregistrées");
       }
 
       res.status(201).json("Nouvelles données enregistrées ! 🔥");
