@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 import "./ArtistProfile.css";
 import InputDescription from "../../components/FormInputs/InputDescription/InputDescription";
 import InputName from "../../components/FormInputs/InputName/InputName";
@@ -28,7 +29,16 @@ function ArtistProfile() {
     fetch("http://localhost:3310/api/new/artist", {
       method: "POST",
       body: formData,
-    }).then((res) => console.log("Ma réponse : ", res.ok));
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.include("enregistrées")) {
+          toast.success(data);
+        } else {
+          toast.error(data);
+        }
+      });
   };
 
   return (

@@ -25,3 +25,22 @@ type Artist = {
   artistPhotos?: Photo[];
   styles: MusicStyle[];
 };
+
+type ArtistToInsert = {
+  name: string;
+  description: string;
+  demo: string;
+  web_site: string;
+  profile_picture: string;
+  facebook_link: string;
+  instagram_link: string;
+  x_link: string;
+  deezer_link: string;
+  spotify_link: string;
+  youtube_link: string;
+};
+
+type SelectedStyle = {
+  id: number;
+  label: number;
+};
