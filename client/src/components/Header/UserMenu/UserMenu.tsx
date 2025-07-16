@@ -4,11 +4,18 @@ import type { UserMenuProps } from "../../../types/userMenu";
 import "./UserMenu.css";
 
 function UserMenu({ showPopover, setShowPopover }: UserMenuProps) {
-  const { isLogged, setIsLogged, user } = useAuth();
+  const { isLogged, setIsLogged, user, setUser } = useAuth();
 
   const handleLogout = () => {
-    setIsLogged(false);
-    setShowPopover(false);
+    fetch("http://localhost:3310/api/logout", {
+      credentials: "include",
+    }).then((res) => {
+      if (res.ok) {
+        setIsLogged(false);
+        setShowPopover(false);
+        setUser(null);
+      }
+    });
   };
 
   return (
