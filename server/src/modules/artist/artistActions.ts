@@ -19,6 +19,8 @@ const read: RequestHandler = async (req, res, next) => {
 const create: RequestHandler = async (req, res, next) => {
   try {
     const artist = req.body;
+    console.warn(req.body);
+    console.warn(req.files);
 
     if (!artist.user_id || !artist.name) {
       res.status(400).json("Champs obligatoires manquants (user_id ou name)");

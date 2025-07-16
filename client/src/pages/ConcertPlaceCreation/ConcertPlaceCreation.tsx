@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 import InputAddress from "../../components/FormInputs/InputAddress/InputAddress";
 import InputDescription from "../../components/FormInputs/InputDescription/InputDescription";
 import InputName from "../../components/FormInputs/InputName/InputName";
@@ -24,11 +25,19 @@ function ConcertPlaceCreation() {
 
     formData.append("openingHours", JSON.stringify(openingHours));
     formData.append("socialNetworks", JSON.stringify(socialNetworks));
-
     fetch("http://localhost:3310/api/new/concert-place", {
       method: "POST",
+      credentials: "include",
       body: formData,
-    }).then((res) => console.log("Ma réponse : ", res.ok));
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.include("enregistrées")) {
+          toast.success(data);
+        } else {
+          toast.error(data);
+        }
+      });
   };
 
   return (

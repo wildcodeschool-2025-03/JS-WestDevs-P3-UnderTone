@@ -1,10 +1,13 @@
 import express from "express";
+import multer from "multer";
 import artistActions from "./modules/artist/artistActions";
 import itemActions from "./modules/item/itemActions";
 import auth from "./utils/auth";
 import validation from "./utils/validation";
 
 const router = express.Router();
+
+const upload = multer();
 
 /* ************************************************************************* */
 // Define Your API Routes Here
@@ -21,11 +24,19 @@ router.get("/items/:id", itemActions.read);
 router.post("/items", itemActions.add);
 
 router.get("/artist/:id", artistActions.read);
-router.post("/artist", artistActions.create);
+router.post("/artist", upload.any(), artistActions.create);
 
 import concertPlaceActions from "./modules/concertPlace/concertPlaceActions";
+import * as files from "./utils/files";
 
 router.get("/concert-place/:id", concertPlaceActions.read);
+router.post(
+  "/new/concert-place",
+  files.uploadConcertPlaceFiles,
+  files.concertPlaceFiles,
+  auth.verifyRequesterId,
+  concertPlaceActions.add,
+);
 
 import eventActions from "./modules/event/eventActions";
 
