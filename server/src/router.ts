@@ -18,6 +18,8 @@ router.post(
   auth.hashPassword,
   signInActions.add,
 );
+router.get("/refresh", auth.refreshToken);
+router.get("/logout", auth.logout);
 
 router.get("/items", itemActions.browse);
 router.get("/items/:id", itemActions.read);

@@ -1,4 +1,10 @@
-import { type ReactNode, createContext, useContext, useState } from "react";
+import {
+  type ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
@@ -9,6 +15,20 @@ interface ChildrenProps {
 export const AuthProvider = ({ children }: ChildrenProps) => {
   const [isLogged, setIsLogged] = useState(false);
   const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    fetch("http://localhost:3310/api/refresh", {
+      credentials: "include",
+    })
+      .then((res) => {
+        if (res.ok) {
+          setIsLogged(true);
+          return res.json();
+        }
+        return;
+      })
+      .then((data) => setUser(data.result));
+  }, []);
 
   return (
     <AuthContext.Provider value={{ isLogged, setIsLogged, user, setUser }}>
