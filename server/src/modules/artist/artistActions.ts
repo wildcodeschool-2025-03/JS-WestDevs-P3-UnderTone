@@ -19,9 +19,6 @@ const read: RequestHandler = async (req, res, next) => {
 
 const add: RequestHandler = async (req, res, next) => {
   try {
-    console.warn(req.body);
-    console.warn(req.files);
-    console.warn(req.path);
     const { userId, userStatus } = req.body.verifyToken as JwtPayload;
 
     if (userStatus === "artist") {
