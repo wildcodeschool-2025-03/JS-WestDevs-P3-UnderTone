@@ -1,18 +1,9 @@
 import { useEffect, useState } from "react";
 import "./EventSearchForm.css";
 
-interface EventType {
-  id: string | number;
-  name: string;
-}
-
-interface FormDataType {
-  date: string;
-}
-
 function EventSearchForm() {
-  const [formObj, setFormObj] = useState<FormDataType | null>(null);
-  const [filteredEventList, setFilteredEventList] = useState<EventType[]>([]);
+  const [formObj, setFormObj] = useState<EventFormDataType | null>(null);
+  const [filteredEventList, setFilteredEventList] = useState<EventData[]>([]);
 
   const handleChange = (e: React.ChangeEvent<HTMLFormElement>) => {
     const formData = new FormData(e.currentTarget);

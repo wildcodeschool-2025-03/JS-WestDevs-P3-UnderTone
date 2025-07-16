@@ -4,7 +4,7 @@ type Types = {
 };
 
 type SingleDayOpeningHours = {
-  id: number;
+  id?: number;
   weekDay: string;
   openingHourNoon: string | null;
   closingHourNoon: string | null;
@@ -25,4 +25,16 @@ type ConcertPlace = {
   concertPlacePhotos: Photo[];
   types: Types[];
   openingHours: SingleDayOpeningHours[];
+};
+
+type NewConcertPlace = {
+  name: string;
+  description: string;
+  address: string;
+  web_site: string;
+  profile_picture: string;
+  menu: string;
+  facebook_link: string;
+  instagram_link: string;
+  x_link: string;
 };

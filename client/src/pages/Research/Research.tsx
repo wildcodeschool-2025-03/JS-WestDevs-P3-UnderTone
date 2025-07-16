@@ -1,10 +1,11 @@
 import { useState } from "react";
 import "./Research.css";
 import ArtistSearchForm from "../../components/ArtistForm/ArtistSearchForm";
+import ConcertPlaceSearchForm from "../../components/ConcertPlaceForm/ConcertPlaceSearchForm";
 import EventSearchForm from "../../components/EventForm/EventSearchForm";
 
 function Research() {
-  const [selectedRole, setSelectedRole] = useState("");
+  const [selectedRole, setSelectedRole] = useState("event");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedRole(e.target.value);
@@ -54,6 +55,7 @@ function Research() {
 
       {selectedRole === "event" && <EventSearchForm />}
       {selectedRole === "artist" && <ArtistSearchForm />}
+      {selectedRole === "concert-place" && <ConcertPlaceSearchForm />}
     </main>
   );
 }

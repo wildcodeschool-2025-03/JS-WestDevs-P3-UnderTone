@@ -1,6 +1,7 @@
 type FormDataType = {
   name: string;
   musicStyle: string;
+  date: string;
 };
 
 type FilteredArtistList = {
