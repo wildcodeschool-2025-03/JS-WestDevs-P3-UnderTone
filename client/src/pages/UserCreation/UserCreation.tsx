@@ -10,9 +10,10 @@ function UserCreation() {
   const { user } = useAuth();
 
   const handleSubmit = (formData: FormData) => {
-    fetch("http://localhost:3310/api/new/user", {
-      method: "POST",
+    fetch(`http://localhost:3310/api/complete/user/${user?.id}`, {
+      method: "PATCH",
       body: formData,
+      credentials: "include",
     }).then((res) => {
       if (res.ok) {
         toast.success("🎊 Vos données ont bien été enregistrées 🎊");
