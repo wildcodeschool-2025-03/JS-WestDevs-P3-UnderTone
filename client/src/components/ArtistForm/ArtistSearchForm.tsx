@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import "./ArtistSearchForm.css";
+import ArtistSearchResult from "../ArtistSearchResult/ArtistSearchResult";
 
 function SearchArtist() {
   const [musicStyleList, setMusicStyleList] = useState<StyleTypes[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:3310/api/search/artist")
+    fetch("http://localhost:3310/api/music-styles")
       .then((res) => res.json())
       .then((data) => setMusicStyleList(data));
   }, []);
@@ -40,7 +41,7 @@ function SearchArtist() {
           params.append(key, value);
         }
       }
-      console.log(params);
+      //console.log(params);
       fetch(`http://localhost:3310/api/search/artist?${params}`)
         .then((res) => res.json())
         .then((data) => setFilteredArtistList(data))
@@ -64,34 +65,24 @@ function SearchArtist() {
         <label htmlFor="name">nom</label>
       </div>
 
-      <div className="input-group">
-        <select
-          name="musicStyle"
-          id="music-style"
-          ref={musicStyleInputRef}
-          autoComplete="off"
-          onChange={handleChange}
-        >
-          <option value="">--Genre Musical--</option>
-          {musicStyleList.length &&
-            musicStyleList.map((musicStyle) => (
-              <option key={musicStyle.id} value={musicStyle.name}>
-                {musicStyle.name}
-              </option>
-            ))}
-        </select>
-      </div>
-      <section>
+      <select
+        name="musicStyle"
+        id="music-style"
+        ref={musicStyleInputRef}
+        autoComplete="off"
+        onChange={handleChange}
+      >
+        <option value="">--Genre Musical--</option>
+        {musicStyleList.length &&
+          musicStyleList.map((musicStyle) => (
+            <option key={musicStyle.id} value={musicStyle.name}>
+              {musicStyle.name}
+            </option>
+          ))}
+      </select>
+      <section className="result">
         <h2>Résultats</h2>
-        <ul>
-          {filteredArtistList.length ? (
-            filteredArtistList.map((artist) => (
-              <li key={artist.id}>{artist.name}</li>
-            ))
-          ) : (
-            <li>Aucun artiste ne correspond à la recherche</li>
-          )}
-        </ul>
+        <ArtistSearchResult artistList={filteredArtistList} />
       </section>
     </form>
   );

@@ -28,9 +28,9 @@ router.post("/items", itemActions.add);
 import * as files from "./utils/files";
 
 router.get("/artist/:id", artistActions.read);
-<<<<<<< HEAD
 router.get("/search/artist", artistActions.artistSearch);
-=======
+router.get("/music-styles", musicStyleActions.browse);
+
 router.post(
   "/new/artist",
   files.uploadArtistFiles,
@@ -38,7 +38,6 @@ router.post(
   auth.verifyRequesterId,
   artistActions.add,
 );
->>>>>>> 5589dc3388c4bad10c8fc71b10bb97d9f6683072
 
 import concertPlaceActions from "./modules/concertPlace/concertPlaceActions";
 
@@ -52,6 +51,7 @@ router.post(
 );
 
 import eventActions from "./modules/event/eventActions";
+import musicStyleActions from "./modules/musicStyle/musicStyleActions";
 
 router.get("/event/:id", eventActions.read);
 router.get("/event/search");

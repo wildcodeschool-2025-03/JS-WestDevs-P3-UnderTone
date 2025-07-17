@@ -61,31 +61,44 @@ class ArtistRepository {
     return rows[0];
   }
 
-  async artistSearch(name: string, musicStyle: string) {
+  async artistSearch(name: string | null, musicStyle: string | null) {
     const conditions: string[] = [];
     const values: string[] = [];
-    // console.log(name, musicStyle);
+    console.log(name, musicStyle);
     if (name) {
       conditions.push("LOWER(a.name) LIKE LOWER (?)");
       values.push(`%${name}%`);
     }
-    console.log(values);
-    /* if (musicStyle) {
-      conditions.push("LOWER(ms.name) = LOWER (?)");
+    // console.log(musicStyle);
+    if (musicStyle) {
+      conditions.push("LOWER(ms.name) = LOWER(?)");
       values.push(musicStyle);
-    }*/
+    }
 
     const where = conditions.length ? `WHERE ${conditions.join(" AND ")}` : "";
-    console.log(where);
+
     const [rows] = await databaseClient.query(
-      `SELECT DISTINCT a.user_id as id, a.name, a.profile_picture 
-       FROM artist a
-       LEFT JOIN artist_music_style ams ON a.user_id = ams.artist_id
-       LEFT JOIN music_style ms ON ams.music_style_id = ms.id
-       ${where}`,
+      `
+    SELECT
+        a.user_id AS id,
+        a.name,
+        a.profile_picture,
+        JSON_ARRAYAGG(
+            JSON_OBJECT('name', ms.name, 'id', ms.id)
+        ) AS musicStyles
+    FROM
+        artist a
+    LEFT JOIN
+        artist_music_style ams ON a.user_id = ams.artist_id
+    LEFT JOIN
+        music_style ms ON ams.music_style_id = ms.id
+    ${where}
+    GROUP BY
+        a.user_id, a.name, a.profile_picture;
+    `,
       values,
     );
-    console.log(rows);
+    // console.log(rows);
     return rows;
   }
 }

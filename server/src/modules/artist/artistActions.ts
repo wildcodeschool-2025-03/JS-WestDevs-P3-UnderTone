@@ -18,11 +18,11 @@ const read: RequestHandler = async (req, res, next) => {
 };
 
 const artistSearch: RequestHandler = async (req, res, next) => {
-  console.log("poulet");
   try {
-    const artistName = String(req.query.name);
-    const artistStyle = String(req.query.musicStyle);
-    console.log(artistName, artistStyle);
+    const artistName = req.query.name ? String(req.query.name) : null;
+    const artistStyle = req.query.musicStyle
+      ? String(req.query.musicStyle)
+      : null;
     if (!artistName && !artistStyle) {
       res.status(400).json("veuillez remplir au moins un champ");
       return;
