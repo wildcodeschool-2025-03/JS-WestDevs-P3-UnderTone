@@ -142,7 +142,7 @@ function Home() {
               </Link>
             </div>
             <div>
-              <Link to="/app/home">
+              <Link to="/app/research">
                 <strong>Accéder à l'application</strong>
               </Link>
             </div>
