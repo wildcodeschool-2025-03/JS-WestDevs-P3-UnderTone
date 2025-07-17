@@ -12,12 +12,12 @@ const upload = multer();
 
 /* ************************************************************************* */
 // Define Your API Routes Here
-import signInActions from "./modules/signIn/signInActions";
+
 router.post(
   "/register",
   validation.userValidation,
   auth.hashPassword,
-  signInActions.add,
+  userActions.add,
 );
 router.post("/login", validation.userValidation, auth.login);
 router.patch(

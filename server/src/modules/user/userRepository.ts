@@ -26,7 +26,6 @@ class UserRepository {
   }
 
   async create(body: Omit<SignIn, "confirmPassword">) {
-    console.log(body);
     const [result] = await databaseClient.query<Result>(
       "INSERT INTO user (username, email, password, status, signup_date) VALUES (?, ?, ?, ?, DATE(NOW()))",
       [body.username, body.email, body.password, body.role],
@@ -47,7 +46,6 @@ class UserRepository {
     profile_picture: string | null,
     birthdate: string | null,
   ) {
-    console.log("je suis dans userRepository update");
     const [result] = await databaseClient.query<Result>(
       "UPDATE user SET profile_picture = ?, birthdate = ? WHERE id = ?",
       [profile_picture, birthdate, id],

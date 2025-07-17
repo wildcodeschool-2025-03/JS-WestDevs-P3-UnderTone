@@ -3,8 +3,6 @@ import type { JwtPayload } from "jsonwebtoken";
 import userRepository from "./userRepository";
 
 const edit: RequestHandler = async (req, res, next) => {
-  console.log("je suis dans userActions edit");
-  console.log("req.body", req.body);
   try {
     const { id } = req.params;
     const { profile_picture, birthdate } = req.body;

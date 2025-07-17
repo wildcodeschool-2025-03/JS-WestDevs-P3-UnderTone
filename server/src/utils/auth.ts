@@ -92,7 +92,6 @@ const refreshToken: RequestHandler = (req, res, next) => {
 
 const verifyRequesterId: RequestHandler = async (req, res, next) => {
   try {
-    console.log("je suis dans verifyRequesterId");
     const token = req.cookies.token;
 
     if (!token) {
