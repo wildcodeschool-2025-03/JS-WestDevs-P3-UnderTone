@@ -25,7 +25,7 @@ router.patch(
   files.uploadUserProfilePicture,
   files.userProfilePicture,
   auth.verifyRequesterId,
-  userActions.add,
+  userActions.edit,
 );
 router.get("/refresh", auth.refreshToken);
 router.get("/logout", auth.logout);

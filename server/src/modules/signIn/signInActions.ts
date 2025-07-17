@@ -22,7 +22,7 @@ const edit: RequestHandler = async (req, res, next) => {
     const { profile_picture, signup_date } = req.body;
 
     const updateResult = await userRepository.update(
-      id,
+      Number(id),
       profile_picture,
       signup_date,
     );

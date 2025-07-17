@@ -3,6 +3,8 @@ import type { JwtPayload } from "jsonwebtoken";
 import userRepository from "./userRepository";
 
 const edit: RequestHandler = async (req, res, next) => {
+  console.log("je suis dans userActions edit");
+  console.log("req.body", req.body);
   try {
     const { id } = req.params;
     const { profile_picture, birthdate } = req.body;
@@ -13,7 +15,7 @@ const edit: RequestHandler = async (req, res, next) => {
     }
 
     const updateResult = await userRepository.update(
-      userId,
+      Number(userId),
       profile_picture,
       birthdate,
     );
@@ -21,10 +23,10 @@ const edit: RequestHandler = async (req, res, next) => {
     if (updateResult) {
       res.status(200).json("Votre compte a bien été mis à jour 🔥");
     } else {
-      res.status(500).json("Echec de la mise à jour des données");
+      res.status(400).json("Echec de la mise à jour des données");
     }
   } catch (error) {
-    next(error);
+    res.status(500).json(error);
   }
 };
 

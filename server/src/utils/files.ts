@@ -37,6 +37,7 @@ const userProfilePicture: RequestHandler = (req, res, next) => {
     if (req.file) {
       req.body.profile_picture = `/uploads/${req.file.filename}`;
     }
+    next();
   } catch (err) {
     next(err);
   }

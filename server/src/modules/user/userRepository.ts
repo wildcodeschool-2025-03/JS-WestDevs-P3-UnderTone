@@ -43,10 +43,11 @@ class UserRepository {
     return result.affectedRows;
   }
   async update(
-    id: string,
+    id: number,
     profile_picture: string | null,
     birthdate: string | null,
   ) {
+    console.log("je suis dans userRepository update");
     const [result] = await databaseClient.query<Result>(
       "UPDATE user SET profile_picture = ?, birthdate = ? WHERE id = ?",
       [profile_picture, birthdate, id],
