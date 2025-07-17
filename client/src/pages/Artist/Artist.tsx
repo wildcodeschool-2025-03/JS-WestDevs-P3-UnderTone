@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Carousel from "../../components/Carousel/Carousel";
-import StylesTypes from "../../components/StylesTypes/StylesTypes";
-
 import ProfilePicturePlayFavorite from "../../components/ProfilePicturePlayFavorite/ProfilePicturePlayFavorite";
 import SocialNetworks from "../../components/SocialNetworks/SocialNetworks";
+import StylesTypes from "../../components/StylesTypes/StylesTypes";
 import "./Artist.css";
 
 function Artist() {

@@ -1,94 +1,90 @@
 import type { Request, Response } from "express";
-import db from "../../utils/db";
+import type { RequestHandler } from "express";
+import favoriteRepository from "./favoriteRepository";
 
-const isFavorite = async (req: Request, res: Response) => {
-  const { type, userId, targetId } = req.params;
-
-  let table = "";
-  let column = "";
-
-  if (type === "artist") {
-    table = "favorite_artist";
-    column = "artist_id";
-  } else if (type === "concert_place") {
-    table = "favorite_concert_place";
-    column = "concert_place_id";
-  } else {
-    res.status(400).json({ error: "Type invalide" });
-    return;
-  }
-
+const readFavorite: RequestHandler = async (req, res) => {
   try {
-    const [rows] = await db.query(
-      `SELECT 1 FROM ${table} WHERE user_id = ? AND ${column} = ?`,
-      [userId, targetId],
+    const { targetId, targetStatus } = req.params;
+
+    const valid = ["artist", "concert_place"];
+    const { userId } = req.body.verifyToken;
+
+    if (!valid.includes(targetStatus)) {
+      res.status(400).json({ error: "Target type invalide" });
+      return;
+    }
+    const isFavorite = await favoriteRepository.readByIds(
+      Number(targetId),
+      Number(userId),
+      valid.filter((str) => str.includes(targetStatus))[0],
     );
-    res.json({ isFavorite: (rows as unknown[]).length > 0 });
+
+    if (!isFavorite) {
+      res.sendStatus(400);
+      return;
+    }
+    res.sendStatus(200);
   } catch (err) {
+    console.warn(err);
     res.status(500).json({ error: "Erreur serveur" });
   }
 };
 
-const addFavorite = async (req: Request, res: Response) => {
-  const { userId, targetId } = req.body;
-  const { type } = req.params;
-
-  let table = "";
-  let column = "";
-
-  if (type === "artist") {
-    table = "favorite_artist";
-    column = "artist_id";
-  } else if (type === "concert_place") {
-    table = "favorite_concert_place";
-    column = "concert_place_id";
-  } else {
-    res.status(400).json({ error: "Type invalide" });
-    return;
-  }
-
+const addFavorite: RequestHandler = async (req, res) => {
   try {
-    await db.query(
-      `INSERT IGNORE INTO ${table} (user_id, ${column}, date) VALUES (?, ?, CURDATE())`,
-      [userId, targetId],
+    const { userId } = req.body.verifyToken;
+    const { targetId, targetStatus } = req.params;
+    const valid = ["artist", "concert_place"];
+
+    if (!valid.includes(targetStatus)) {
+      res.status(400).json({ error: "Target type invalide" });
+      return;
+    }
+
+    const newFavorite = await favoriteRepository.create(
+      Number(userId),
+      Number(targetId),
+      valid.filter((str) => str.includes(targetStatus))[0],
     );
+
+    if (!newFavorite) {
+      res.status(400).json("Echec de l'inscription en base de données");
+      return;
+    }
+
     res.status(201).json({ message: "Ajouté aux favoris" });
   } catch (err) {
+    console.warn(err);
     res.status(500).json({ error: "Erreur serveur" });
   }
 };
 
-const removeFavorite = async (req: Request, res: Response) => {
-  const { userId, targetId } = req.body;
-  const { type } = req.params;
-
-  let table = "";
-  let column = "";
-
-  if (type === "artist") {
-    table = "favorite_artist";
-    column = "artist_id";
-  } else if (type === "concert_place") {
-    table = "favorite_concert_place";
-    column = "concert_place_id";
-  } else {
-    res.status(400).json({ error: "Type invalide" });
-    return;
-  }
-
+const deleteFavorite: RequestHandler = async (req, res) => {
   try {
-    await db.query(`DELETE FROM ${table} WHERE user_id = ? AND ${column} = ?`, [
-      userId,
-      targetId,
-    ]);
-    res.status(200).json({ message: "Retiré des favoris" });
-  } catch (err) {
+    const { userId } = req.body.verifyToken;
+    const { targetId, targetStatus } = req.params;
+    const valid = ["artist", "concert_place"];
+
+    if (!valid.includes(targetStatus)) {
+      res.status(400).json({ error: "Target type invalide" });
+      return;
+    }
+
+    const deletedFavorite = await favoriteRepository.delete(
+      Number(userId),
+      Number(targetId),
+      valid.filter((str) => str.includes(targetStatus))[0],
+    );
+
+    if (!deletedFavorite) {
+      res.status(400).json("Le favoris n'a pas été effacé");
+      return;
+    }
+
+    res.status(201).json({ message: "Ajouté aux favoris" });
+  } catch {
     res.status(500).json({ error: "Erreur serveur" });
   }
 };
 
-export default {
-  isFavorite,
-  addFavorite,
-  removeFavorite,
-};
+export default { readFavorite, addFavorite, deleteFavorite };

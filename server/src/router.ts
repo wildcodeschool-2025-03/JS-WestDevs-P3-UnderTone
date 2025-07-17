@@ -54,11 +54,23 @@ router.get("/event/search");
 
 router.post("/login", validation.userValidation, auth.login);
 
-import favoriteController from "./modules/favorite/favoriteActions";
+import favoriteActions from "./modules/favorite/favoriteActions";
 
-router.get("/favorites/:type/:userId/:targetId", favoriteController.isFavorite);
-router.post("/favorites/:type", favoriteController.addFavorite);
-router.delete("/favorites/:type", favoriteController.removeFavorite);
+router.get(
+  "/favorites/:targetId/:targetStatus",
+  auth.verifyRequesterId,
+  favoriteActions.readFavorite,
+);
+router.post(
+  "/favorites/:targetId/:targetStatus",
+  auth.verifyRequesterId,
+  favoriteActions.addFavorite,
+);
+router.delete(
+  "/favorites/:targetId/:targetStatus",
+  auth.verifyRequesterId,
+  favoriteActions.deleteFavorite,
+);
 
 /* ************************************************************************* */
 
