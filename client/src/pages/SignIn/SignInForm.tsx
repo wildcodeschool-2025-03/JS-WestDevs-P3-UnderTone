@@ -153,7 +153,7 @@ function SignInForm() {
 
           <button type="submit">S'inscrire</button>
           <p>
-            Déjà inscrit(e) ? <Link to="/login">Connectez-vous</Link>
+            Déjà inscrit(e) ? <Link to="/app/login">Connectez-vous</Link>
           </p>
         </form>
       </section>

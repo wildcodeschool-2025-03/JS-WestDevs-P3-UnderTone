@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Home.css";
+import { Link } from "react-router";
 
 function Home() {
   const [choicestatus, setChoicestatus] = useState("spectateur");
@@ -133,17 +134,17 @@ function Home() {
 
           <section className="home-buttons">
             <div>
-              <button type="button">
+              <Link to="/app/signin">
                 <strong>Inscription</strong>
-              </button>
-              <button type="button">
+              </Link>
+              <Link to="/app/login">
                 <strong>Connexion</strong>
-              </button>
+              </Link>
             </div>
             <div>
-              <button type="button">
+              <Link to="/app/home">
                 <strong>Accéder à l'application</strong>
-              </button>
+              </Link>
             </div>
           </section>
         </div>
