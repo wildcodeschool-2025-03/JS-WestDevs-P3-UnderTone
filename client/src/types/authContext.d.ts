@@ -1,6 +1,5 @@
 type User = {
   id: number;
-  username: string;
   status: "artist" | "concert_place" | "user" | "admin";
 };
 

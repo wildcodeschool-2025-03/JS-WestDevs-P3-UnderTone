@@ -1,6 +1,6 @@
 import argon2 from "argon2";
 import type { RequestHandler } from "express";
-import jwt, { JwtPayload } from "jsonwebtoken";
+import jwt, { type JwtPayload } from "jsonwebtoken";
 import userRepository from "../modules/user/userRepository";
 
 const hashPassword: RequestHandler = async (req, res, next) => {
@@ -37,7 +37,7 @@ const login: RequestHandler = async (req, res) => {
       { userId: user.id, userStatus: user.status },
       secretKey,
       {
-        expiresIn: "1h",
+        expiresIn: "1d",
       },
     );
 
@@ -46,13 +46,46 @@ const login: RequestHandler = async (req, res) => {
       secure: false,
     });
 
-    const { id, status, username } = user;
+    const { id, status } = user;
 
     res.status(200).json({
       infos: "Connection success",
-      result: { id, status, username },
+      result: { id, status },
     });
   } catch (err) {
+    res.sendStatus(500);
+  }
+};
+
+const refreshToken: RequestHandler = (req, res, next) => {
+  try {
+    const token = req.cookies.token;
+
+    if (!token) {
+      throw new Error("A token must be provided");
+    }
+
+    const secretKey = process.env.APP_SECRET;
+
+    if (!secretKey) {
+      throw new Error("A secret must be provided");
+    }
+
+    const verifyToken = jwt.verify(token, secretKey);
+
+    const { userId, userStatus } = verifyToken as JwtPayload;
+
+    const newToken = jwt.sign({ userId, userStatus }, secretKey, {
+      expiresIn: "1d",
+    });
+
+    res.cookie("token", newToken);
+    res.status(200).json({
+      infos: "Refresh Token successful",
+      result: { id: userId, status: userStatus },
+    });
+  } catch (err) {
+    console.error((err as Error).message);
     res.sendStatus(500);
   }
 };
@@ -64,8 +97,6 @@ const verifyRequesterId: RequestHandler = async (req, res, next) => {
     if (!token) {
       throw new Error("User isn't connected");
     }
-    // console.warn(req.body);
-    // console.warn(token);
 
     const secretKey = process.env.APP_SECRET;
 
@@ -85,4 +116,13 @@ const verifyRequesterId: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { hashPassword, login, verifyRequesterId };
+const logout: RequestHandler = (req, res) => {
+  try {
+    res.clearCookie("token");
+    res.sendStatus(200);
+  } catch (err) {
+    res.sendStatus(500);
+  }
+};
+
+export default { hashPassword, login, verifyRequesterId, refreshToken, logout };

@@ -27,6 +27,9 @@ router.patch(
   auth.verifyRequesterId,
   userActions.add,
 );
+router.get("/refresh", auth.refreshToken);
+router.get("/logout", auth.logout);
+
 router.get("/items", itemActions.browse);
 router.get("/items/:id", itemActions.read);
 router.post("/items", itemActions.add);
