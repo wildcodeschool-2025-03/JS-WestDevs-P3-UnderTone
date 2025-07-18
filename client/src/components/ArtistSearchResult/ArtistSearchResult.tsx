@@ -1,13 +1,23 @@
+import { useNavigate } from "react-router";
 import "./ArtistSearchResult.css";
 
 function ArtistSearchResult({
   artistList,
 }: { artistList: FilteredArtistList[] }) {
+  const navigate = useNavigate();
   return (
     <ul className="result">
       {artistList.length ? (
         artistList.map((artist) => (
-          <li key={artist.id}>
+          <li
+            key={artist.id}
+            onClick={() => navigate(`/app/artist/${artist.id}`)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                navigate(`/app/artist/${artist.id}`);
+              }
+            }}
+          >
             <img src={artist.profile_picture} alt={artist.name} />
             <div className="artist-info">
               <h3>{artist.name}</h3>
