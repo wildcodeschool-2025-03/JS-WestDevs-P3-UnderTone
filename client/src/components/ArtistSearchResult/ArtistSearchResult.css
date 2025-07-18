@@ -3,7 +3,7 @@
     height: auto;
     width: 150px;
   }
-  li {
+  a {
     display: flex;
     align-items: center;
     cursor: pointer;
