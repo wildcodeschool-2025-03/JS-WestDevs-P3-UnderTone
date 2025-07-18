@@ -123,7 +123,7 @@
   padding-bottom: 20px;
   gap: 1.5rem;
 
-  button {
+  a {
     background-color: var(--secondary-color);
     color: var(--text-color);
     border-radius: 15px;

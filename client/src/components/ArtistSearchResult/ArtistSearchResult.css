@@ -1,0 +1,15 @@
+.result {
+  img {
+    height: auto;
+    width: 150px;
+  }
+  a {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  h3,
+  p {
+    padding: 0 16px;
+  }
+}

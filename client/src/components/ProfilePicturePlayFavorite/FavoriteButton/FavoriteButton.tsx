@@ -1,10 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./FavoriteButton.css";
+import { useLocation, useParams } from "react-router";
 
 function FavoriteButton() {
   const [isFavorite, setIsFavorite] = useState(false);
+  const location = useLocation();
+  const [targetStatus, setTargetStatus] = useState("");
+  const targetId = useParams().id;
+
+  useEffect(() => {
+    setTargetStatus(
+      location.pathname.includes("artist") ? "artist" : "concert_place",
+    );
+  }, [location]);
+
+  useEffect(() => {
+    fetch(`http://localhost:3310/api/favorites/${targetId}/${targetStatus}`, {
+      credentials: "include",
+    }).then((res) => setIsFavorite(res.ok));
+  }, [targetId, targetStatus]);
+
   const handleChange = () => {
-    setIsFavorite(!isFavorite);
+    const method = isFavorite ? "DELETE" : "POST";
+
+    fetch(`http://localhost:3310/api/favorites/${targetId}/${targetStatus}`, {
+      method,
+      credentials: "include",
+    })
+      .then(() => setIsFavorite(!isFavorite))
+      .catch(console.error);
   };
 
   return (

@@ -2,6 +2,7 @@ import express from "express";
 import multer from "multer";
 import artistActions from "./modules/artist/artistActions";
 import itemActions from "./modules/item/itemActions";
+import userActions from "./modules/user/userActions";
 import auth from "./utils/auth";
 import validation from "./utils/validation";
 
@@ -11,12 +12,25 @@ const upload = multer();
 
 /* ************************************************************************* */
 // Define Your API Routes Here
-import signInActions from "./modules/signIn/signInActions";
+
 router.post(
   "/register",
   validation.userValidation,
   auth.hashPassword,
-  signInActions.add,
+  userActions.add,
+);
+router.post("/login", validation.userValidation, auth.login);
+router.get(
+  "/created-user",
+  auth.verifyRequesterId,
+  userActions.readDataPresence,
+);
+router.patch(
+  "/complete/user/:id",
+  files.uploadUserProfilePicture,
+  files.userProfilePicture,
+  auth.verifyRequesterId,
+  userActions.edit,
 );
 router.get("/refresh", auth.refreshToken);
 router.get("/logout", auth.logout);
@@ -28,6 +42,9 @@ router.post("/items", itemActions.add);
 import * as files from "./utils/files";
 
 router.get("/artist/:id", artistActions.read);
+router.get("/search/artist", artistActions.artistSearch);
+router.get("/music-styles", musicStyleActions.browse);
+
 router.post(
   "/new/artist",
   files.uploadArtistFiles,
@@ -48,11 +65,28 @@ router.post(
 );
 
 import eventActions from "./modules/event/eventActions";
+import musicStyleActions from "./modules/musicStyle/musicStyleActions";
 
 router.get("/event/:id", eventActions.read);
 router.get("/event/search");
 
-router.post("/login", validation.userValidation, auth.login);
+import favoriteActions from "./modules/favorite/favoriteActions";
+
+router.get(
+  "/favorites/:targetId/:targetStatus",
+  auth.verifyRequesterId,
+  favoriteActions.readFavorite,
+);
+router.post(
+  "/favorites/:targetId/:targetStatus",
+  auth.verifyRequesterId,
+  favoriteActions.addFavorite,
+);
+router.delete(
+  "/favorites/:targetId/:targetStatus",
+  auth.verifyRequesterId,
+  favoriteActions.deleteFavorite,
+);
 
 /* ************************************************************************* */
 

@@ -1,25 +1,19 @@
-import { useLocation } from "react-router";
+import { useAuth } from "../../services/AuthContext";
 import FavoriteButton from "./FavoriteButton/FavoriteButton";
 import PlayPause from "./PlayPause/PlayPause";
 import "./ProfilePicturePlayFavorite.css";
-import { useEffect, useState } from "react";
 
 function ProfilePicturePlayFavorite({
   profilePicture,
   name,
   demo,
 }: ProfilePicturePlayFavoriteProps) {
-  const location = useLocation();
-  const [srcNoProfilePicture, setSrcNoProfilePicture] = useState("");
-  useEffect(() => {
-    if (location.pathname.includes("artist")) {
-      setSrcNoProfilePicture("/images/noProfilePictureArtist.jpg");
-    }
-  }, [location]);
+  const srcNoProfilePicture = "public/images/noProfilePictureArtist.jpg";
+  const { isLogged } = useAuth();
 
   return (
     <figure className="profile-picture-play-favorite">
-      <FavoriteButton />
+      {isLogged && <FavoriteButton />}
       <img
         src={profilePicture ? profilePicture : srcNoProfilePicture}
         alt={profilePicture ? name : "Avatar"}

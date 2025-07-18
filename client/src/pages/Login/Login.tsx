@@ -2,10 +2,13 @@ import { toast } from "react-toastify";
 import "../../assets/styles/forms.css";
 import { useAuth } from "../../services/AuthContext";
 import "./Login.css";
-import { Link } from "react-router";
+import { useEffect } from "react";
+import { Link, useNavigate } from "react-router";
 
 function Login() {
   const { setIsLogged, setUser } = useAuth();
+  const navigate = useNavigate();
+  const { user } = useAuth();
 
   const handleSubmit = (formData: FormData) => {
     const data = Object.fromEntries(formData);
@@ -29,11 +32,30 @@ function Login() {
           return res.json();
         }
       })
-      .then((data: UserData) => setUser(data.result))
+      .then((data: UserData) => {
+        toast.info("Vous allez être redirigé·e");
+        setUser(data.result);
+      })
       .catch((err) => {
         console.warn(err);
       });
   };
+
+  useEffect(() => {
+    if (user !== null) {
+      fetch("http://localhost:3310/api/created-user", {
+        credentials: "include",
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((data: GetRedirectionLink) => {
+          setTimeout(() => {
+            navigate(data.redirection);
+          }, 1500);
+        });
+    }
+  }, [user, navigate]);
 
   return (
     <main className="login-page">

@@ -16,6 +16,33 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+const uploadUserProfilePicture: RequestHandler = (req, res, next) => {
+  const uploader = upload.single("profile_picture");
+
+  uploader(req, res, (err) => {
+    if (err) {
+      if (err instanceof multer.MulterError) {
+        return res
+          .status(400)
+          .json({ message: `File upload error: ${err.message}` });
+      }
+      return next(err);
+    }
+    next();
+  });
+};
+
+const userProfilePicture: RequestHandler = (req, res, next) => {
+  try {
+    if (req.file) {
+      req.body.profile_picture = `/uploads/${req.file.filename}`;
+    }
+    next();
+  } catch (err) {
+    next(err);
+  }
+};
+
 const uploadConcertPlaceFiles: RequestHandler = (req, res, next) => {
   const uploader = upload.fields([
     { name: "profile_picture", maxCount: 1 },
@@ -123,4 +150,6 @@ export {
   concertPlaceFiles,
   uploadArtistFiles,
   artistFiles,
+  uploadUserProfilePicture,
+  userProfilePicture,
 };

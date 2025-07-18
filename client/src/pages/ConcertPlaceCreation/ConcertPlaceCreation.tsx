@@ -11,12 +11,14 @@ import SocialNetworksForm, {
   type SocialNetwork,
 } from "../../components/FormInputs/SocialNetworksForm/SocialNetworksForm";
 import "./ConcertPlaceCreation.css";
+import { useNavigate } from "react-router";
 import InputMenu from "./InputMenu/InputMenu";
 import InputsType from "./InputsType/InputsType";
 
 function ConcertPlaceCreation() {
   const [openingHours, setOpeningHours] = useState<SingleDayOpeningHours[]>([]);
   const [socialNetworks, setSocialNetworks] = useState<SocialNetwork[]>([]);
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -34,6 +36,10 @@ function ConcertPlaceCreation() {
       .then((data) => {
         if (data.include("enregistrées")) {
           toast.success(data);
+          toast.info("Vous allez être redirigé·e");
+          setTimeout(() => {
+            navigate("/app/research");
+          }, 1500);
         } else {
           toast.error(data);
         }

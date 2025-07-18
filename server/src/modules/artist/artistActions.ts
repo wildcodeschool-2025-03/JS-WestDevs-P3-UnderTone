@@ -17,6 +17,23 @@ const read: RequestHandler = async (req, res, next) => {
   }
 };
 
+const artistSearch: RequestHandler = async (req, res, next) => {
+  try {
+    const artistName = req.query.name ? String(req.query.name) : null;
+    const artistStyle = req.query.musicStyle
+      ? String(req.query.musicStyle)
+      : null;
+    if (!artistName && !artistStyle) {
+      res.status(400).json("veuillez remplir au moins un champ");
+      return;
+    }
+
+    const result = await artistRepository.artistSearch(artistName, artistStyle);
+    res.json(result);
+  } catch (err) {
+    next(err);
+  }
+};
 const add: RequestHandler = async (req, res, next) => {
   try {
     const { userId, userStatus } = req.body.verifyToken as JwtPayload;
@@ -144,4 +161,4 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { read, add };
+export default { read, artistSearch, add };
