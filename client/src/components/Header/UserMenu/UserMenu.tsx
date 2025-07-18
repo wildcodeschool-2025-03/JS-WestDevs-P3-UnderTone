@@ -1,10 +1,12 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { toast } from "react-toastify";
 import { useAuth } from "../../../services/AuthContext";
 import type { UserMenuProps } from "../../../types/userMenu";
 import "./UserMenu.css";
 
 function UserMenu({ showPopover, setShowPopover }: UserMenuProps) {
   const { isLogged, setIsLogged, user, setUser } = useAuth();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     fetch("http://localhost:3310/api/logout", {
@@ -14,6 +16,11 @@ function UserMenu({ showPopover, setShowPopover }: UserMenuProps) {
         setIsLogged(false);
         setShowPopover(false);
         setUser(null);
+        toast.info("Vous allez être redirigé·e");
+        toast.success("À très bientôt ! 🎵🎊");
+        setTimeout(() => {
+          navigate("/app/login");
+        }, 1500);
       }
     });
   };

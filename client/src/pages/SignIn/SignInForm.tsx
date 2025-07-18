@@ -1,13 +1,14 @@
-import { Link } from "react-router";
-import "../../assets/styles/forms.css";
-import "./SignInForm.css";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "../../assets/styles/forms.css";
+import "./SignInForm.css";
 
 function SignInForm() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
 
   const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
@@ -25,11 +26,17 @@ function SignInForm() {
         "Content-Type": "application/json",
       },
       body: data,
-    }).then((res) =>
-      res.ok
-        ? toast.success("Félicitations, votre compte a été créé")
-        : toast.error("Erreur lors de l'inscription"),
-    );
+    }).then((res) => {
+      if (res.ok) {
+        toast.success("Félicitations, votre compte a été créé");
+        toast.info("Vous allez être redirigé·e vers la page de connexion");
+        setTimeout(() => {
+          navigate("/app/login");
+        }, 1500);
+      } else {
+        toast.error("Erreur lors de l'inscription");
+      }
+    });
   };
 
   return (
