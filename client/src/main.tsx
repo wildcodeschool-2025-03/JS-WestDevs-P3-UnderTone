@@ -15,6 +15,7 @@ import Contact from "./pages/Contact/Contact";
 import Event from "./pages/Event/Event";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
+import NotFound from "./pages/NotFound404/NotFound404";
 import Research from "./pages/Research/Research";
 import SignInForm from "./pages/SignIn/SignInForm";
 import SplashScreen from "./pages/SplashScreen/SplashScreen";
@@ -85,6 +86,10 @@ const router = createBrowserRouter([
       {
         path: "event/:id",
         element: <Event />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },
