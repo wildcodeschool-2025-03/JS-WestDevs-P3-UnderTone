@@ -34,13 +34,15 @@ class UserRepository {
     return result.affectedRows;
   }
 
-  async delete(id: number) {
-    const [result] = await databaseClient.query<Result>(
-      "DELETE FROM user WHERE id = ?",
-      [id],
+  async readById(userId: number, userStatus: string) {
+    const [rows] = await databaseClient.query<Rows>(
+      `SELECT * FROM ${userStatus} WHERE user_id = ?`,
+      [userId],
     );
-    return result.affectedRows;
+
+    return rows.length;
   }
+
   async update(
     id: number,
     profile_picture: string | null,
@@ -51,6 +53,14 @@ class UserRepository {
       [profile_picture, birthdate, id],
     );
 
+    return result.affectedRows;
+  }
+
+  async delete(id: number) {
+    const [result] = await databaseClient.query<Result>(
+      "DELETE FROM user WHERE id = ?",
+      [id],
+    );
     return result.affectedRows;
   }
 }

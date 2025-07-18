@@ -20,6 +20,11 @@ router.post(
   userActions.add,
 );
 router.post("/login", validation.userValidation, auth.login);
+router.get(
+  "/created-user",
+  auth.verifyRequesterId,
+  userActions.readDataPresence,
+);
 router.patch(
   "/complete/user/:id",
   files.uploadUserProfilePicture,

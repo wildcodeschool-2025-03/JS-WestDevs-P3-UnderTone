@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import "./ArtistProfile.css";
+import { useNavigate } from "react-router";
 import InputDescription from "../../components/FormInputs/InputDescription/InputDescription";
 import InputName from "../../components/FormInputs/InputName/InputName";
 import InputPhotos from "../../components/FormInputs/InputPhotos/InputPhotos";
@@ -17,6 +18,7 @@ function ArtistProfile() {
     [],
   );
   const [socialNetworks, setSocialNetworks] = useState<SocialNetwork[]>([]);
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -35,6 +37,10 @@ function ArtistProfile() {
       .then((data) => {
         if (data.include("enregistrées")) {
           toast.success(data);
+          toast.info("Vous allez être redirigé·e");
+          setTimeout(() => {
+            navigate("/app/research");
+          }, 1500);
         } else {
           toast.error(data);
         }
