@@ -4,7 +4,7 @@ import databaseClient from "../../../database/client";
 class MusicStyleRepository {
   async readAll() {
     const [rows] = await databaseClient.query<Rows>(
-      "select * from music_style",
+      "SELECT id, name AS label FROM music_style",
     );
 
     // Return the array of items
