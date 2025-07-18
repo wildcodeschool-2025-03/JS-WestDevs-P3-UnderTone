@@ -1,8 +1,10 @@
 // import { useState } from "react";
 // import { Link } from "react-router";
 // import "./UserProfile.css";
+// import CarouselFavorites from "../../components/CarouselFavorites/CarouselFavorites";
 
 // function UserProfile() {
+//   const [user, setUser] = useState();
 //   const [upcommingEvents, setUpcommingEvents] = useState([]);
 //   const [pastEvents, setPastEvents] = useState([]);
 //   const [areUpcommingEventsVisible, setAreUpcommingEventsVisible] =
@@ -41,11 +43,13 @@
 //         <h2>
 //           Artistes <img src="" alt="arrow" />
 //         </h2>
+//         <CarouselFavorites />
 //       </section>
 //       <section>
 //         <h2>
 //           Lieux <img src="" alt="arrow" />
 //         </h2>
+//         <CarouselFavorites />
 //       </section>
 //     </main>
 //   );
