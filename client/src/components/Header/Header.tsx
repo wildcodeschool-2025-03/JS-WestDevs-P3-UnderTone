@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import "./Header.css";
+import { useAuth } from "../../services/AuthContext";
 import UserMenu from "./UserMenu/UserMenu";
 
 function Header() {
   const [showLinks, setShowLinks] = useState(false);
   const [showPopover, setShowPopover] = useState(false);
+  const { user } = useAuth();
 
   const handleShowLinks = () => setShowLinks(!showLinks);
 
@@ -16,7 +18,7 @@ function Header() {
   return (
     <header>
       <nav className={`navbar ${showLinks ? "show-nav" : "hide-nav"}`}>
-        <Link to="/app">
+        <Link to="/app/home">
           <img
             className="logo"
             src="/images/Logo_UnderTone.svg"
@@ -26,12 +28,14 @@ function Header() {
 
         <div className="nav-wrapper">
           <ul>
-            <li>
-              <Link to="/app" onClick={handleShowLinks}>
-                EVENEMENT
-                <span />
-              </Link>
-            </li>
+            {user?.status === "concert_place" && (
+              <li className="event-creation-link">
+                <Link to="/app" onClick={handleShowLinks}>
+                  EVENEMENT
+                  <span />
+                </Link>
+              </li>
+            )}
 
             <li>
               <Link to="research" onClick={handleShowLinks}>

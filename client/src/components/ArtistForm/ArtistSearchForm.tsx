@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import "./ArtistSearchForm.css";
 import ArtistSearchResult from "../ArtistSearchResult/ArtistSearchResult";
+import "./ArtistSearchForm.css";
 
 function SearchArtist() {
   const [musicStyleList, setMusicStyleList] = useState<StyleTypes[]>([]);
@@ -41,7 +41,6 @@ function SearchArtist() {
           params.append(key, value);
         }
       }
-      //console.log(params);
       fetch(`http://localhost:3310/api/search/artist?${params}`)
         .then((res) => res.json())
         .then((data) => setFilteredArtistList(data))
@@ -75,8 +74,8 @@ function SearchArtist() {
         <option value="">--Genre Musical--</option>
         {musicStyleList.length &&
           musicStyleList.map((musicStyle) => (
-            <option key={musicStyle.id} value={musicStyle.name}>
-              {musicStyle.name}
+            <option key={musicStyle.id} value={musicStyle.label}>
+              {musicStyle.label}
             </option>
           ))}
       </select>

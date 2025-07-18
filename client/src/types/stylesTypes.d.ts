@@ -1,6 +1,7 @@
 type StyleTypes = {
   id: number;
-  name: string;
+  name?: string;
+  label?: string;
 };
 
 type StyleTypeProps = {
