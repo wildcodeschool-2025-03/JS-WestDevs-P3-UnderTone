@@ -40,7 +40,7 @@ function Header() {
             </li>
 
             <li>
-              <Link to="/app" onClick={handleShowLinks}>
+              <Link to="contact" onClick={handleShowLinks}>
                 CONTACT
               </Link>
             </li>
