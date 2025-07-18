@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./ArtistSearchForm.css";
+import ArtistSearchResult from "../ArtistSearchResult/ArtistSearchResult";
 
 function SearchArtist() {
   const [musicStyleList, setMusicStyleList] = useState<StyleTypes[]>([]);
@@ -17,8 +18,13 @@ function SearchArtist() {
     FilteredArtistList[]
   >([]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLFormElement>) => {
-    const formData = new FormData(e.currentTarget);
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
+    const form = e.currentTarget.form as HTMLFormElement | null;
+    if (!form) return;
+
+    const formData = new FormData(form);
     const name = formData.get("name")?.toString() || "";
     const musicStyle = formData.get("musicStyle")?.toString() || "";
 
@@ -26,64 +32,57 @@ function SearchArtist() {
   };
 
   useEffect(() => {
-    if (!formObj) return;
-    console.log(filteredArtistList);
+    if (!formObj?.name && !formObj?.musicStyle) return;
     const params = new URLSearchParams();
 
     const queryTimer = setTimeout(() => {
       for (const [key, value] of Object.entries(formObj)) {
-        params.append(key, value);
+        if (value) {
+          params.append(key, value);
+        }
       }
-      fetch(`/api/search/artist?${params}`)
+      //console.log(params);
+      fetch(`http://localhost:3310/api/search/artist?${params}`)
         .then((res) => res.json())
-        .then((data) => setFilteredArtistList(data));
+        .then((data) => setFilteredArtistList(data))
+        .catch((err) => console.error("Erreur fetch artist:", err));
     }, 1500);
 
     return () => clearTimeout(queryTimer);
-  }, [formObj, filteredArtistList]);
+  }, [formObj]);
 
   return (
-    <form onChange={handleChange}>
+    <form>
       <div className="input-group">
         <input
           type="text"
           name="name"
           ref={nameInputRef}
           id="name"
-          required
           autoComplete="off"
+          onChange={handleChange}
         />
         <label htmlFor="name">nom</label>
       </div>
 
-      <div className="input-group">
-        <select
-          name="musicStyle"
-          id="music-style"
-          ref={musicStyleInputRef}
-          required
-          autoComplete="off"
-        >
-          <option value="">--Genre Musical--</option>
-          {musicStyleList.length &&
-            musicStyleList.map((musicStyle) => (
-              <option key={musicStyle.id} value={musicStyle.name}>
-                {musicStyle.name}
-              </option>
-            ))}
-        </select>
-      </div>
-      <section>
+      <select
+        name="musicStyle"
+        id="music-style"
+        ref={musicStyleInputRef}
+        autoComplete="off"
+        onChange={handleChange}
+      >
+        <option value="">--Genre Musical--</option>
+        {musicStyleList.length &&
+          musicStyleList.map((musicStyle) => (
+            <option key={musicStyle.id} value={musicStyle.name}>
+              {musicStyle.name}
+            </option>
+          ))}
+      </select>
+      <section className="result">
         <h2>Résultats</h2>
-        <ul>
-          {filteredArtistList.length ? (
-            filteredArtistList.map((artist) => (
-              <li key={artist.id}>{artist.name}</li>
-            ))
-          ) : (
-            <li>Aucun artiste ne correspond à la recherche</li>
-          )}
-        </ul>
+        <ArtistSearchResult artistList={filteredArtistList} />
       </section>
     </form>
   );

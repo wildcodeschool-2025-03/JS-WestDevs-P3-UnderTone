@@ -1,0 +1,14 @@
+.result {
+  img {
+    height: auto;
+    width: 150px;
+  }
+  li {
+    display: flex;
+    align-items: center;
+  }
+  h3,
+  p {
+    padding: 0 16px;
+  }
+}
