@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import InputDescription from "../../components/FormInputs/InputDescription/InputDescription";
 import "./EventCreation.css";
+import InputName from "../../components/FormInputs/InputName/InputName";
 import InputEventPicture from "./InputEventPicture/InputEventPicture";
 import InputInviteArtist from "./InputInviteArtist/InputInviteArtist";
 import InputsDateHour from "./InputsDateHour/InputsDateHour";
@@ -48,7 +49,9 @@ function EventCreation() {
   return (
     <main className="event-creation">
       <section>
+        <h1>Mon évènement</h1>
         <form onSubmit={handleSubmit}>
+          <InputName label="Nom de l'évènement" />
           <InputsDateHour />
           <InputEventPicture />
           <InputInviteArtist

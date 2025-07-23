@@ -2,6 +2,20 @@ import type { RequestHandler } from "express";
 import type { JwtPayload } from "jsonwebtoken";
 import artistRepository from "./artistRepository";
 
+const browse: RequestHandler = async (req, res, next) => {
+  try {
+    const artistNameList = await artistRepository.realAllNamesAsLabels();
+
+    if (!artistNameList.length) {
+      throw new Error("Erreur de lecture de la base de données ❌");
+    }
+
+    res.status(200).json(artistNameList);
+  } catch (err) {
+    next(err);
+  }
+};
+
 const read: RequestHandler = async (req, res, next) => {
   try {
     const artistId = Number(req.params.id);
@@ -161,4 +175,4 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { read, artistSearch, add };
+export default { browse, read, artistSearch, add };

@@ -28,13 +28,13 @@ function InputEventPicture() {
     <div className="input-group">
       <input
         type="file"
-        name="profile_picture"
-        id="profile-picture"
+        name="event_picture"
+        id="event-picture-input"
         accept=".jpg, .jpeg, .png"
         ref={fileInputRef}
         onChange={handleFileChange}
       />
-      <label htmlFor="profile-picture">Photo / Affiche</label>
+      <label htmlFor="event-picture-input">Photo / Affiche</label>
       {errorMessage ? (
         <p style={{ color: "red" }}>{errorMessage}</p>
       ) : (

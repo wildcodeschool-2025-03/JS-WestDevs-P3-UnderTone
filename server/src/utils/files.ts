@@ -35,7 +35,7 @@ const uploadUserProfilePicture: RequestHandler = (req, res, next) => {
 const userProfilePicture: RequestHandler = (req, res, next) => {
   try {
     if (req.file) {
-      req.body.profile_picture = `/uploads/${req.file.filename}`;
+      req.body.profile_picture = `http://localhost:3310/uploads/${req.file.filename}`;
     }
     next();
   } catch (err) {
@@ -70,7 +70,7 @@ const concertPlaceFiles: RequestHandler = (req, res, next) => {
     )?.profile_picture?.[0];
 
     if (profilePictureFile) {
-      req.body.profile_picture = `/uploads/${profilePictureFile.filename}`;
+      req.body.profile_picture = `http://localhost:3310/uploads/${profilePictureFile.filename}`;
     }
 
     const menuFile = (
@@ -78,7 +78,7 @@ const concertPlaceFiles: RequestHandler = (req, res, next) => {
     )?.menu?.[0];
 
     if (menuFile) {
-      req.body.menu = `/uploads/${menuFile.filename}`;
+      req.body.menu = `http://localhost:3310/uploads/${menuFile.filename}`;
     }
 
     const photosFiles = (
@@ -86,7 +86,9 @@ const concertPlaceFiles: RequestHandler = (req, res, next) => {
     )?.photos;
 
     if (photosFiles && photosFiles.length > 0) {
-      req.body.photos = photosFiles.map((file) => `/uploads/${file.filename}`);
+      req.body.photos = photosFiles.map(
+        (file) => `http://localhost:3310/uploads/${file.filename}`,
+      );
     }
     next();
   } catch (err) {
@@ -121,7 +123,7 @@ const artistFiles: RequestHandler = (req, res, next) => {
     )?.profile_picture?.[0];
 
     if (profilePictureFile) {
-      req.body.profile_picture = `/uploads/${profilePictureFile.filename}`;
+      req.body.profile_picture = `http://localhost:3310/uploads/${profilePictureFile.filename}`;
     }
 
     const demoFile = (
@@ -129,7 +131,7 @@ const artistFiles: RequestHandler = (req, res, next) => {
     )?.demo?.[0];
 
     if (demoFile) {
-      req.body.demo = `/uploads/${demoFile.filename}`;
+      req.body.demo = `http://localhost:3310/uploads/${demoFile.filename}`;
     }
 
     const photosFiles = (
@@ -137,7 +139,9 @@ const artistFiles: RequestHandler = (req, res, next) => {
     )?.photos;
 
     if (photosFiles && photosFiles.length > 0) {
-      req.body.photos = photosFiles.map((file) => `/uploads/${file.filename}`);
+      req.body.photos = photosFiles.map(
+        (file) => `http://localhost:3310/uploads/${file.filename}`,
+      );
     }
     next();
   } catch (err) {
@@ -145,11 +149,40 @@ const artistFiles: RequestHandler = (req, res, next) => {
   }
 };
 
-export {
+const uploadEventFile: RequestHandler = (req, res, next) => {
+  const uploader = upload.single("event_picture");
+
+  uploader(req, res, (err) => {
+    if (err) {
+      if (err instanceof multer.MulterError) {
+        return res
+          .status(400)
+          .json({ message: `File upload error: ${err.message}` });
+      }
+      return next(err);
+    }
+    next();
+  });
+};
+
+const eventFile: RequestHandler = (req, res, next) => {
+  try {
+    if (req.file) {
+      req.body.event_picture = `http://localhost:3310/uploads/${req.file.filename}`;
+    }
+    next();
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default {
   uploadConcertPlaceFiles,
   concertPlaceFiles,
   uploadArtistFiles,
   artistFiles,
   uploadUserProfilePicture,
   userProfilePicture,
+  uploadEventFile,
+  eventFile,
 };
