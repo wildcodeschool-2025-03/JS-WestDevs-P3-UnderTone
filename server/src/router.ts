@@ -39,11 +39,12 @@ router.get("/items", itemActions.browse);
 router.get("/items/:id", itemActions.read);
 router.post("/items", itemActions.add);
 
-import * as files from "./utils/files";
+import files from "./utils/files";
 
 router.get("/artist/:id", artistActions.read);
 router.get("/search/artist", artistActions.artistSearch);
 router.get("/music-styles", musicStyleActions.browse);
+router.get("/artist", artistActions.browse);
 
 router.post(
   "/new/artist",
@@ -69,6 +70,13 @@ import musicStyleActions from "./modules/musicStyle/musicStyleActions";
 
 router.get("/event/:id", eventActions.read);
 router.get("/event/search");
+router.post(
+  "/new/event",
+  files.uploadEventFile,
+  files.eventFile,
+  auth.verifyRequesterId,
+  eventActions.add,
+);
 
 import favoriteActions from "./modules/favorite/favoriteActions";
 

@@ -15,6 +15,11 @@ type EventData = {
   menu: string;
 };
 
-interface EventFormDataType {
+type EventFormDataType = {
   date: string;
-}
+};
+
+type ArtistsToInvite = {
+  id: number;
+  label: string;
+}[];

@@ -43,6 +43,14 @@ class ArtistRepository {
     return result.affectedRows;
   }
 
+  async realAllNamesAsLabels() {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT user_id AS id, name AS label FROM artist;",
+    );
+
+    return rows;
+  }
+
   async read(id: number) {
     const [rows] = await databaseClient.query<Rows>(
       `SELECT a.user_id, a.name, a.description, a.demo, a.web_site, a.profile_picture,

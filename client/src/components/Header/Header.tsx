@@ -30,7 +30,7 @@ function Header() {
           <ul>
             {user?.status === "concert_place" && (
               <li className="event-creation-link">
-                <Link to="/app" onClick={handleShowLinks}>
+                <Link to="/app/new/event" onClick={handleShowLinks}>
                   EVENEMENT
                   <span />
                 </Link>
