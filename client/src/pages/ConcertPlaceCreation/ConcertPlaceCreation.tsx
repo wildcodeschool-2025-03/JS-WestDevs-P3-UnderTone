@@ -34,7 +34,7 @@ function ConcertPlaceCreation() {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.include("enregistrées")) {
+        if (data.includes("enregistrées")) {
           toast.success(data);
           toast.info("Vous allez être redirigé·e");
           setTimeout(() => {

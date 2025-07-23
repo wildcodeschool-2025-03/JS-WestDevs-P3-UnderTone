@@ -13,6 +13,7 @@ import ConcertPlace from "./pages/ConcertPlace/ConcertPlace";
 import ConcertPlaceCreation from "./pages/ConcertPlaceCreation/ConcertPlaceCreation";
 import Contact from "./pages/Contact/Contact";
 import Event from "./pages/Event/Event";
+import EventCreation from "./pages/EventCreation/EventCreation";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import NotFound from "./pages/NotFound404/NotFound404";
@@ -86,6 +87,10 @@ const router = createBrowserRouter([
       {
         path: "event/:id",
         element: <Event />,
+      },
+      {
+        path: "new/event",
+        element: <EventCreation />,
       },
       {
         path: "*",
