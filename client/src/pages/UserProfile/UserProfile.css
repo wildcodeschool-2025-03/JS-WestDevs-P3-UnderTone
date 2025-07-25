@@ -9,7 +9,7 @@
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: min-content;
     align-content: center;
-    /* grid-template-rows: repeat(2, 1fr); */
+
     max-width: 1432px;
     margin: 0 auto;
     padding: 16px;
@@ -17,16 +17,8 @@
     align-items: center;
 
     section:nth-child(1) {
-      /* display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center; */
-
       display: inline;
       align-self: start;
-      /* justify-self: center; */
-      /* margin-top: 8.5%; */
-      /* height: 100%; */
 
       h1 {
         text-align: center;
@@ -78,7 +70,6 @@
       align-self: start;
       width: 90%;
       margin: 0 auto;
-      /* margin-top: 8.5%; */
 
       button {
         border: none;
@@ -138,7 +129,7 @@
             position: absolute;
             bottom: 0;
             width: 100%;
-            /* height: 40px; */
+
             padding: 12px;
             display: flex;
             align-items: center;
@@ -151,13 +142,8 @@
       .dots-carousel-container.artist figcaption {
         background-color: var(--secondary-color);
       }
-      .dots-carousel-container.concert_place {
-        /* button {
-          background-color: var(--third-color);
-        } */
-        figcaption {
-          background-color: var(--third-color);
-        }
+      .dots-carousel-container.concert_place figcaption {
+        background-color: var(--third-color);
       }
     }
   }
