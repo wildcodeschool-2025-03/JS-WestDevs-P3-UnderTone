@@ -9,7 +9,10 @@ function Event() {
   useEffect(() => {
     fetch(`http://localhost:3310/api/event/${id}`)
       .then((response) => response.json())
-      .then((data: EventData) => setEvent(data));
+      .then((data: EventData) => {
+        data.date = new Date(data.date);
+        setEvent(data);
+      });
   }, [id]);
 
   return (

@@ -19,7 +19,6 @@
 .result img {
   width: 150px;
   height: auto;
-  flex-shrink: 0;
 }
 
 .event-info {
