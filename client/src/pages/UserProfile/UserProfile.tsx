@@ -82,9 +82,10 @@ function UserProfile() {
             Évènements à venir <img src="/images/arrow.svg" alt="arrow" />
           </h2>
         </button>
-        {upcommingEvents.length && areUpcommingEventsVisible ? (
-          <ul>
-            {upcommingEvents.map((event) => (
+
+        <ul>
+          {upcommingEvents.length && areUpcommingEventsVisible ? (
+            upcommingEvents.map((event) => (
               <li key={event.id}>
                 <img src={event.image} alt={event.name} />
                 <ul>
@@ -97,19 +98,21 @@ function UserProfile() {
                   <li>{event.hour}</li>
                 </ul>
               </li>
-            ))}
-          </ul>
-        ) : (
-          <></>
-        )}
+            ))
+          ) : (
+            <li style={{ paddingLeft: "16px" }}>Aucun évènement à afficher</li>
+          )}
+        </ul>
+
         <button type="button" onClick={handlePastEventsVisible}>
           <h2 className={arePastEventsVisible ? "open" : "close"}>
             Évènements passés <img src="/images/arrow.svg" alt="arrow" />
           </h2>
         </button>
-        {pastEvents.length && arePastEventsVisible ? (
-          <ul>
-            {pastEvents.map((event) => (
+
+        <ul>
+          {pastEvents.length && arePastEventsVisible ? (
+            pastEvents.map((event) => (
               <li key={event.id}>
                 <img src={event.image} alt={event.name} />
                 <ul>
@@ -120,11 +123,11 @@ function UserProfile() {
                   </li>
                 </ul>
               </li>
-            ))}
-          </ul>
-        ) : (
-          <></>
-        )}
+            ))
+          ) : (
+            <li>Aucun évènement à afficher</li>
+          )}
+        </ul>
       </section>
       <section>
         <h2>
