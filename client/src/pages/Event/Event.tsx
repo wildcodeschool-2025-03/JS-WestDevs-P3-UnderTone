@@ -18,7 +18,8 @@ function Event() {
         <>
           <h1>{event.name}</h1>
           <img src={event.image} alt="affiche de la soirée" />
-          <p>{event.date_hour}</p>
+          <p>{event.date.toLocaleDateString()}</p>
+          <p>{event.hour}</p>
           {event.invitedArtists.map((artist) => (
             <div key={artist.id}>
               <p>{artist.name}</p>
