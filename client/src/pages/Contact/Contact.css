@@ -19,9 +19,6 @@
   }
 
   .contact-form-container {
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* align-items: center; */
     background-color: rgba(63, 63, 63, 0.8);
     padding: 25px;
     border-radius: 30px;
@@ -128,6 +125,7 @@
 
 @media screen and (min-width: 768px) {
   .contact-page {
+    height: calc(100vh - 75px - 56px);
     padding: 48px 64px;
 
     button[type="submit"] {
