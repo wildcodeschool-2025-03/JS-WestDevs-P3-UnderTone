@@ -1,7 +1,8 @@
 type EventData = {
   id: number;
   name: string;
-  date_hour: string;
+  date: string;
+  hour: string;
   description: string;
   image: string;
   invitedArtists: Array<{

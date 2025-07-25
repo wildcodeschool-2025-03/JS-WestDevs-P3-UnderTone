@@ -2,6 +2,21 @@ import type { RequestHandler } from "express";
 import type { JwtPayload } from "jsonwebtoken";
 import userRepository from "./userRepository";
 
+const readProfile: RequestHandler = async (req, res, next) => {
+  try {
+    const { userId } = req.body.verifyToken as JwtPayload;
+    const data = await userRepository.readProfileById(Number(userId));
+
+    if (!data) {
+      throw new Error("Utilisateur introuvable ❌");
+    }
+
+    res.status(200).json(data);
+  } catch (err) {
+    next(err);
+  }
+};
+
 const readDataPresence: RequestHandler = async (req, res, next) => {
   try {
     const { userId, userStatus } = req.body.verifyToken as JwtPayload;
@@ -81,4 +96,4 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { readDataPresence, edit, add };
+export default { readProfile, readDataPresence, edit, add };

@@ -15,9 +15,11 @@ function FavoriteButton() {
   }, [location]);
 
   useEffect(() => {
-    fetch(`http://localhost:3310/api/favorites/${targetId}/${targetStatus}`, {
-      credentials: "include",
-    }).then((res) => setIsFavorite(res.ok));
+    if (targetStatus && targetStatus) {
+      fetch(`http://localhost:3310/api/favorites/${targetId}/${targetStatus}`, {
+        credentials: "include",
+      }).then((res) => setIsFavorite(res.ok));
+    }
   }, [targetId, targetStatus]);
 
   const handleChange = () => {
