@@ -69,7 +69,7 @@ import eventActions from "./modules/event/eventActions";
 import musicStyleActions from "./modules/musicStyle/musicStyleActions";
 
 router.get("/event/:id", eventActions.read);
-router.get("/event/search");
+router.get("/search/event", eventActions.eventSearch);
 router.post(
   "/new/event",
   files.uploadEventFile,
