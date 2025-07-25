@@ -72,12 +72,10 @@ class ArtistRepository {
   async artistSearch(name: string | null, musicStyle: string | null) {
     const conditions: string[] = [];
     const values: string[] = [];
-    console.log(name, musicStyle);
     if (name) {
       conditions.push("LOWER(a.name) LIKE LOWER (?)");
       values.push(`%${name}%`);
     }
-    // console.log(musicStyle);
     if (musicStyle) {
       conditions.push("LOWER(ms.name) = LOWER(?)");
       values.push(musicStyle);
@@ -106,7 +104,6 @@ class ArtistRepository {
     `,
       values,
     );
-    // console.log(rows);
     return rows;
   }
 }

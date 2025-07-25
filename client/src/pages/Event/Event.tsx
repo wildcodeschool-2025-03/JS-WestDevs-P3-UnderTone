@@ -9,7 +9,10 @@ function Event() {
   useEffect(() => {
     fetch(`http://localhost:3310/api/event/${id}`)
       .then((response) => response.json())
-      .then((data: EventData) => setEvent(data));
+      .then((data: EventData) => {
+        data.date = new Date(data.date);
+        setEvent(data);
+      });
   }, [id]);
 
   return (
@@ -18,7 +21,7 @@ function Event() {
         <>
           <h1>{event.name}</h1>
           <img src={event.image} alt="affiche de la soirée" />
-          <p>{event.date}</p>
+          <p>{event.date.toLocaleDateString()}</p>
           <p>{event.hour}</p>
           {event.invitedArtists.map((artist) => (
             <div key={artist.id}>

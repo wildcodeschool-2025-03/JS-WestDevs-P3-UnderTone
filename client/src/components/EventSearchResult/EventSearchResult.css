@@ -1,0 +1,39 @@
+.result {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.result li {
+  margin-bottom: 16px;
+}
+
+.result a {
+  display: flex;
+  align-items: flex-start;
+  text-decoration: none;
+  gap: 16px;
+  color: inherit;
+}
+
+.result img {
+  width: 150px;
+  height: auto;
+}
+
+.event-info {
+  flex-grow: 1;
+}
+
+.event-artist {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  min-width: 60px;
+}
+.event-info h3,
+.event-info p,
+.event-artist p {
+  margin-top: 0;
+}

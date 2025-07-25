@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import "./EventSearchForm.css";
+import EventSearchResult from "../EventSearchResult/EventSearchResult";
 
 function EventSearchForm() {
   const [formObj, setFormObj] = useState<EventFormDataType | null>(null);
-  const [filteredEventList, setFilteredEventList] = useState<EventData[]>([]);
+  const [filteredEventList, setFilteredEventList] = useState<EventLinkData[]>(
+    [],
+  );
 
   const handleChange = (e: React.ChangeEvent<HTMLFormElement>) => {
     const formData = new FormData(e.currentTarget);
@@ -23,7 +26,12 @@ function EventSearchForm() {
 
       fetch(`http://localhost:3310/api/search/event?${params.toString()}`)
         .then((res) => res.json())
-        .then((data) => setFilteredEventList(data))
+        .then((data) => {
+          for (const event of data) {
+            event.date = new Date(event.date);
+          }
+          setFilteredEventList(data);
+        })
         .catch((error) =>
           console.error("Erreur lors de la recherche :", error),
         );
@@ -48,15 +56,7 @@ function EventSearchForm() {
 
       <section>
         <h2>Résultats</h2>
-        <ul>
-          {filteredEventList.length ? (
-            filteredEventList.map((event) => (
-              <li key={event.id}>{event.name}</li>
-            ))
-          ) : (
-            <li>Aucun évènement ne correspond à la date indiquée</li>
-          )}
-        </ul>
+        <EventSearchResult eventList={filteredEventList} />
       </section>
     </form>
   );
