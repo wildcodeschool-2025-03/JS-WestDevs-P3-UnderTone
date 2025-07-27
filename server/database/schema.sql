@@ -6,7 +6,7 @@ profile_picture VARCHAR(500) DEFAULT NULL,
 email VARCHAR(60) NOT NULL UNIQUE,
 password VARCHAR(200) NOT NULL,
 status ENUM('artist', 'concert_place', 'user', 'admin') NOT NULL,
-signup_date DATETIME NOT NULL,
+signup_date DATE NOT NULL,
 last_signin_date DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 

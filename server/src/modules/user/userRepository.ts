@@ -27,11 +27,20 @@ class UserRepository {
 
   async create(body: Omit<SignIn, "confirmPassword">) {
     const [result] = await databaseClient.query<Result>(
-      "INSERT INTO user (username, email, password, status, signup_date) VALUES (?, ?, ?, ?, DATE(NOW()))",
+      "INSERT INTO user (username, email, password, status, signup_date) VALUES (?, ?, ?, ?, CURDATE())",
       [body.username, body.email, body.password, body.role],
     );
 
     return result.affectedRows;
+  }
+
+  async readProfileById(userId: number) {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT id, username AS name, profile_picture, signup_date, TIMESTAMPDIFF(YEAR, birthdate, CURDATE()) AS age FROM user WHERE id = ?",
+      [userId],
+    );
+
+    return rows[0];
   }
 
   async readById(userId: number, userStatus: string) {

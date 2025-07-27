@@ -1,14 +1,10 @@
 import express from "express";
-import multer from "multer";
 import artistActions from "./modules/artist/artistActions";
-import itemActions from "./modules/item/itemActions";
 import userActions from "./modules/user/userActions";
 import auth from "./utils/auth";
 import validation from "./utils/validation";
 
 const router = express.Router();
-
-const upload = multer();
 
 /* ************************************************************************* */
 // Define Your API Routes Here
@@ -25,6 +21,7 @@ router.get(
   auth.verifyRequesterId,
   userActions.readDataPresence,
 );
+router.get("/user/profile", auth.verifyRequesterId, userActions.readProfile);
 router.patch(
   "/complete/user/:id",
   files.uploadUserProfilePicture,
@@ -34,10 +31,6 @@ router.patch(
 );
 router.get("/refresh", auth.refreshToken);
 router.get("/logout", auth.logout);
-
-router.get("/items", itemActions.browse);
-router.get("/items/:id", itemActions.read);
-router.post("/items", itemActions.add);
 
 import files from "./utils/files";
 
@@ -79,11 +72,27 @@ router.post(
 );
 
 import favoriteActions from "./modules/favorite/favoriteActions";
+import favoriteEventActions from "./modules/favoriteEvent/favoriteEventActions";
 
 router.get(
   "/favorites/:targetId/:targetStatus",
   auth.verifyRequesterId,
   favoriteActions.readFavorite,
+);
+router.get(
+  "/favoritesByType/:targetStatus",
+  auth.verifyRequesterId,
+  favoriteActions.browseTypedFavorites,
+);
+router.get(
+  "/favorites-past-events",
+  auth.verifyRequesterId,
+  favoriteEventActions.browseFavoritesPastEvents,
+);
+router.get(
+  "/favorites-upcomming-events",
+  auth.verifyRequesterId,
+  favoriteEventActions.browseFavoritesUpcommingEvents,
 );
 router.post(
   "/favorites/:targetId/:targetStatus",
