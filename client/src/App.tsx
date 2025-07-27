@@ -10,7 +10,12 @@ function App() {
       <Header />
       <Outlet />
       <Footer />
-      <ToastContainer />
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        theme="dark"
+        newestOnTop={true}
+      />
     </>
   );
 }
