@@ -29,6 +29,7 @@
   --text-color: #ededed;
   --darker-text-color: #c2c2c2;
   --secondary-color: rgba(86, 59, 111, 1);
+  --third-color: rgba(56, 131, 193, 0.95);
 
   --text-font: DMSans, sans-serif;
   --website-font: LibreBarcode39Text, sans-serif;
@@ -46,7 +47,7 @@ body {
 }
 
 #root {
-  background-color: black;
+  background-color: var(--primary-color);
   min-height: 100vh;
 }
 

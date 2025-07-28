@@ -19,9 +19,8 @@ const inputsList = [
 function InputsType() {
   return (
     <>
+      <p>Type d'établissement</p>
       <div className="custom-radio-holder">
-        <p>Type d'établissement</p>
-
         {inputsList.map((input) => (
           <React.Fragment key={input.id}>
             <input

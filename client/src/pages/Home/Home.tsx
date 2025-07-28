@@ -3,78 +3,67 @@ import "./Home.css";
 import { Link } from "react-router";
 
 function Home() {
-  const [choicestatus, setChoicestatus] = useState("spectateur");
+  const [choiceStatus, setChoiceStatus] = useState("spectateur");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setChoicestatus(e.target.value);
+    setChoiceStatus(e.target.value);
   };
 
   const getMessage = () => {
-    switch (choicestatus) {
+    switch (choiceStatus) {
       case "spectateur":
         return (
-          <p>
-            Grace à Undertone, il est désormais
-            <br />
-            possible de trouver une soirée
-            <br />
-            rapidement et facilement!
-            <span>
-              {" "}
-              Et la découverte? On est sûrs que vous
-              <br />
-              ne connaissez pas tous les <strong>artistes</strong> de
-              <br />
-              <strong>votre région!</strong>
-            </span>
-            <span>
-              Ici la <strong>musique</strong> est au premier plan!
-            </span>
-          </p>
+          <article>
+            <p>
+              Grace à <strong>UnderTone</strong> il est désormais possible de
+              trouver une soirée <strong>rapidement</strong> et{" "}
+              <strong>facilement</strong> !
+            </p>
+            <p>
+              Et la découverte ? On est sûrs que vous ne connaisez pas tous les{" "}
+              <strong>artistes</strong> de <strong>votre région</strong> !
+            </p>
+            <p>
+              Ici la <strong>musique</strong> est au premier plan !
+            </p>
+          </article>
         );
 
       case "artist":
         return (
-          <p>
-            Grâce à Undertone, faites découvrir
-            <br />
-            votre univers musical <strong>au grand public</strong> !
-            <span>
-              <br /> En jouant dans des établissements de votre région,
-              <br />
-              vous touchez de <strong>nouveaux publics</strong> à chaque
-              prestation.
-            </span>
-            <br />
-            <span>
-              Ici, <strong>les artistes</strong> sont visibles, écoutés, et
-              valorisés !
-            </span>
-          </p>
+          <article>
+            <p>
+              Grâce à <strong>Undertone</strong>, faites découvrir votre univers
+              musical <strong>au grand public</strong> !
+            </p>
+            <p>
+              En jouant dans des établissements de votre région, vous touchez de{" "}
+              <strong>nouveaux publics</strong> à chaque prestation.
+            </p>
+            <p>
+              Ici, les artistes sont{" "}
+              <strong>visibles, écoutés, et valorisés</strong> !
+            </p>
+          </article>
         );
 
       case "ets-status":
         return (
-          <p>
-            Grâce à Undertone, mettez en avant
-            <br />
-            votre lieu en accueillant des <strong>artistes locaux</strong>
-            <br />
-            et en animant vos soirées !
-            <span>
-              {" "}
-              Vous attirez de <strong>nouveaux publics</strong>
-              <br />
-              et faites vivre la scène musicale de votre région.
-            </span>
-            <br />
-            <span>
-              {" "}
-              Ici, <strong>votre établissement</strong> devient un
-              <br />
-              vrai lieu de découverte musicale !
-            </span>
-          </p>
+          <article>
+            <p>
+              Grâce à <strong>Undertone</strong>, mettez en avant votre
+              établissement en accueillant des artistes locaux pour{" "}
+              <strong>animer vos soirées</strong> !{" "}
+            </p>
+            <p>
+              Vous <strong>attirez</strong> de nouveaux publics et faites vivre
+              la scène musicale de votre région.{" "}
+            </p>
+            <p>
+              Ici, votre établissement devient un vrai{" "}
+              <strong>lieu de découverte</strong> musicale !
+            </p>
+          </article>
         );
 
       default:
@@ -83,25 +72,28 @@ function Home() {
   };
 
   return (
-    <main className="status-user">
+    <main className="home-page">
       <div className="home-content">
         <img src="/images/home_image.svg" alt="Table de mixage de musique" />
         <div className="status-user-form">
           <form>
             <h2>
-              <strong>Je suis un:</strong>
+              <strong>Je suis un :</strong>
             </h2>
-            <div className="radio-options">
+            <div className="custom-radio-holder">
               <input
                 type="radio"
                 id="spectateur"
                 name="status"
                 value="spectateur"
                 onChange={handleChange}
-                checked={choicestatus === "spectateur"}
+                checked={choiceStatus === "spectateur"}
+                className="custom-radio-input"
               />
-              <label htmlFor="spectateur">
-                <span>Spectateur</span>
+              <label htmlFor="spectateur" className="custom-radio-wrapper">
+                <div className="custom-radio">
+                  <div className="inner">Spectateur</div>
+                </div>
               </label>
 
               <input
@@ -110,10 +102,13 @@ function Home() {
                 name="status"
                 value="artist"
                 onChange={handleChange}
-                checked={choicestatus === "artist"}
+                checked={choiceStatus === "artist"}
+                className="custom-radio-input"
               />
-              <label htmlFor="artist">
-                <span>Artiste</span>
+              <label htmlFor="artist" className="custom-radio-wrapper">
+                <div className="custom-radio">
+                  <div className="inner">Artiste</div>
+                </div>
               </label>
 
               <input
@@ -122,17 +117,20 @@ function Home() {
                 name="status"
                 value="ets-status"
                 onChange={handleChange}
-                checked={choicestatus === "ets-status"}
+                checked={choiceStatus === "ets-status"}
+                className="custom-radio-input"
               />
-              <label htmlFor="ets-status">
-                <span>Établissement</span>
+              <label htmlFor="ets-status" className="custom-radio-wrapper">
+                <div className="custom-radio">
+                  <div className="inner">Établissement</div>
+                </div>
               </label>
             </div>
           </form>
 
-          {choicestatus && <div className="message-zone">{getMessage()}</div>}
+          {choiceStatus && getMessage()}
 
-          <section className="home-buttons">
+          <section className="home-links">
             <div>
               <Link to="/app/signin">
                 <strong>Inscription</strong>
@@ -141,11 +139,10 @@ function Home() {
                 <strong>Connexion</strong>
               </Link>
             </div>
-            <div>
-              <Link to="/app/research">
-                <strong>Accéder à l'application</strong>
-              </Link>
-            </div>
+
+            <Link to="/app/research">
+              <strong>Accéder à l'application</strong>
+            </Link>
           </section>
         </div>
       </div>

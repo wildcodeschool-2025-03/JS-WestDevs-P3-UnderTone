@@ -63,4 +63,18 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { read, add };
+const eventSearch: RequestHandler = async (req, res, next) => {
+  try {
+    if (!req.query.date) {
+      res.status(400).json("veuillez choisir une date");
+      return;
+    }
+    const eventDate = req.query.date;
+    const result = await eventRepository.eventSearch(String(eventDate));
+    res.json(result);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { read, add, eventSearch };

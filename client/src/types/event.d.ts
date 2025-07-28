@@ -1,7 +1,8 @@
 type EventData = {
   id: number;
   name: string;
-  date_hour: string;
+  date: Date;
+  hour: string;
   description: string;
   image: string;
   invitedArtists: Array<{
@@ -23,3 +24,20 @@ type ArtistsToInvite = {
   id: number;
   label: string;
 }[];
+
+type EventLinkData = {
+  id: number;
+  name: string;
+  date?: Date;
+  hour: string;
+  image?: string;
+  concert_place: string;
+  artistList: Array<{
+    id: number;
+    name: string;
+  }>;
+};
+
+type EventSearchResultProps = {
+  eventList: EventLinkData[];
+};

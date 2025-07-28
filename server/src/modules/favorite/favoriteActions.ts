@@ -1,6 +1,31 @@
-import type { Request, Response } from "express";
 import type { RequestHandler } from "express";
 import favoriteRepository from "./favoriteRepository";
+
+const browseTypedFavorites: RequestHandler = async (req, res, next) => {
+  try {
+    const { userId } = req.body.verifyToken;
+    const { targetStatus } = req.params;
+    const valid = ["artist", "concert_place"];
+
+    if (!valid.includes(targetStatus)) {
+      res.status(400).json({ error: "Target type invalide" });
+      return;
+    }
+
+    const favorites = await favoriteRepository.readByType(
+      Number(userId),
+      valid.filter((str) => str.includes(targetStatus))[0],
+    );
+
+    if (!favorites.length) {
+      throw new Error("Aucun favoris enregistré ❌");
+    }
+
+    res.status(200).json(favorites);
+  } catch (err) {
+    next(err);
+  }
+};
 
 const readFavorite: RequestHandler = async (req, res) => {
   try {
@@ -87,4 +112,9 @@ const deleteFavorite: RequestHandler = async (req, res) => {
   }
 };
 
-export default { readFavorite, addFavorite, deleteFavorite };
+export default {
+  browseTypedFavorites,
+  readFavorite,
+  addFavorite,
+  deleteFavorite,
+};

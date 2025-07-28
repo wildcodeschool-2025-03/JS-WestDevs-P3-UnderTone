@@ -4,39 +4,4 @@
   .input-group {
     width: 265px;
   }
-
-  .custom-radio-holder {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-areas:
-      "lab lab"
-      "r1 r2"
-      "r3 r3";
-    height: 80px;
-    width: 264px;
-
-    p {
-      grid-area: lab;
-      margin: 0;
-    }
-
-    input {
-      display: none;
-    }
-
-    label {
-      place-self: center;
-    }
-
-    label[for="restaurant"] {
-      grid-area: r1;
-    }
-    label[for="bar"] {
-      grid-area: r2;
-    }
-    label[for="concert-coffee"] {
-      grid-area: r3;
-    }
-  }
 }
