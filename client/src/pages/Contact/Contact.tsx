@@ -45,20 +45,17 @@ function Contact() {
               <label htmlFor="email">Email</label>
               <p>Email non valide.</p>
             </div>
-
             <div className="input-group">
-              <input
-                type="text"
+              <textarea
                 name="message"
                 id="message"
                 required
                 placeholder=""
-                maxLength={250}
+                maxLength={500}
               />
               <label htmlFor="message">Votre message</label>
               <p>Merci de renseigner un message.</p>
             </div>
-
             <button type="submit">Envoyer</button>
             {sent && (
               <p className="success-message">
