@@ -73,6 +73,14 @@ class ConcertPlaceRepository {
     const { id } = rows[0] as { id: number };
     return id;
   }
+  async locationSearch(query: string) {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT user_id, name, address, profile_picture FROM concert_place WHERE name LIKE ?",
+      [`%${query}%`],
+    );
+
+    return rows;
+  }
 }
 
 export default new ConcertPlaceRepository();

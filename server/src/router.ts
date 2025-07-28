@@ -57,6 +57,7 @@ router.post(
   auth.verifyRequesterId,
   concertPlaceActions.add,
 );
+router.get("/search/concert-place", concertPlaceActions.locationSearch);
 
 import eventActions from "./modules/event/eventActions";
 import musicStyleActions from "./modules/musicStyle/musicStyleActions";
