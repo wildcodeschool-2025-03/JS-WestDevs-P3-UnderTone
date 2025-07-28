@@ -1,5 +1,5 @@
 import { useAuth } from "../../services/AuthContext";
-import FavoriteButton from "./FavoriteButton/FavoriteButton";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import PlayPause from "./PlayPause/PlayPause";
 import "./ProfilePicturePlayFavorite.css";
 
