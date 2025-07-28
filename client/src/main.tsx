@@ -8,7 +8,7 @@ import { RouterProvider, createBrowserRouter } from "react-router";
 // Import the main app component
 import App from "./App";
 import Artist from "./pages/Artist/Artist";
-import ArtistProfile from "./pages/ArtistProfile/ArtistProfile";
+import ArtistCreation from "./pages/ArtistCreation/ArtistCreation";
 import ConcertPlace from "./pages/ConcertPlace/ConcertPlace";
 import ConcertPlaceCreation from "./pages/ConcertPlaceCreation/ConcertPlaceCreation";
 import Contact from "./pages/Contact/Contact";
@@ -67,7 +67,7 @@ const router = createBrowserRouter([
       },
       {
         path: "new/artist",
-        element: <ArtistProfile />,
+        element: <ArtistCreation />,
       },
       {
         path: "artist/:id",

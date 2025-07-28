@@ -1,7 +1,8 @@
 import { useRef } from "react";
 import "./SocialNetworksForm.css";
+import { useLocation } from "react-router";
 
-const socialNetworksOptions = [
+const socialNetworksOptionsCP = [
   {
     name: "Facebook",
     value: "facebook_link",
@@ -13,6 +14,21 @@ const socialNetworksOptions = [
   {
     name: "X",
     value: "x_link",
+  },
+];
+
+const socialNetworksOptionsA = [
+  {
+    name: "Spotify",
+    value: "spotify_link",
+  },
+  {
+    name: "Deezer",
+    value: "deezer_link",
+  },
+  {
+    name: "YouTube",
+    value: "youtube_link",
   },
 ];
 
@@ -35,6 +51,17 @@ function SocialNetworksForm({
   socialNetworks: SocialNetwork[];
   setSocialNetworks: React.Dispatch<React.SetStateAction<SocialNetwork[]>>;
 }) {
+  const location = useLocation();
+  let socialNetworksOptions = [];
+  if (location.pathname.includes("artist")) {
+    socialNetworksOptions = [
+      ...socialNetworksOptionsCP,
+      ...socialNetworksOptionsA,
+    ];
+  } else {
+    socialNetworksOptions = socialNetworksOptionsCP;
+  }
+
   const selectInputRef = useRef<HTMLSelectElement>(null);
   const socialNetworkLinkInputRef = useRef<HTMLInputElement>(null);
 
@@ -76,22 +103,25 @@ function SocialNetworksForm({
 
   return (
     <>
-      <section className="social-networks">
-        <select name="" id="" ref={selectInputRef}>
-          <option value="">-- Choisissez un réseau --</option>
-          {socialNetworksOptions.map((sn) => (
-            <option value={sn.value} key={sn.name}>
-              {sn.name}
-            </option>
-          ))}
-        </select>
-        <input
-          type="url"
-          name="link"
-          id="social-network-link"
-          maxLength={200}
-          ref={socialNetworkLinkInputRef}
-        />
+      <section className="social-networks-form">
+        <h2>Réseaux sociaux</h2>
+        <section className="inputs">
+          <select name="" id="" ref={selectInputRef}>
+            <option value="">Réseau</option>
+            {socialNetworksOptions.map((sn) => (
+              <option value={sn.value} key={sn.name}>
+                {sn.name}
+              </option>
+            ))}
+          </select>
+          <input
+            type="url"
+            name="link"
+            id="social-network-link"
+            maxLength={200}
+            ref={socialNetworkLinkInputRef}
+          />
+        </section>
         <button type="button" onClick={handleSocialNetworkValidation}>
           Valider
         </button>
@@ -99,9 +129,11 @@ function SocialNetworksForm({
           {socialNetworks.map((sn) => (
             <li key={sn.name}>
               <p>{sn.name}</p>
-              <button type="button" onClick={handleDelete} data-name={sn.name}>
-                X
-              </button>
+              <button
+                type="button"
+                onClick={handleDelete}
+                data-name={sn.name}
+              />
             </li>
           ))}
         </ul>

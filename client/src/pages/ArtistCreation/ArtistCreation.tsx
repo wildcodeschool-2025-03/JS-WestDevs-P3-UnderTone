@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { toast } from "react-toastify";
-import "./ArtistProfile.css";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 import InputDescription from "../../components/FormInputs/InputDescription/InputDescription";
 import InputName from "../../components/FormInputs/InputName/InputName";
 import InputPhotos from "../../components/FormInputs/InputPhotos/InputPhotos";
@@ -10,10 +9,11 @@ import InputWebsite from "../../components/FormInputs/InputWebsite/InputWebsite"
 import SocialNetworksForm, {
   type SocialNetwork,
 } from "../../components/FormInputs/SocialNetworksForm/SocialNetworksForm";
+import "./ArtistCreation.css";
 import InputDemo from "./DemoUploader/InputDemo";
 import MusicalInfluencesForm from "./MusicalInfluencesForm/MusicalInfluencesForm";
 
-function ArtistProfile() {
+function ArtistCreation() {
   const [selectedStyles, setSelectedStyles] = useState<StyleArtistCreation[]>(
     [],
   );
@@ -48,7 +48,7 @@ function ArtistProfile() {
   };
 
   return (
-    <main className="artist-profile-page">
+    <main className="artist-creation-page">
       <section className="artist-card">
         <h1>Profil Artiste</h1>
         <form onSubmit={handleSubmit}>
@@ -76,4 +76,4 @@ function ArtistProfile() {
   );
 }
 
-export default ArtistProfile;
+export default ArtistCreation;

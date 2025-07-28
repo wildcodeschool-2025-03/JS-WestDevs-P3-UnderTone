@@ -29,9 +29,7 @@ function OpeningHoursList({
               ? ` / ${sdoh.openingHourEvening}-${sdoh.closingHourEvening}`
               : ""}
           </p>
-          <button type="button" onClick={handleDelete} data-id={sdoh.weekDay}>
-            X
-          </button>
+          <button type="button" onClick={handleDelete} data-id={sdoh.weekDay} />
         </li>
       ))}
     </ul>

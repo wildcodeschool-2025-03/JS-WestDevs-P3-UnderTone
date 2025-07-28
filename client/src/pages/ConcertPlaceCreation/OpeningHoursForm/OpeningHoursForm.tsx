@@ -222,9 +222,9 @@ function OpeningHoursForm({
       <button
         type="button"
         onClick={handleShowOpeningHours}
-        className={showList ? "open" : undefined}
+        className={!showList ? "close" : undefined}
       >
-        Horaires validés <img src="" alt="" />
+        Horaires validés <img src="/images/arrow.svg" alt="arrow" />
       </button>
       <OpeningHoursList
         list={openingHours}

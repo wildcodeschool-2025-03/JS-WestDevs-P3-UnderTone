@@ -14,14 +14,14 @@ function InputDemo() {
   };
 
   return (
-    <div className="demo-uploader">
-      <label htmlFor="demo-input">Démo</label>
+    <div className="input-group">
       <input
         type="file"
         id="demo-input"
         accept=".mp3"
         onChange={handleFileChange}
       />
+      <label htmlFor="demo-input">Démo</label>
       {error ? <p>{error}</p> : <p>* format .mp3, Max 2Mo</p>}
     </div>
   );
