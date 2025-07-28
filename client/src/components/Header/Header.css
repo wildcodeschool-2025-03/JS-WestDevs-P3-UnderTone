@@ -71,20 +71,31 @@ header nav ul li:last-child img {
   header nav ul {
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     position: absolute;
-    right: 0;
-    height: calc(100vh 59px 86px);
-    visibility: hidden;
-    top: 59px;
-    padding: 2rem;
+    top: 70px;
+    right: 8px;
+    width: 250px;
     background-color: var(--primary-color);
-    z-index: 9;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    z-index: 5;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
 
   header .navbar.show-nav ul {
     visibility: visible;
-    width: 50vw;
+    opacity: 1;
+  }
+
+  header .navbar.show-nav ul li {
+    margin: 10px 0;
+    color: var(--text-color);
+    width: 100%;
   }
 
   .navbar_burger {
@@ -141,7 +152,8 @@ header nav ul li:last-child img {
 
 @media screen and (max-width: 550px) {
   header .navbar.show-nav ul {
-    width: 80vw;
+    width: 90vw;
+    max-width: 250px;
   }
 }
 
