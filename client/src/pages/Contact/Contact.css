@@ -27,16 +27,39 @@
       0 4px 15px rgba(0, 0, 0, 0.3);
   }
 
-  .input-group input[name="message"] {
-    min-height: 100px;
-    vertical-align: top;
-  }
+  .contact-form-container .input-group {
+    textarea {
+      padding: 8px 13px;
+      outline: none;
+      border: 2px solid rgb(200, 200, 200);
+      background-color: transparent;
+      border-radius: 20px;
+      width: 100%;
+      color: var(--text-color);
+      transition: all 0.3s ease;
+      min-height: 100px;
+      resize: vertical;
+    }
 
-  .input-group p {
-    font-size: 0.8rem;
-    color: #ff9494;
-    margin-top: 4px;
-    display: none;
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus,
+    textarea:-webkit-autofill:active {
+      -webkit-text-fill-color: var(--text-color);
+    }
+
+    textarea:focus,
+    textarea:valid {
+      border-color: var(--secondary-color);
+    }
+
+    &:has(textarea:is(:focus, :not(:placeholder-shown))) label {
+      transform: translateY(-80%) scale(0.9);
+      padding: 0.4em;
+    }
+    &:has(textarea:not(:user-invalid)) p {
+      display: none;
+    }
   }
 
   .contact-map-block {
@@ -79,6 +102,10 @@
       gap: 120px;
       max-width: 1200px;
       margin: 0 auto;
+    }
+
+    .contact-form-container .input-group {
+      width: 300px;
     }
 
     .contact-form-container,
