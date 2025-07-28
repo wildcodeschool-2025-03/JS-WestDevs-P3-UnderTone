@@ -4,6 +4,42 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  > section {
+    background-color: var(--lighter-primary-color);
+    padding: 0 1rem;
+    margin-bottom: 2rem;
+    width: 92%;
+    max-width: 600px;
+    text-align: center;
+    border-radius: 30px;
+    box-shadow:
+      -4px -7px 5px rgba(0, 0, 0, 0.25) inset, 0 4px 4px
+      rgba(0, 0, 0, 0.25), 2px 7px 5px rgba(217, 217, 217, 0.5) inset;
+  }
+
+  .input-group {
+    width: 300px;
+  }
+
+  .date-hour-inputs {
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+
+    input {
+      text-align: center;
+    }
+  }
+
+  .input-group:has(input[type="date"]),
+  .input-group:has(input[type="time"]) {
+    width: 140px;
+  }
+
+  button[type="submit"] {
+    margin-bottom: 32px;
+  }
 }
 
 @media screen and (min-width: 768px) {

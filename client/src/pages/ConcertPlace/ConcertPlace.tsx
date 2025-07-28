@@ -4,10 +4,10 @@ import Address from "../../components/Address/Address";
 import Carousel from "../../components/Carousel/Carousel";
 import Maps from "../../components/Map/Maps";
 import Menu from "../../components/Menu/Menu";
+import OpeningHours from "../../components/OpeningHours/OpeningHours";
 import ProfilePicturePlayFavorite from "../../components/ProfilePicturePlayFavorite/ProfilePicturePlayFavorite";
 import SocialNetworks from "../../components/SocialNetworks/SocialNetworks";
 import StylesTypes from "../../components/StylesTypes/StylesTypes";
-import OpeningHours from "../ConcertPlaceCreation/OpeningHours/OpeningHours";
 import "./ConcertPlace.css";
 
 function ConcertPlace() {

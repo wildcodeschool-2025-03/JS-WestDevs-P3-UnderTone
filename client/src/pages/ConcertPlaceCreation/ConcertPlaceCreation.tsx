@@ -6,10 +6,10 @@ import InputName from "../../components/FormInputs/InputName/InputName";
 import InputPhotos from "../../components/FormInputs/InputPhotos/InputPhotos";
 import InputProfilePicture from "../../components/FormInputs/InputProfilePicture/InputProfilePicture";
 import InputWebsite from "../../components/FormInputs/InputWebsite/InputWebsite";
-import OpeningHoursForm from "../../components/FormInputs/OpeningHoursForm/OpeningHoursForm";
 import SocialNetworksForm, {
   type SocialNetwork,
 } from "../../components/FormInputs/SocialNetworksForm/SocialNetworksForm";
+import OpeningHoursForm from "./OpeningHoursForm/OpeningHoursForm";
 import "./ConcertPlaceCreation.css";
 import { useNavigate } from "react-router";
 import InputMenu from "./InputMenu/InputMenu";
@@ -49,6 +49,7 @@ function ConcertPlaceCreation() {
   return (
     <main className="concert-place-creation">
       <section>
+        <h1>Mon Établissement</h1>
         <form method="post" onSubmit={handleSubmit}>
           <InputName label={"Nom de l'établissement"} />
           <InputProfilePicture />

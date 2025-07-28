@@ -1,7 +1,42 @@
 .concert-place-creation {
+  min-height: calc(100vh - 75px - 86px);
   background-color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > section {
+    background-color: var(--lighter-primary-color);
+    padding: 0 1rem;
+    margin-bottom: 2rem;
+    width: 92%;
+    max-width: 600px;
+    text-align: center;
+    border-radius: 30px;
+    box-shadow:
+      -4px -7px 5px rgba(0, 0, 0, 0.25) inset, 0 4px 4px
+      rgba(0, 0, 0, 0.25), 2px 7px 5px rgba(217, 217, 217, 0.5) inset;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
 
   .input-group {
-    width: 265px;
+    width: 300px;
+  }
+
+  .input-group:has(input[name="address"]) {
+    margin-top: 32px;
+  }
+
+  button[type="submit"] {
+    margin-bottom: 32px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .concert-place-creation {
+    min-height: calc(100vh - 85px - 56px);
   }
 }

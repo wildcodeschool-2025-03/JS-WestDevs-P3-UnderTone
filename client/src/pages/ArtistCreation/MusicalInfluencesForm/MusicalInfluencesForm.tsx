@@ -77,17 +77,27 @@ function MusicalInfluencesForm({
   };
 
   return (
-    <div className="influences-section">
+    <section className="influences-section">
       <h2>Mes Influences Musicales</h2>
-      <Hint options={styles}>
-        <input value={text} onChange={handleHintChange} ref={styleInputRef} />
-      </Hint>
-      <button type="button" onClick={handleAddStyle}>
-        Valider
-      </button>
-      <button type="button" onClick={handleCreateStyle}>
-        Nouveau
-      </button>
+      <div className="input-group">
+        <Hint options={styles} allowTabFill={true}>
+          <input
+            value={text}
+            onChange={handleHintChange}
+            ref={styleInputRef}
+            aria-label="Style"
+            placeholder=""
+          />
+        </Hint>
+      </div>
+      <div className="buttons-wrapper">
+        <button type="button" onClick={handleCreateStyle}>
+          Nouveau
+        </button>
+        <button type="button" onClick={handleAddStyle}>
+          Valider
+        </button>
+      </div>
       {selectedStyles.length > 0 && (
         <ul>
           {selectedStyles.map((ss) => (
@@ -100,7 +110,7 @@ function MusicalInfluencesForm({
           ))}
         </ul>
       )}
-    </div>
+    </section>
   );
 }
 

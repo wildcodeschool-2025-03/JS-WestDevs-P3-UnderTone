@@ -1,0 +1,66 @@
+.influences-section {
+  background-color: var(--primary-color);
+  border-radius: 15px;
+  width: 300px;
+
+  .rah-input-wrapper > input {
+    width: 92%;
+    height: 37px;
+    border-radius: 19px;
+    outline: none;
+    border: 2px solid var(--darker-text-color);
+    background-color: transparent;
+    color: var(--text-color);
+    padding: 4px 16px;
+  }
+
+  .rah-input-wrapper > input:is(:focus, :not(:placeholder-shown)) {
+    border: 2px solid var(--secondary-color);
+  }
+
+  .rah-input-wrapper span {
+    left: 4% !important;
+  }
+
+  .buttons-wrapper {
+    width: 92%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      background-color: var(--lighter-primary-color);
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+      height: 35px;
+      width: 120px;
+    }
+
+    > button::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 60px;
+      height: 60px;
+      border-radius: inherit;
+      scale: 0;
+      z-index: -1;
+      background-color: var(--secondary-color);
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    button:hover::before {
+      scale: 3;
+    }
+
+    button:hover {
+      scale: 1;
+      box-shadow: 0 0px 20px rgba(86, 59, 111, 0.4);
+    }
+
+    button:active {
+      scale: 1;
+    }
+  }
+}

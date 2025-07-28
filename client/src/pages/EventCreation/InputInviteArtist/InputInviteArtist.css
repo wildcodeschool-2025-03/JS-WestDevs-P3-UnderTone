@@ -1,0 +1,92 @@
+.invite-artist-section {
+  background-color: var(--primary-color);
+  border-radius: 15px;
+  width: 300px;
+
+  .input-group {
+    width: 280px;
+    margin: 24px auto 0;
+  }
+  .input-group:has(input[id="invite-artist-input"]) label {
+    z-index: 1;
+  }
+
+  .input-group:has(
+      input[id="invite-artist-input"]:is(:focus, :not(:placeholder-shown))
+    )
+    label {
+    transform: translateY(-80%) scale(0.9);
+    padding: 0.4em;
+  }
+
+  .rah-input-wrapper > input {
+    border: 2px solid rgb(200, 200, 200);
+    background-color: var(--lighter-primary-color);
+  }
+
+  .rah-input-wrapper .rah-hint-wrapper * {
+    color: var(--darker-text-color) !important;
+  }
+
+  button {
+    background-color: var(--lighter-primary-color);
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    height: 35px;
+    width: 120px;
+  }
+
+  > button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 60px;
+    height: 60px;
+    border-radius: inherit;
+    scale: 0;
+    z-index: -1;
+    background-color: var(--secondary-color);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  button:hover::before {
+    scale: 3;
+  }
+
+  button:hover {
+    scale: 1;
+    box-shadow: 0 0px 20px rgba(86, 59, 111, 0.4);
+  }
+
+  button:active {
+    scale: 1;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px 32px;
+    margin-top: 0;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+
+    p {
+      display: inline-block;
+      margin: 0;
+    }
+
+    button {
+      height: 16px;
+      width: 16px;
+      border: none;
+      background-image: url("/images/delete-cross.svg");
+      margin: 0;
+    }
+  }
+}

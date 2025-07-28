@@ -56,15 +56,19 @@ function InputInviteArtist({
 
   return (
     <section className="invite-artist-section">
-      <label htmlFor="invite-artist-input">Artistes à inviter</label>
-      <Hint options={artistList}>
-        <input
-          value={text}
-          onChange={handleHintChange}
-          ref={inviteArtistInputRef}
-          id="invite-artist-input"
-        />
-      </Hint>
+      <div className="input-group">
+        <label htmlFor="invite-artist-input">Artistes à inviter</label>
+        <Hint options={artistList} allowTabFill={true}>
+          <input
+            value={text}
+            onChange={handleHintChange}
+            ref={inviteArtistInputRef}
+            id="invite-artist-input"
+            placeholder=""
+          />
+        </Hint>
+      </div>
+
       <button type="button" onClick={handleAddArtist}>
         Valider
       </button>
@@ -73,9 +77,7 @@ function InputInviteArtist({
           {artistsToInvite.map((ss) => (
             <li key={ss.id}>
               <p>{ss.label}</p>
-              <button type="button" data-id={ss.id} onClick={handleDelete}>
-                X
-              </button>
+              <button type="button" data-id={ss.id} onClick={handleDelete} />
             </li>
           ))}
         </ul>
