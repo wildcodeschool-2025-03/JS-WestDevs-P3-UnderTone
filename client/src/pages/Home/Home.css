@@ -1,183 +1,250 @@
-.status-user {
-  min-height: calc(100vh - 56px - 85px);
+.home-page {
+  min-height: calc(100vh - 86px - 75px);
   width: 100%;
   padding: 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 16px;
   background-color: var(--primary-color);
-  p {
+
+  article {
     text-align: center;
-    padding: 1rem;
-    line-height: 1.5;
+    max-width: 530px;
+    margin: auto;
   }
+
   img {
     display: none;
   }
-}
 
-.status-user-form div {
-  display: flex;
-  gap: 0;
-  label {
-    font-size: 1rem;
+  .custom-radio-holder {
+    display: grid;
+    grid-template-columns: repeat(2, 136px);
+    grid-template-areas:
+      "1 2"
+      "last last";
+    justify-content: center;
+    align-items: center;
+
+    .custom-radio {
+      width: fit-content;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      user-select: none;
+      padding: 2px 8px;
+      background-color: rgba(0, 0, 0, 0.01);
+      border-radius: 0px;
+      color: rgba(255, 255, 255, 0.7);
+
+      background-image: linear-gradient(
+        -70deg,
+        rgba(0, 0, 0, 0.16) 0%,
+        rgba(0, 0, 0, 0.16) 40%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(0, 0, 0, 0.16) 60%,
+        rgba(0, 0, 0, 0.16) 100%
+      );
+      background-size: 250% 100%;
+      background-position: 100% 0;
+      transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+      transition-duration: 300ms;
+      transition-property: color, background-color, box-shadow,
+        background-position;
+      display: flex;
+      height: 32px;
+      align-items: center;
+      box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 1px 0px inset,
+        rgba(255, 255, 255, 0.17) 0px 1px 1px 0px;
+      outline: none;
+      justify-content: center;
+      min-width: 65px;
+    }
+
+    .custom-radio .inner {
+      text-align: center;
+      width: 120px;
+      font-size: 18px;
+      font-weight: 900;
+      pointer-events: none;
+      transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+      transition-duration: 300ms;
+      transition-property: transform;
+      transform: translateY(0px);
+      z-index: 2;
+      position: relative;
+    }
+
+    .custom-radio:hover {
+      background-color: #2c2c2c;
+      color: white;
+      box-shadow:
+        rgba(0, 0, 0, 0.23) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 2px 0px, rgba(
+          0,
+          0,
+          0,
+          0.17
+        ) 0px 2px 4px 1px, rgba(255, 255, 255, 0.17) 0px 3px 1px 0px inset;
+    }
+
+    .custom-radio:hover .inner {
+      transform: translateY(-1px);
+    }
+
+    .custom-radio-wrapper:first-of-type .custom-radio {
+      border-top-left-radius: 5px;
+      border-right: 0px;
+      border-bottom: 0px;
+    }
+
+    .custom-radio-wrapper:nth-of-type(2) .custom-radio {
+      border-top-right-radius: 5px;
+      border-left: 0px;
+      border-bottom: 0px;
+    }
+
+    .custom-radio-wrapper:last-of-type .custom-radio {
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      grid-area: "last";
+      border-top: 0px;
+
+      .inner {
+        width: 256px;
+      }
+    }
+
+    .custom-radio-input {
+      display: none;
+    }
+
+    .custom-radio-input:checked + .custom-radio-wrapper .custom-radio {
+      background-color: #2c2c2c;
+      color: white;
+      box-shadow:
+        rgba(0, 0, 0, 0.23) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(
+          0,
+          0,
+          0,
+          0.17
+        ) 0px 2px 4px 1px, rgba(255, 255, 255, 0.17) 0px 3px 1px 0px inset;
+
+      background-position: 0% 0;
+      transition-duration: 600ms;
+    }
+
+    .custom-radio-input:not(:checked) + .custom-radio-wrapper .custom-radio {
+      background-position: 100% 0;
+      transition: none;
+    }
+
+    .custom-radio-input:checked + .custom-radio-wrapper .custom-radio .inner {
+      transform: translateY(-1px);
+    }
+
+    .custom-radio-input:checked + .custom-radio-wrapper .custom-radio:hover {
+      background-color: #3f3f3f;
+      box-shadow:
+        rgba(0, 0, 0, 0.26) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(
+          0,
+          0,
+          0,
+          0.15
+        ) 0px 3px 6px 2px, rgba(255, 255, 255, 0.17) 0px 3px 1px 0px inset;
+    }
+
+    .custom-radio-wrapper .custom-radio:hover .inner {
+      transform: translateY(1px);
+    }
   }
-}
 
-.status-user input[type="radio"] {
-  display: none;
-}
+  .home-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+    gap: 1.5rem;
 
-.status-user label {
-  width: fit-content;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  user-select: none;
-  padding: 2px 8px;
-  background-color: rgba(0, 0, 0, 0.01);
-  border-radius: 0px;
-  color: rgba(255, 255, 255, 0.7);
-  background-image: linear-gradient(
-    -70deg,
-    rgba(0, 0, 0, 0.16) 0%,
-    rgba(0, 0, 0, 0.16) 40%,
-    rgba(255, 255, 255, 0.1) 50%,
-    rgba(0, 0, 0, 0.16) 60%,
-    rgba(0, 0, 0, 0.16) 100%
-  );
-  background-size: 250% 100%;
-  background-position: 100% 0;
-  transition: all 0.3s ease;
-  display: flex;
-  height: 32px;
-  align-items: center;
-  justify-content: center;
-  min-width: 65px;
-  font-size: 18px;
-  font-weight: 900;
-  box-shadow: inset 0 2px 1px rgba(255, 255, 255, 0.17), inset 0 -2px 1px
-    rgba(0, 0, 0, 0.15);
-}
+    a {
+      background-color: var(--secondary-color);
+      color: var(--text-color);
+      border-radius: 18px;
+      box-shadow: 0px 2px 4px 1px #2c2c2c, inset 0px 3px 1px 0px
+        rgba(255, 255, 255, 0.17);
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 10px 20px;
+      transition: 0.3s ease;
 
-.status-user label:first-of-type {
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
-
-.status-user label:last-of-type {
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-
-.status-user label:hover {
-  background-color: #2c2c2c;
-  color: white;
-  transform: translateY(-1px);
-  box-shadow:
-    rgba(0, 0, 0, 0.23) 0px -4px 1px 0px inset,
-    rgba(255, 255, 255, 0.17) 0px -1px 2px 0px,
-    rgba(0, 0, 0, 0.17) 0px 2px 4px 1px,
-    rgba(255, 255, 255, 0.17) 0px 3px 1px 0px inset;
-}
-
-.status-user label span {
-  pointer-events: none;
-  transform: translateY(0px);
-  transition: transform 0.3s ease;
-}
-
-.status-user input[type="radio"]:checked + label {
-  background-color: #2c2c2c;
-  color: white;
-  background-position: 0% 0;
-  transform: translateY(-1px);
-  box-shadow:
-    rgba(0, 0, 0, 0.23) 0px -4px 1px 0px inset,
-    rgba(255, 255, 255, 0.17) 0px -1px 1px 0px,
-    rgba(0, 0, 0, 0.17) 0px 2px 4px 1px,
-    rgba(255, 255, 255, 0.17) 0px 3px 1px 0px inset;
-}
-
-.status-user input[type="radio"]:checked + label span {
-  transform: translateY(-1px);
-}
-
-.status-user form {
-  padding: 16px;
-}
-
-.status-user form input {
-  margin: 16px 0;
-}
-
-.status-user form select {
-  margin: 16px 0;
-}
-
-.home-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 20px;
-  gap: 1.5rem;
-
-  a {
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-    border-radius: 15px;
-    box-shadow: 0px 2px 4px 1px #2c2c2c, inset 0px 3px 1px 0px
-      rgba(255, 255, 255, 0.17);
-    border: none;
-    cursor: pointer;
-
-    font-size: 1rem;
-    padding: 10px;
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
   }
-}
 
-.home-buttons > div:first-child {
-  display: flex;
-  gap: 2rem;
+  .home-links > div:first-child {
+    display: flex;
+    gap: 2rem;
+  }
 }
 
 @media screen and (min-width: 768px) {
-  .status-user {
+  .home-page {
+    min-height: calc(100vh - 85px - 56px);
     overflow: hidden;
+
+    article {
+      margin: 32px 0;
+    }
+
     p {
       font-size: 1.25rem;
     }
-  }
-  .status-user img {
-    display: flex;
-    border-radius: 16px;
-    width: 50%;
-    height: auto;
-  }
-  .home-content {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-    width: 80%;
-    padding: 1rem;
-    margin: auto;
-    font-size: 1rem;
-  }
-  .status-user-form {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 
-    align-items: center;
-  }
+    img {
+      display: flex;
+      border-radius: 16px;
+      width: 50%;
+      height: auto;
+    }
 
-  .status-user label {
-    height: 36px;
-    align-items: center;
-    min-width: 100px;
+    .custom-radio-holder {
+      display: flex;
+
+      .custom-radio .inner {
+        width: 140px;
+      }
+
+      .custom-radio-wrapper:nth-of-type(1) .custom-radio {
+        border-radius: 5px 0 0 5px;
+        border-right: 0px;
+      }
+      .custom-radio-wrapper:nth-of-type(2) .custom-radio {
+        border-radius: 0;
+      }
+      .custom-radio-wrapper:nth-of-type(3) .custom-radio {
+        border-radius: 0 5px 5px 0;
+        border-left: 0px;
+
+        .inner {
+          width: 140px;
+        }
+      }
+    }
+
+    .home-content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      width: 80%;
+      padding: 1rem;
+      margin: auto;
+      font-size: 1rem;
+    }
   }
 }
