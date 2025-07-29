@@ -5,18 +5,18 @@
 @media screen and (min-width: 768px) {
   .user-profile {
     min-height: calc(100vh - 56px - 85px);
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: min-content;
-    align-content: center;
-
+    display: flex;
+    flex-wrap: wrap;
     max-width: 1432px;
     margin: 0 auto;
     padding: 16px;
-    gap: 32px;
+    gap: 32px 10%;
     align-items: center;
+    align-content: center;
+    justify-content: center;
 
     section:nth-child(1) {
+      width: 45%;
       display: inline;
       align-self: start;
 
@@ -63,12 +63,12 @@
         }
       }
     }
-    section:nth-child(2) {
+    .favorites-events {
       display: flex;
       flex-direction: column;
       align-items: start;
       align-self: start;
-      width: 90%;
+      width: 45%;
       margin: 0 auto;
 
       button {
@@ -99,8 +99,10 @@
         height: 0;
       }
     }
-    section:nth-child(3),
-    section:nth-child(4) {
+    .favorites-concert-places,
+    .favorites-artists {
+      width: 45%;
+
       h2 {
         width: 90%;
         margin: 0 auto auto;

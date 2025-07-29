@@ -1,9 +1,9 @@
 type UserProfileDatas = {
   id: number;
   name: string;
-  age: number;
+  age: number | null;
   signup_date: Date;
-  profile_picture: string;
+  profile_picture: string | null;
 };
 
 type UserProfileFavoriteEvent = {

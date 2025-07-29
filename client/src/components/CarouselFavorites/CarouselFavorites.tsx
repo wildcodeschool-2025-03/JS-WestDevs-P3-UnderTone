@@ -1,19 +1,13 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import "./CarouselFavorites.css";
 import { Link } from "react-router";
 
-function CarouselFavorites({ variant }: { variant: string }) {
+function CarouselFavorites({
+  variant,
+  favoritesDatas,
+}: { variant: string; favoritesDatas: FavoritesDatas }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [favoritesDatas, setFavoritesDatas] = useState<FavoritesDatas>([]);
-
-  useEffect(() => {
-    fetch(`http://localhost:3310/api/favoritesByType/${variant}`, {
-      credentials: "include",
-    })
-      .then((res) => res.json())
-      .then((data) => setFavoritesDatas(data));
-  }, [variant]);
 
   const updateCarousel = useCallback(
     (newIndex: number) => {
