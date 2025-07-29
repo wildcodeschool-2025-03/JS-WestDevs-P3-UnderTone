@@ -5,7 +5,7 @@ const browseTypedFavorites: RequestHandler = async (req, res, next) => {
   try {
     const { userId } = req.body.verifyToken;
     const { targetStatus } = req.params;
-    const valid = ["artist", "concert_place"];
+    const valid = ["artist", "concert_place", "event"];
 
     if (!valid.includes(targetStatus)) {
       res.status(400).json({ error: "Target type invalide" });
@@ -31,7 +31,7 @@ const readFavorite: RequestHandler = async (req, res) => {
   try {
     const { targetId, targetStatus } = req.params;
 
-    const valid = ["artist", "concert_place"];
+    const valid = ["artist", "concert_place", "event"];
     const { userId } = req.body.verifyToken;
 
     if (!valid.includes(targetStatus)) {
@@ -59,7 +59,7 @@ const addFavorite: RequestHandler = async (req, res) => {
   try {
     const { userId } = req.body.verifyToken;
     const { targetId, targetStatus } = req.params;
-    const valid = ["artist", "concert_place"];
+    const valid = ["artist", "concert_place", "event"];
 
     if (!valid.includes(targetStatus)) {
       res.status(400).json({ error: "Target type invalide" });
@@ -88,7 +88,7 @@ const deleteFavorite: RequestHandler = async (req, res) => {
   try {
     const { userId } = req.body.verifyToken;
     const { targetId, targetStatus } = req.params;
-    const valid = ["artist", "concert_place"];
+    const valid = ["artist", "concert_place", "event"];
 
     if (!valid.includes(targetStatus)) {
       res.status(400).json({ error: "Target type invalide" });
