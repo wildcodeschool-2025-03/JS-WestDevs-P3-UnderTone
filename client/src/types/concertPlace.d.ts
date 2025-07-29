@@ -37,6 +37,7 @@ type OpeningHoursProps = {
     closingHourEvening: string | null;
   }[];
 };
+
 type ConcertPlaceFormDataType = {
   name: string;
   type: string;
@@ -46,4 +47,12 @@ type FilteredConcertPlaceList = {
   id: string;
   name: string;
   type: string;
+  profil_picture: string;
+  openingHours: {
+    weekDay: string;
+    openingHourNoon: string | null;
+    closingHourNoon: string | null;
+    openingHourEvening: string | null;
+    closingHourEvening: string | null;
+  }[];
 };
