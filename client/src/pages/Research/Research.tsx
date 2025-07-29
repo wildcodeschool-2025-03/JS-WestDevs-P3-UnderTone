@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Research.css";
 import ArtistSearchForm from "../../components/ArtistForm/ArtistSearchForm";
 import ConcertPlaceSearchForm from "../../components/ConcertPlaceForm/ConcertPlaceSearchForm";
@@ -6,10 +6,18 @@ import EventSearchForm from "../../components/EventForm/EventSearchForm";
 
 function Research() {
   const [selectedRole, setSelectedRole] = useState("event");
+  const [todayDate, setTodayDate] = useState<string>("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedRole(e.target.value);
   };
+
+  useEffect(() => {
+    if (selectedRole === "event") {
+      const currentDate = new Date().toISOString().split("T")[0];
+      setTodayDate(currentDate);
+    }
+  }, [selectedRole]);
 
   return (
     <main className="research-page">
@@ -62,7 +70,7 @@ function Research() {
         </div>
       </form>
 
-      {selectedRole === "event" && <EventSearchForm />}
+      {selectedRole === "event" && <EventSearchForm defaultDate={todayDate} />}
       {selectedRole === "artist" && <ArtistSearchForm />}
       {selectedRole === "concert-place" && <ConcertPlaceSearchForm />}
     </main>

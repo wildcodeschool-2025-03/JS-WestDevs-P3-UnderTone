@@ -2,11 +2,21 @@ import { useEffect, useState } from "react";
 import "./EventSearchForm.css";
 import EventSearchResult from "../EventSearchResult/EventSearchResult";
 
-function EventSearchForm() {
-  const [formObj, setFormObj] = useState<EventFormDataType | null>(null);
+type Props = {
+  defaultDate: string;
+};
+
+function EventSearchForm({ defaultDate }: Props) {
+  const [formObj, setFormObj] = useState<EventFormDataType | null>({
+    date: defaultDate,
+  });
   const [filteredEventList, setFilteredEventList] = useState<EventLinkData[]>(
     [],
   );
+
+  useEffect(() => {
+    setFormObj({ date: defaultDate });
+  }, [defaultDate]);
 
   const handleChange = (e: React.ChangeEvent<HTMLFormElement>) => {
     const formData = new FormData(e.currentTarget);
@@ -50,6 +60,8 @@ function EventSearchForm() {
           required
           autoComplete="on"
           placeholder="date"
+          value={formObj?.date || ""}
+          onChange={(e) => setFormObj({ date: e.target.value })}
         />
         <label htmlFor="date">Date</label>
       </div>
