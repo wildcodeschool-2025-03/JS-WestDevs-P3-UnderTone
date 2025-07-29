@@ -1,7 +1,8 @@
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import "./Event.css";
 import { useEffect, useState } from "react";
-
+import FavoriteButton from "../../components/FavoriteButton/FavoriteButton";
+import { useAuth } from "../../services/AuthContext";
 function Event() {
   const { id } = useParams();
   const [event, setEvent] = useState<null | EventData>(null);
@@ -14,28 +15,50 @@ function Event() {
         setEvent(data);
       });
   }, [id]);
-
+  const { isLogged } = useAuth();
   return (
-    <main>
+    <main className="event-container">
       {event && (
         <>
-          <h1>{event.name}</h1>
-          <img src={event.image} alt="affiche de la soirée" />
-          <p>{event.date.toLocaleDateString()}</p>
-          <p>{event.hour}</p>
-          {event.invitedArtists.map((artist) => (
-            <div key={artist.id}>
-              <p>{artist.name}</p>
-              {artist.musicStyles.map((musicStyle) => (
-                <div key={musicStyle.id}>
-                  <p>{musicStyle.name}</p>
-                </div>
+          <section>
+            <h1>{event.name}</h1>
+            <p>
+              {event.date.toLocaleDateString()} à {event.hour}
+            </p>
+            <h2>Artistes invités</h2>
+            <ul className="event-artists">
+              {event.invitedArtists.map((artist) => (
+                <li key={artist.id}>
+                  <Link to={`/app/artist/${artist.id}`}>
+                    <img
+                      src={artist.profilePicture}
+                      alt={`portrait de ${artist.name}`}
+                    />
+                    <div className="artist-info">
+                      <h3>{artist.name}</h3>
+                      <p>
+                        {artist.musicStyles.map((musicStyle) => (
+                          <li key={musicStyle.id}>{musicStyle.name}</li>
+                        ))}
+                      </p>
+                    </div>
+                  </Link>
+                </li>
               ))}
+            </ul>{" "}
+            <iframe src={event.menu} title="menu" width={700} height={500} />
+          </section>
+          <section>
+            <div className="event-image">
+              {isLogged && <FavoriteButton />}
+              <img src={event.image} alt="affiche de la soirée" />
             </div>
-          ))}
-          <p>{event.concertPlaceName}</p>
-          <p>{event.address}</p>
-          <p>{event.description}</p>
+            <div className="event-place">
+              <p>{event.concertPlaceName}</p>
+              <p>{event.address}</p>
+              <p>{event.description}</p>
+            </div>
+          </section>
         </>
       )}
     </main>
