@@ -58,10 +58,11 @@ function SearchArtist() {
           name="name"
           ref={nameInputRef}
           id="name"
+          placeholder=""
           autoComplete="off"
           onChange={handleChange}
         />
-        <label htmlFor="name">nom</label>
+        <label htmlFor="name">Nom</label>
       </div>
 
       <select

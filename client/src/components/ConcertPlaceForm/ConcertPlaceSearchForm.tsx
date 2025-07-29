@@ -49,29 +49,27 @@ function ConcertPlaceSearchForm() {
           name="name"
           ref={nameInputRef}
           id="name"
-          required
+          placeholder=""
           autoComplete="off"
         />
-        <label htmlFor="name">nom</label>
+        <label htmlFor="name">Nom</label>
       </div>
 
-      <div className="input-group">
-        <select
-          name="type"
-          id="type"
-          ref={typeInputRef}
-          required
-          autoComplete="off"
-        >
-          <option value="">--Type d'établissement--</option>
-          {typeList.length &&
-            typeList.map((type) => (
-              <option key={type.id} value={type.name}>
-                {type.name}
-              </option>
-            ))}
-        </select>
-      </div>
+      <select
+        name="type"
+        id="type"
+        ref={typeInputRef}
+        required
+        autoComplete="off"
+      >
+        <option value="">--Type--</option>
+        {typeList.length &&
+          typeList.map((type) => (
+            <option key={type.id} value={type.name}>
+              {type.name}
+            </option>
+          ))}
+      </select>
       <section>
         <h2>Résultats</h2>
         <ul>

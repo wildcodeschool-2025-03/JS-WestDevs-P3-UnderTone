@@ -14,17 +14,20 @@ function Research() {
   return (
     <main className="research-page">
       <form>
-        <div>
+        <div className="custom-radio-holder">
           <input
             type="radio"
             id="artist"
             name="research"
             value="artist"
+            className="custom-radio-input"
             onChange={handleChange}
             checked={selectedRole === "artist"}
           />
-          <label htmlFor="artist">
-            <span>Artiste</span>
+          <label htmlFor="artist" className="custom-radio-wrapper">
+            <div className="custom-radio">
+              <div className="inner">Artiste</div>
+            </div>
           </label>
 
           <input
@@ -32,11 +35,14 @@ function Research() {
             id="event"
             name="research"
             value="event"
+            className="custom-radio-input"
             onChange={handleChange}
             checked={selectedRole === "event"}
           />
-          <label htmlFor="event">
-            <span>Évènement</span>
+          <label htmlFor="event" className="custom-radio-wrapper">
+            <div className="custom-radio">
+              <div className="inner">Évènement</div>
+            </div>
           </label>
 
           <input
@@ -44,11 +50,14 @@ function Research() {
             id="concert-place"
             name="research"
             value="concert-place"
+            className="custom-radio-input"
             onChange={handleChange}
             checked={selectedRole === "concert-place"}
           />
-          <label htmlFor="concert-place">
-            <span>Lieu</span>
+          <label htmlFor="concert-place" className="custom-radio-wrapper">
+            <div className="custom-radio">
+              <div className="inner">Lieu</div>
+            </div>
           </label>
         </div>
       </form>

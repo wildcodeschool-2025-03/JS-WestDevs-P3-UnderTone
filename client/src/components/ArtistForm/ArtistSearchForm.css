@@ -1,3 +1,5 @@
-.input-group {
-  justify-content: center;
+.research-page {
+  .input-group {
+    justify-content: center;
+  }
 }

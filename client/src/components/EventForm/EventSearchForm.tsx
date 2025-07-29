@@ -51,7 +51,7 @@ function EventSearchForm() {
           autoComplete="on"
           placeholder="date"
         />
-        <label htmlFor="date">date</label>
+        <label htmlFor="date">Date</label>
       </div>
 
       <section>
