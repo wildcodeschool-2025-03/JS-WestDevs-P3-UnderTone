@@ -1,4 +1,4 @@
-import type { Rows, Result } from "../../../database/client";
+import type { Result, Rows } from "../../../database/client";
 import databaseClient from "../../../database/client";
 
 class MusicStyleRepository {
