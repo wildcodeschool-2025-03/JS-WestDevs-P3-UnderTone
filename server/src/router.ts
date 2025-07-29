@@ -38,6 +38,7 @@ router.get("/artist/:id", artistActions.read);
 router.get("/search/artist", artistActions.artistSearch);
 router.get("/music-styles", musicStyleActions.browse);
 router.get("/artist", artistActions.browse);
+router.post("/music-styles", musicStyleActions.add);
 
 router.post(
   "/new/artist",

@@ -53,7 +53,7 @@ function MusicalInfluencesForm({
     const newStyle = { name: styleInputRef.current?.value };
 
     newStyle &&
-      fetch("http://localhost:3310/api/new/style", {
+      fetch("http://localhost:3310/api/music-styles", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newStyle),
@@ -72,7 +72,7 @@ function MusicalInfluencesForm({
           setText("");
         })
         .catch(() => {
-          toast.error("Échec de la création de style 😫");
+          toast.error("Ce style existe déjà 😫. Appuyer sur valider");
         });
   };
 
@@ -103,9 +103,7 @@ function MusicalInfluencesForm({
           {selectedStyles.map((ss) => (
             <li key={ss.id}>
               <p>{ss.label}</p>
-              <button type="button" data-id={ss.id} onClick={handleDelete}>
-                X
-              </button>
+              <button type="button" data-id={ss.id} onClick={handleDelete} />
             </li>
           ))}
         </ul>
