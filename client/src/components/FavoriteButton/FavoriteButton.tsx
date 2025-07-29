@@ -10,7 +10,9 @@ function FavoriteButton() {
 
   useEffect(() => {
     setTargetStatus(
-      location.pathname.includes("artist") ? "artist" : "concert_place",
+      location.pathname.includes("concert")
+        ? "concert_place"
+        : location.pathname.slice(5).split("/")[0],
     );
   }, [location]);
 
