@@ -3,5 +3,12 @@
 
   h3 {
     text-decoration: underline;
+    margin-top: 0;
+    font-size: 1.4rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+    white-space: pre-wrap;
   }
 }

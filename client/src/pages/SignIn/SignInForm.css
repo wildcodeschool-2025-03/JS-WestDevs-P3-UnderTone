@@ -190,6 +190,6 @@
 
 @media screen and (min-width: 768px) {
   .signin-page {
-    min-height: calc(100vh - 56px - 85px);
+    min-height: calc(100vh - 56px - 75px);
   }
 }

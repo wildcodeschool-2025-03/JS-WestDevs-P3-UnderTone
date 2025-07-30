@@ -1,5 +1,5 @@
 .research-page {
-  min-height: calc(100vh - 56px - 85px);
+  min-height: calc(100vh - 56px - 75px);
   padding: 32px;
   display: flex;
   flex-direction: column;

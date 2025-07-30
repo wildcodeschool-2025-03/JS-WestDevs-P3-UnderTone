@@ -1,0 +1,79 @@
+.concert-place-page {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+
+  & > section:first-of-type {
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas:
+      "name pp"
+      "type pp"
+      "d pp"
+      "link pp";
+    gap: 0 32px;
+
+    h1 {
+      font-size: 3rem;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    p {
+      text-align: center;
+      align-self: center;
+      font-size: 1.2rem;
+    }
+
+    a {
+      font-family: var(--website-font);
+      font-size: 2.7rem;
+      display: block;
+      overflow-wrap: break-word;
+      margin: 0 auto;
+
+      span {
+        font-family: inherit;
+        overflow-wrap: normal;
+      }
+    }
+
+    .profile-picture-play-favorite {
+      grid-area: pp;
+      padding-bottom: 0;
+    }
+  }
+
+  .menu {
+    display: flex;
+    justify-content: center;
+
+    iframe {
+      width: 800px;
+      height: 500px;
+      border: 2px solid var(--lighter-primary-color);
+      scrollbar-color: var(--primary-color) var(--lighter-primary-color);
+
+      &::-webkit-scrollbar-track {
+        background-color: var(--primary-color);
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--lighter-primary-color);
+      }
+    }
+  }
+
+  .carousel,
+  .dots-carousel-container {
+    width: 80%;
+    margin: 16px auto 0;
+  }
+
+  .address-opening-hours {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
