@@ -103,7 +103,7 @@ const router = createBrowserRouter([
         element: <NotFound />,
       },
       {
-        path: "/CGU",
+        path: "CGU",
         element: <CGU />,
       },
     ],

@@ -20,7 +20,7 @@ footer section {
     font-family: var(--text-font);
   }
 
-  a:first-of-type {
+  & > a:first-of-type {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -72,6 +72,7 @@ footer section {
     }
 
     li:nth-child(1) {
+      justify-self: flex-end;
       grid-area: t1;
       text-align: right;
     }
