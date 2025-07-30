@@ -20,7 +20,9 @@ VALUES
 ('Maillot', '1983-12-20', 'http://localhost:3310/assets/images/concert-place-profile-picture/improfilmaillot.png', 'maillot@gmail.fr', '$argon2id$v=19$m=16,t=2,p=1$WHZnZm5MajU3dGxPTDhOYQ$HH/o0irIqZLdhW1cmm7xNw', 'concert_place', '2025-06-22'),
 ('Toussaint', '1976-02-14', 'http://localhost:3310/assets/images/concert-place-profile-picture/improfiltoussaint.png', 'toussaint@gmail.fr', '$argon2id$v=19$m=16,t=2,p=1$WHZnZm5MajU3dGxPTDhOYQ$HH/o0irIqZLdhW1cmm7xNw', 'concert_place', '2025-06-22'), 
 ('ElectroNova', '1998-08-02', "http://localhost:3310/assets/images/artist-profile-picture/ElectroNova.png", 'electronova@gmail.fr', '$argon2id$v=19$m=16,t=2,p=1$WHZnZm5MajU3dGxPTDhOYQ$HH/o0irIqZLdhW1cmm7xNw', 'artist', '2025-06-22'),
-('SoulMates', '1997-09-16', "http://localhost:3310/assets/images/artist-profile-picture/SoulMate.png", 'soulmate@gmail.fr', '$argon2id$v=19$m=16,t=2,p=1$WHZnZm5MajU3dGxPTDhOYQ$HH/o0irIqZLdhW1cmm7xNw', 'artist', '2025-06-22')
+('SoulMates', '1997-09-16', "http://localhost:3310/assets/images/artist-profile-picture/SoulMate.png", 'soulmate@gmail.fr', '$argon2id$v=19$m=16,t=2,p=1$WHZnZm5MajU3dGxPTDhOYQ$HH/o0irIqZLdhW1cmm7xNw', 'artist', '2025-06-22'),
+('The Jazz Bros', '1988-09-06', "http://localhost:3310/assets/images/artist-profile-picture/The-Jazz-Bros.png", 'jazz-bros@gmail.fr', '$argon2id$v=19$m=16,t=2,p=1$WHZnZm5MajU3dGxPTDhOYQ$HH/o0irIqZLdhW1cmm7xNw', 'artist', '2025-06-23'),
+('Urban Poets', '1987-04-16', "http://localhost:3310/assets/images/artist-profile-picture/Urban-Poets.png", 'urban-poets@gmail.fr', '$argon2id$v=19$m=16,t=2,p=1$WHZnZm5MajU3dGxPTDhOYQ$HH/o0irIqZLdhW1cmm7xNw', 'artist', '2025-06-23')
 ;
 
 CREATE TABLE artist (
@@ -51,7 +53,10 @@ Imaginez des basses qui groovent, des cuivres qui swinguent et des mélodies qui
 
 Préparez-vous à vivre la musique comme jamais auparavant. On se voit bientôt ! 🎶🔥', 'http://localhost:3310/assets/audios/demo/1funkologie.mp3', 'https://www.funkologie.fr', 'http://localhost:3310/assets/images/artist-profile-picture/IMG_20250514_103311.jpg', 'https://www.instagram.com/', '', '', '', '', ''),
 (7, 'ElectroNova', 'ElectroNova vous plonge dans un univers électro cosmique où rythmes puissants et visuels immersifs s’entremêlent. \n\nUn voyage musical qui secoue les sens.', 'http://localhost:3310/assets/audios/demo/ElectroNova.mp3', 'https://electronova.com', 'http://localhost:3310/assets/images/artist-profile-picture/ElectroNova.png', "https://www.instagram.com", "https://www.facebook.com", "https://www.twitter.com", "https://www.spotify.com", "https://www.deezer.com", '' ),
-(8, 'SoulMates', 'Un duo qui revisite les classiques de la soul avec modernité et émotion. \n\nDes voix chaleureuses, une guitare envoûtante et une présence scénique inoubliable.', 'http://localhost:3310/assets/audios/demo/SoulMates.mp3', 'https://soulmates.com', 'http://localhost:3310/assets/images/artist-profile-picture/SoulMates.png', "https://www.instagram.com", "", "https://www.twitter.com", "", "", 'https://www.youtube.com');
+(8, 'SoulMates', 'Un duo qui revisite les classiques de la soul avec modernité et émotion. \n\nDes voix chaleureuses, une guitare envoûtante et une présence scénique inoubliable.', 'http://localhost:3310/assets/audios/demo/SoulMates.mp3', 'https://soulmates.com', 'http://localhost:3310/assets/images/artist-profile-picture/SoulMates.png', "https://www.instagram.com", "", "https://www.twitter.com", "", "", 'https://www.youtube.com'),
+(9, "The Jazz Bros", 'The Jazz Bros, c’est un cocktail de jazz classique et de groove contemporain. \n\nSaxophone, contrebasse et batterie en parfaite harmonie pour vous faire swinguer.', 'http://localhost:3310/assets/audios/demo/JazzBros.mp3', 'https://the-jazz-bros.com', 'http://localhost:3310/assets/images/artist-profile-picture/The-Jazz-Bros.png', "https://www.instagram.com", "https://www.facebook.com", "", "", "", 'https://www.youtube.com'),
+(10, "Urban Poets", 'Collectif de hip-hop et slam engagé, Urban Poets mêle poésie urbaine et beats percutants pour éveiller les consciences et secouer les scènes.', 'http://localhost:3310/assets/audios/demo/UrbanPoets.mp3', 'https://urban-poets.com', 'http://localhost:3310/assets/images/artist-profile-picture/Urban-Poets.png', "https://www.instagram.com", "https://www.facebook.com", "https://www.twitter.com", "https://www.spotify.com", "https://www.deezer.com", 'https://www.youtube.com')
+;
 
 CREATE TABLE favorite_artist (
 user_id INT NOT NULL,
@@ -84,7 +89,14 @@ VALUES
 ('http://localhost:3310/assets/images/artist-photo/electronova3.jpg', '2025-06-22', 7),
 ('http://localhost:3310/assets/images/artist-photo/soulmates1.jpg', '2025-06-22', 8),
 ('http://localhost:3310/assets/images/artist-photo/soulmates2.jpg', '2025-06-22', 8),
-('http://localhost:3310/assets/images/artist-photo/soulmates3.jpg', '2025-06-22', 8);
+('http://localhost:3310/assets/images/artist-photo/soulmates3.jpg', '2025-06-22', 8),
+('http://localhost:3310/assets/images/artist-photo/jazzbros1.jpg', '2025-06-23', 9),
+('http://localhost:3310/assets/images/artist-photo/jazzbros2.jpg', '2025-06-23', 9),
+('http://localhost:3310/assets/images/artist-photo/jazzbros3.jpg', '2025-06-23', 9),
+('http://localhost:3310/assets/images/artist-photo/urban-poets1.jpg', '2025-06-23', 10),
+('http://localhost:3310/assets/images/artist-photo/urban-poets2.jpg', '2025-06-23', 10),
+('http://localhost:3310/assets/images/artist-photo/urban-poets3.jpg', '2025-06-23', 10)
+;
 
 CREATE TABLE music_style (
 id INT PRIMARY KEY AUTO_INCREMENT,
@@ -93,7 +105,22 @@ name VARCHAR(50) UNIQUE NOT NULL
 
 INSERT INTO music_style (name)
 VALUES
-('Classique'), ('Rock'), ('Jazz'), ('Pop'), ('Électronique'), ('Hip-hop'), ('R&B'), ('Blues'), ('Country'), ('Métal'), ('Reggae'), ('Folk'), ('Soul'), ('Funk'), ('Disco'), ('Musique du monde');
+('Classique'), 
+('Rock'), 
+('Jazz'), 
+('Pop'), 
+('Électronique'), 
+('Hip-hop'), 
+('R&B'), 
+('Blues'), 
+('Country'), 
+('Métal'), 
+('Reggae'), 
+('Folk'), 
+('Soul'), 
+('Funk'), 
+('Disco'), 
+('Musique du monde');
 
 
 CREATE TABLE artist_music_style (
@@ -117,7 +144,13 @@ VALUES
 (7, 7), 
 (8, 3),
 (8, 8), 
-(8, 13);
+(8, 13),
+(9, 2),
+(9, 3),
+(9, 8), 
+(10, 8),
+(10, 9)
+;
 
 CREATE TABLE concert_place (
 user_id INT PRIMARY KEY NOT NULL,
@@ -280,13 +313,7 @@ UNIQUE (date, hour, concert_place_id)
 
 INSERT INTO event (name, date, hour, image, is_validated, concert_place_id, description)
 VALUES (
-  'Soirée Rock & Chill',
-  '2025-07-10', '20:00',
-  'http://localhost:3310/assets/images/artist-photo/pexels-meline-waxx-44315-165971.png',
-  TRUE,
-  2,
-  'Une soirée inoubliable de rock avec des artistes locaux et de la bonne ambiance.'
-);
+  'Soirée Rock & Chill', '2025-07-10', '20:00', 'http://localhost:3310/assets/images/artist-photo/pexels-meline-waxx-44315-165971.png', true, 2, 'Une soirée inoubliable de rock avec des artistes locaux et de la bonne ambiance.');
 
 
 CREATE TABLE event_artist (
