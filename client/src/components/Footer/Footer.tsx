@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import "./Footer.css";
 
 function Footer() {
@@ -8,9 +9,11 @@ function Footer() {
           <img src="/images/logo_x.svg" alt="logo x" />
         </a>
         <ul>
-          <li>
-            <p>Conditions Générales d’utilisation</p>
-          </li>
+          <Link to="/CGU">
+            <li>
+              <p>Conditions Générales d’utilisation</p>
+            </li>
+          </Link>
           <li>
             <p>Équipe de développement</p>
           </li>
