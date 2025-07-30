@@ -46,7 +46,12 @@ function Event() {
                 </li>
               ))}
             </ul>{" "}
-            <iframe src={event.menu} title="menu" width={700} height={500} />
+            <iframe
+              src={`${event.menu}#toolbar=0`}
+              title="menu"
+              width={700}
+              height={500}
+            />
           </section>
           <section>
             <div className="event-image">
