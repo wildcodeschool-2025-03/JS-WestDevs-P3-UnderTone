@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 64px;
+  padding-top: 32px;
 
   & > section:first-of-type {
     width: 80%;
@@ -17,15 +18,21 @@
     gap: 0 32px;
 
     h1 {
-      font-size: 3rem;
       text-align: center;
-      margin-bottom: 16px;
+      font-size: 4.5rem;
+      font-family: var(--name-font);
+      font-weight: normal;
+      margin: 0 auto 16px;
+      text-shadow: 3px 2px 2px rgb(115, 115, 115);
     }
 
     p {
       text-align: center;
       align-self: center;
       font-size: 1.2rem;
+      white-space: pre-wrap;
+      width: 80%;
+      margin: 16px auto;
     }
 
     a {

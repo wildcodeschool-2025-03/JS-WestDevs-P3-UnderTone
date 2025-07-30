@@ -19,7 +19,7 @@ function ConcertPlaceSearchResult({
                 <h3>{concert_place.name}</h3>
                 <p>{concert_place.address}</p>
               </div>
-              <div>
+              <div className="oh">
                 <OpeningHoursDay hours={concert_place.openingHours} />
               </div>
             </Link>

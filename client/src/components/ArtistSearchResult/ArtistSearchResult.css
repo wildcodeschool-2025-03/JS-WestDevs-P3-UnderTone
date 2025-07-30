@@ -12,4 +12,11 @@
   p {
     padding: 0 16px;
   }
+
+  .artist-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 67px;
+  }
 }

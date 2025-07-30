@@ -42,7 +42,7 @@ Nous sommes *Funkology*, et on est là pour vous faire bouger et vibrer au rythm
 
 Imaginez des basses qui groovent, des cuivres qui swinguent et des mélodies qui vous collent à la peau. Chaque concert est une fête où on vous invite à danser, chanter et partager notre énergie avec vous, alors venez nous rejoindre pour une soirée inoubliable. 
 
-Préparez-vous à vivre la musique comme jamais auparavant. On se voit bientôt ! 🎶🔥', 'http://localhost:3310/assets/audios/demo/1funkologie.mp3', 'funkologie.fr', 'http://localhost:3310/assets/images/artist-profile-picture/IMG_20250514_103311.jpg', 'https://www.instagram.com/');
+Préparez-vous à vivre la musique comme jamais auparavant. On se voit bientôt ! 🎶🔥', 'http://localhost:3310/assets/audios/demo/1funkologie.mp3', 'https://www.funkologie.fr', 'http://localhost:3310/assets/images/artist-profile-picture/IMG_20250514_103311.jpg', 'https://www.instagram.com/');
 
 CREATE TABLE favorite_artist (
 user_id INT NOT NULL,

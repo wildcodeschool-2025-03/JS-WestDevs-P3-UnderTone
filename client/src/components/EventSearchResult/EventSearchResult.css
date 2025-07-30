@@ -16,11 +16,6 @@
   color: inherit;
 }
 
-.result img {
-  width: 150px;
-  height: auto;
-}
-
 .event-info {
   flex-grow: 1;
 }

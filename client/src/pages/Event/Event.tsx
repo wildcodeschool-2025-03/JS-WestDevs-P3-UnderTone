@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router";
 import "./Event.css";
 import { useEffect, useState } from "react";
 import FavoriteButton from "../../components/FavoriteButton/FavoriteButton";
+import StylesTypes from "../../components/StylesTypes/StylesTypes";
 import { useAuth } from "../../services/AuthContext";
 function Event() {
   const { id } = useParams();
@@ -16,36 +17,42 @@ function Event() {
       });
   }, [id]);
   const { isLogged } = useAuth();
+
+  const dateOptions: Intl.DateTimeFormatOptions = {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  };
+
   return (
-    <main className="event-container">
+    <main className="event-page">
       {event && (
         <>
           <section>
             <h1>{event.name}</h1>
             <p>
-              {event.date.toLocaleDateString()} à {event.hour}
+              Le {event.date.toLocaleDateString("fr-FR", dateOptions)} à{" "}
+              {event.hour.split(":").slice(0, -1).join("h")}
             </p>
-            <h2>Artistes invités</h2>
-            <ul className="event-artists">
-              {event.invitedArtists.map((artist) => (
-                <li key={artist.id}>
-                  <Link to={`/app/artist/${artist.id}`}>
-                    <img
-                      src={artist.profilePicture}
-                      alt={`portrait de ${artist.name}`}
-                    />
-                    <div className="artist-info">
-                      <h3>{artist.name}</h3>
-                      <p>
-                        {artist.musicStyles.map((musicStyle) => (
-                          <li key={musicStyle.id}>{musicStyle.name}</li>
-                        ))}
-                      </p>
-                    </div>
-                  </Link>
-                </li>
-              ))}
-            </ul>{" "}
+            <div className="invited-artists">
+              <h2>Artiste(s) invité(s)</h2>
+              <ul className="event-artists">
+                {event.invitedArtists.map((artist) => (
+                  <li key={artist.id}>
+                    <Link to={`/app/artist/${artist.id}`}>
+                      <img
+                        src={artist.profilePicture}
+                        alt={`portrait de ${artist.name}`}
+                      />
+                      <div className="artist-info">
+                        <h3>{artist.name}</h3>
+                        <StylesTypes stylesTypes={artist.musicStyles} />
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
             <iframe
               src={`${event.menu}#toolbar=0`}
               title="menu"
