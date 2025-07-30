@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import "./Footer.css";
 
 function Footer() {
@@ -9,8 +10,11 @@ function Footer() {
         </a>
         <ul>
           <li>
-            <p>Conditions Générales d’utilisation</p>
+            <Link to="/CGU">
+              <p>Conditions Générales d’utilisation</p>
+            </Link>
           </li>
+
           <li>
             <p>Équipe de développement</p>
           </li>

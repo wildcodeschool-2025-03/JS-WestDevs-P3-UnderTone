@@ -9,6 +9,7 @@ import { RouterProvider, createBrowserRouter } from "react-router";
 import App from "./App";
 import Artist from "./pages/Artist/Artist";
 import ArtistCreation from "./pages/ArtistCreation/ArtistCreation";
+import CGU from "./pages/CGU/CGU";
 import ConcertPlace from "./pages/ConcertPlace/ConcertPlace";
 import ConcertPlaceCreation from "./pages/ConcertPlaceCreation/ConcertPlaceCreation";
 import Contact from "./pages/Contact/Contact";
@@ -100,6 +101,10 @@ const router = createBrowserRouter([
       {
         path: "*",
         element: <NotFound />,
+      },
+      {
+        path: "/CGU",
+        element: <CGU />,
       },
     ],
   },
