@@ -204,7 +204,8 @@ FOREIGN KEY (type_id) REFERENCES type(id)
 INSERT INTO concert_place_type
 (concert_place_id, type_id)
 VALUES
-(2, 1);
+(2, 1),
+(3, 1);
 
 CREATE TABLE event (
 id INT PRIMARY KEY AUTO_INCREMENT,
