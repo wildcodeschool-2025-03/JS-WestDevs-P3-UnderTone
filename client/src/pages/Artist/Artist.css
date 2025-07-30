@@ -34,7 +34,7 @@
 @media screen and (min-width: 760px) {
   .artist-page {
     padding-top: 16px;
-    min-height: calc(100vh - 85px - 56px);
+    min-height: calc(100vh - 75px - 56px);
 
     h1 {
       font-size: 4.5rem;

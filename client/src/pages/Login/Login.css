@@ -48,7 +48,7 @@
 @media screen and (min-width: 768px) {
   .login-page {
     justify-content: flex-end;
-    min-height: calc(100vh - 85px - 56px);
+    min-height: calc(100vh - 75px - 56px);
 
     section {
       margin-right: 20vw;

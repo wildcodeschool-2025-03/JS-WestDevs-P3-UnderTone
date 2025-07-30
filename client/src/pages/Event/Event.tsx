@@ -46,7 +46,12 @@ function Event() {
                 </li>
               ))}
             </ul>{" "}
-            <iframe src={event.menu} title="menu" width={700} height={500} />
+            <iframe
+              src={`${event.menu}#toolbar=0`}
+              title="menu"
+              width={700}
+              height={500}
+            />
           </section>
           <section>
             <div className="event-image">
@@ -54,7 +59,10 @@ function Event() {
               <img src={event.image} alt="affiche de la soirée" />
             </div>
             <div className="event-place">
-              <p>{event.concertPlaceName}</p>
+              <Link to={`/app/concert-place/${event.concertPlaceId}`}>
+                {event.concertPlaceName}
+              </Link>
+
               <p>{event.address}</p>
               <p>{event.description}</p>
             </div>

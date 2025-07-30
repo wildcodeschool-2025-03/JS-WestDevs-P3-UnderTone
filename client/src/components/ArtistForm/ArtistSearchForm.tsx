@@ -18,6 +18,12 @@ function SearchArtist() {
     FilteredArtistList[]
   >([]);
 
+  useEffect(() => {
+    fetch("http://localhost:3310/api/search/artist")
+      .then((res) => res.json())
+      .then((data) => setFilteredArtistList(data));
+  }, []);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {

@@ -32,7 +32,7 @@ function OpeningHours({ hours }: OpeningHoursProps) {
     const bothClosed = !midi && !soir;
 
     return (
-      <div key={d.weekDay} className="day">
+      <li key={d.weekDay} className="day">
         <strong>{isToday ? `Aujourd’hui (${d.weekDay})` : d.weekDay}</strong>
         {bothClosed ? (
           <div>Fermé</div>
@@ -42,15 +42,17 @@ function OpeningHours({ hours }: OpeningHoursProps) {
             {soir ? <div>{soir}</div> : <div>Fermé le soir</div>}
           </>
         )}
-      </div>
+      </li>
     );
   };
 
   return (
     <section className="opening-hours">
       <h2>Horaires d'ouverture</h2>
-      {today && renderDay(today, true)}
-      {showAll && others.map((d) => renderDay(d))}
+      <ul>
+        {today && renderDay(today, true)}
+        {showAll && others.map((d) => renderDay(d))}
+      </ul>
       <button type="button" onClick={() => setShowAll(!showAll)}>
         {showAll ? "Voir moins ▲" : "Voir plus ▼"}
       </button>

@@ -33,44 +33,58 @@ function ConcertPlace() {
     <main className="concert-place-page">
       {concertPlace && (
         <>
-          <h1>{concertPlace.name}</h1>
+          <section>
+            <h1>{concertPlace.name}</h1>
 
-          <ProfilePicturePlayFavorite
-            profilePicture={concertPlace.profile_picture}
-            name={concertPlace.name}
-          />
+            <ProfilePicturePlayFavorite
+              profilePicture={concertPlace.profile_picture}
+              name={concertPlace.name}
+            />
 
-          {concertPlace.types && (
-            <StylesTypes stylesTypes={concertPlace.types} />
-          )}
-
-          {concertPlace.description && <p>{concertPlace.description}</p>}
-
-          {socialNetworks && (
-            <SocialNetworks profileDatas={{ ...socialNetworks }} />
-          )}
-
-          {concertPlace.web_site && (
-            <a href={concertPlace.web_site} target="_blank" rel="noreferrer">
-              {concertPlace.name.split(" ").join("-")}
-              <span>.com</span>
-            </a>
-          )}
-
-          {concertPlace.menu && <Menu />}
-
-          {concertPlace.concertPlacePhotos && (
-            <Carousel photosDatas={concertPlace.concertPlacePhotos} />
-          )}
-
-          {concertPlace.address && <Address address={concertPlace.address} />}
-
-          {concertPlace.openingHours &&
-            concertPlace.openingHours.length > 0 && (
-              <OpeningHours hours={concertPlace.openingHours} />
+            {concertPlace.types && (
+              <StylesTypes stylesTypes={concertPlace.types} />
             )}
 
-          <Maps />
+            {concertPlace.description && <p>{concertPlace.description}</p>}
+
+            {concertPlace.web_site && (
+              <a href={concertPlace.web_site} target="_blank" rel="noreferrer">
+                {concertPlace.name
+                  .normalize("NFD")
+                  .replace(/\p{Mn}/gu, "")
+                  .split(" ")
+                  .join("-")}
+                <span>.com</span>
+              </a>
+            )}
+          </section>
+
+          <section>
+            {socialNetworks && (
+              <SocialNetworks profileDatas={{ ...socialNetworks }} />
+            )}
+          </section>
+
+          <section className="menu">
+            {concertPlace.menu && <Menu menu={concertPlace.menu} />}
+          </section>
+
+          <section className="carousel">
+            {concertPlace.concertPlacePhotos && (
+              <Carousel photosDatas={concertPlace.concertPlacePhotos} />
+            )}
+          </section>
+
+          <section className="address-opening-hours">
+            {concertPlace.address && <Address address={concertPlace.address} />}
+
+            {concertPlace.openingHours &&
+              concertPlace.openingHours.length > 0 && (
+                <OpeningHours hours={concertPlace.openingHours} />
+              )}
+
+            <Maps />
+          </section>
         </>
       )}
     </main>
