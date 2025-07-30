@@ -19,7 +19,9 @@ VALUES
 ('Weber', '1992-04-18', 'http://localhost:3310/assets/images/concert-place-profile-picture/improfileweber.png', 'weber@gmail.fr', '$argon2id$v=19$m=16,t=2,p=1$WHZnZm5MajU3dGxPTDhOYQ$HH/o0irIqZLdhW1cmm7xNw', 'concert_place', '2025-06-21'),
 ('Maillot', '1983-12-20', 'http://localhost:3310/assets/images/concert-place-profile-picture/improfilmaillot.png', 'maillot@gmail.fr', '$argon2id$v=19$m=16,t=2,p=1$WHZnZm5MajU3dGxPTDhOYQ$HH/o0irIqZLdhW1cmm7xNw', 'concert_place', '2025-06-22'),
 ('Toussaint', '1976-02-14', 'http://localhost:3310/assets/images/concert-place-profile-picture/improfiltoussaint.png', 'toussaint@gmail.fr', '$argon2id$v=19$m=16,t=2,p=1$WHZnZm5MajU3dGxPTDhOYQ$HH/o0irIqZLdhW1cmm7xNw', 'concert_place', '2025-06-22'), 
-('ElectroNova', '1998-08-02', "http://localhost:3310/assets/images/artist-profile-picture/ElectroNova.png", 'electronova@gmail.fr', '$argon2id$v=19$m=16,t=2,p=1$WHZnZm5MajU3dGxPTDhOYQ$HH/o0irIqZLdhW1cmm7xNw', 'artist', '2025-06-22');
+('ElectroNova', '1998-08-02', "http://localhost:3310/assets/images/artist-profile-picture/ElectroNova.png", 'electronova@gmail.fr', '$argon2id$v=19$m=16,t=2,p=1$WHZnZm5MajU3dGxPTDhOYQ$HH/o0irIqZLdhW1cmm7xNw', 'artist', '2025-06-22'),
+('SoulMates', '1997-09-16', "http://localhost:3310/assets/images/artist-profile-picture/SoulMate.png", 'soulmate@gmail.fr', '$argon2id$v=19$m=16,t=2,p=1$WHZnZm5MajU3dGxPTDhOYQ$HH/o0irIqZLdhW1cmm7xNw', 'artist', '2025-06-22')
+;
 
 CREATE TABLE artist (
 user_id INT PRIMARY KEY NOT NULL,
@@ -48,7 +50,8 @@ Nous sommes *Funkology*, et on est là pour vous faire bouger et vibrer au rythm
 Imaginez des basses qui groovent, des cuivres qui swinguent et des mélodies qui vous collent à la peau. Chaque concert est une fête où on vous invite à danser, chanter et partager notre énergie avec vous, alors venez nous rejoindre pour une soirée inoubliable. 
 
 Préparez-vous à vivre la musique comme jamais auparavant. On se voit bientôt ! 🎶🔥', 'http://localhost:3310/assets/audios/demo/1funkologie.mp3', 'https://www.funkologie.fr', 'http://localhost:3310/assets/images/artist-profile-picture/IMG_20250514_103311.jpg', 'https://www.instagram.com/', '', '', '', '', ''),
-(7, 'ElectroNova', 'ElectroNova vous plonge dans un univers électro cosmique où rythmes puissants et visuels immersifs s’entremêlent. \n\nUn voyage musical qui secoue les sens.', 'http://localhost:3310/assets/audios/demo/ElectroNova.mp3', 'https://electronova.com', 'http://localhost:3310/assets/images/artist-profile-picture/ElectroNova.png', "https://www.instagram.com", "https://www.facebook.com", "https://www.twitter.com", "https://www.spotify.com", "https://www.deezer.com", '' );
+(7, 'ElectroNova', 'ElectroNova vous plonge dans un univers électro cosmique où rythmes puissants et visuels immersifs s’entremêlent. \n\nUn voyage musical qui secoue les sens.', 'http://localhost:3310/assets/audios/demo/ElectroNova.mp3', 'https://electronova.com', 'http://localhost:3310/assets/images/artist-profile-picture/ElectroNova.png', "https://www.instagram.com", "https://www.facebook.com", "https://www.twitter.com", "https://www.spotify.com", "https://www.deezer.com", '' ),
+(8, 'SoulMates', 'Un duo qui revisite les classiques de la soul avec modernité et émotion. \n\nDes voix chaleureuses, une guitare envoûtante et une présence scénique inoubliable.', 'http://localhost:3310/assets/audios/demo/SoulMates.mp3', 'https://soulmates.com', 'http://localhost:3310/assets/images/artist-profile-picture/SoulMates.png', "https://www.instagram.com", "", "https://www.twitter.com", "", "", 'https://www.youtube.com');
 
 CREATE TABLE favorite_artist (
 user_id INT NOT NULL,
@@ -76,9 +79,12 @@ VALUES
 ('http://localhost:3310/assets/images/artist-photo/pexels-edwardeyer-811838.png', '2025-06-20', 1),
 ('http://localhost:3310/assets/images/artist-photo/pexels-hendrikbgr-744318.png', '2025-06-20', 1),
 ('http://localhost:3310/assets/images/artist-photo/pexels-meline-waxx-44315-165971.png', '2025-06-20', 1),
-('http://localhost:3310/assets/images/artist-photo/electronova1.png', '2025-06-22', 7),
-('http://localhost:3310/assets/images/artist-photo/electronova2.png', '2025-06-22', 7),
-('http://localhost:3310/assets/images/artist-photo/electronova3.png', '2025-06-22', 7);
+('http://localhost:3310/assets/images/artist-photo/electronova1.jpg', '2025-06-22', 7),
+('http://localhost:3310/assets/images/artist-photo/electronova2.jpg', '2025-06-22', 7),
+('http://localhost:3310/assets/images/artist-photo/electronova3.jpg', '2025-06-22', 7),
+('http://localhost:3310/assets/images/artist-photo/soulmates1.jpg', '2025-06-22', 8),
+('http://localhost:3310/assets/images/artist-photo/soulmates2.jpg', '2025-06-22', 8),
+('http://localhost:3310/assets/images/artist-photo/soulmates3.jpg', '2025-06-22', 8);
 
 CREATE TABLE music_style (
 id INT PRIMARY KEY AUTO_INCREMENT,
@@ -108,7 +114,10 @@ VALUES
 (1, 14), 
 (1, 16), 
 (7, 5),
-(7, 7);
+(7, 7), 
+(8, 3),
+(8, 8), 
+(8, 13);
 
 CREATE TABLE concert_place (
 user_id INT PRIMARY KEY NOT NULL,
