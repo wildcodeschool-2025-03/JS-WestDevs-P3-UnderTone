@@ -12,5 +12,22 @@
       inset -4px -7px 5px 0px rgba(0, 0, 0, 0.25),
       inset 2px 7px 5px 0px rgba(217, 217, 217, 0.5),
       2px 4px 15px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .input-group {
+      width: 300px;
+      margin-top: 16px;
+
+      input {
+        text-align: center;
+      }
+    }
+
+    button {
+      margin-bottom: 32px;
+    }
   }
 }

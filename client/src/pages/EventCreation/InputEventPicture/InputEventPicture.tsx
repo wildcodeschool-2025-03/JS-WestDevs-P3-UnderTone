@@ -4,8 +4,9 @@ import "./InputEventPicture.css";
 function InputEventPicture() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [errorMessage, setErrorMessage] = useState("");
+  const [imageSrc, setImageSrc] = useState("");
 
-  const handleFileChange = () => {
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!fileInputRef.current) return;
 
     const file = fileInputRef.current.files?.[0];
@@ -22,10 +23,14 @@ function InputEventPicture() {
         setErrorMessage("");
       }
     }
+
+    event.target.files?.length &&
+      setImageSrc(URL.createObjectURL(event.target.files[0]));
   };
 
   return (
     <div className="input-group">
+      <label htmlFor="event-picture-input">Photo / Affiche</label>
       <input
         type="file"
         name="event_picture"
@@ -34,7 +39,17 @@ function InputEventPicture() {
         ref={fileInputRef}
         onChange={handleFileChange}
       />
-      <label htmlFor="event-picture-input">Photo / Affiche</label>
+      <label htmlFor="event-picture-input">
+        {" "}
+        {imageSrc ? (
+          <img src={imageSrc} alt="Fichier à upload" />
+        ) : (
+          <>
+            <p>Cliquez pour ajouter une photo</p>
+            <div />
+          </>
+        )}
+      </label>
       {errorMessage ? (
         <p style={{ color: "red" }}>{errorMessage}</p>
       ) : (

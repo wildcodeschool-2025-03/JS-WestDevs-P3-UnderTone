@@ -1,0 +1,73 @@
+.input-group:has(input[name="photos"]) {
+  height: 170px;
+  margin-top: 32px;
+
+  label:first-of-type {
+    transform: translateY(-32px);
+  }
+
+  input {
+    display: none;
+  }
+
+  .filled + label:last-of-type {
+    border-color: var(--secondary-color);
+  }
+
+  label:last-of-type {
+    position: initial;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: unset !important;
+    padding: 16px;
+    width: 300px;
+    height: 170px;
+    margin: 0;
+    border: 2px solid var(--darker-text-color);
+    border-radius: 20px;
+
+    img {
+      width: 130px;
+      height: 130px;
+      object-fit: cover;
+    }
+
+    p {
+      display: block !important;
+      margin-top: 0;
+    }
+
+    .images {
+      display: flex;
+      flex-direction: row;
+      overflow: hidden;
+      overflow-x: auto;
+      scroll-snap-type: x proximity;
+      gap: 16px;
+      width: 100%;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 80%;
+    }
+
+    div > div {
+      width: 33px;
+      height: 33px;
+      background-color: var(--darker-text-color);
+      background-image: url("/images/+.svg");
+      background-size: 22px;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 50%;
+    }
+  }
+}

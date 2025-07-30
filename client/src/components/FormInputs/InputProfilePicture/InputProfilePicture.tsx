@@ -4,8 +4,9 @@ import "./InputProfilePicture.css";
 function InputProfilePicture() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [errorMessage, setErrorMessage] = useState("");
+  const [imageSrc, setImageSrc] = useState("");
 
-  const handleFileChange = () => {
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!fileInputRef.current) return;
 
     const file = fileInputRef.current.files?.[0];
@@ -22,11 +23,15 @@ function InputProfilePicture() {
         setErrorMessage("");
       }
     }
+    event.target.files?.length &&
+      setImageSrc(URL.createObjectURL(event.target.files[0]));
   };
 
   return (
     <div className="input-group">
+      <label htmlFor="profile_picture">Photo de profil</label>
       <input
+        className={fileInputRef.current?.files?.length ? "filled" : undefined}
         type="file"
         name="profile_picture"
         id="profile-picture"
@@ -34,7 +39,16 @@ function InputProfilePicture() {
         ref={fileInputRef}
         onChange={handleFileChange}
       />
-      <label htmlFor="profile-picture">Photo de profil</label>
+      <label htmlFor="profile-picture">
+        {imageSrc ? (
+          <img src={imageSrc} alt="Fichier à upload" />
+        ) : (
+          <>
+            <p>Cliquez pour ajouter une photo</p>
+            <div />
+          </>
+        )}
+      </label>
       {errorMessage ? (
         <p style={{ color: "red" }}>{errorMessage}</p>
       ) : (

@@ -1,0 +1,51 @@
+.input-group:has(input[name="profile_picture"]) {
+  height: 170px;
+  margin-top: 32px;
+
+  label:first-of-type {
+    transform: translateY(-32px);
+  }
+
+  input {
+    display: none;
+  }
+
+  .filled + label:last-of-type {
+    border-color: var(--secondary-color);
+  }
+
+  label:last-of-type {
+    position: initial;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: unset !important;
+    width: 300px;
+    height: 170px;
+    margin: 0;
+    border: 2px solid var(--darker-text-color);
+    border-radius: 20px;
+
+    img {
+      width: 130px;
+      height: 130px;
+      object-fit: cover;
+    }
+
+    p {
+      display: block !important;
+      margin-top: 0;
+    }
+    div {
+      width: 33px;
+      height: 33px;
+      background-color: var(--darker-text-color);
+      background-image: url("/images/+.svg");
+      background-size: 22px;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 50%;
+    }
+  }
+}
