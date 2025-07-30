@@ -9,11 +9,12 @@ function Footer() {
           <img src="/images/logo_x.svg" alt="logo x" />
         </a>
         <ul>
-          <Link to="/CGU">
-            <li>
+          <li>
+            <Link to="/CGU">
               <p>Conditions Générales d’utilisation</p>
-            </li>
-          </Link>
+            </Link>
+          </li>
+
           <li>
             <p>Équipe de développement</p>
           </li>
