@@ -38,7 +38,7 @@ class EventRepository {
 
   async eventSearch(eventDate: string) {
     const [rows] = await databaseClient.query<Rows>(
-      "SELECT event.id, event.name, event.image, event.hour, cp.name AS concert_place, (SELECT JSON_ARRAYAGG(JSON_OBJECT('id', a.user_id, 'name', a.name)) FROM artist AS a JOIN event_artist AS ea ON ea.artist_id = a.user_id WHERE ea.event_id = event.id) AS artistList FROM event JOIN concert_place AS cp ON event.concert_place_id = cp.user_id JOIN event_artist AS ea ON ea.event_id = event.id WHERE date LIKE CONCAT(?, '%') AND ea.artist_presence = 1",
+      "SELECT event.id, event.name, event.image, event.hour, cp.name AS concert_place, (SELECT JSON_ARRAYAGG(JSON_OBJECT('id', a.user_id, 'name', a.name)) FROM artist AS a JOIN event_artist AS ea ON ea.artist_id = a.user_id WHERE ea.event_id = event.id) AS artistList FROM event JOIN concert_place AS cp ON event.concert_place_id = cp.user_id JOIN event_artist AS ea ON ea.event_id = event.id WHERE date LIKE CONCAT(?, '%')",
       [eventDate],
     );
     return rows;

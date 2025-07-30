@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import "./ConcertPlaceSearchResult.css";
+import OpeningHoursDay from "../OpeningHoursDay/OpeningHoursDay";
 
 function ConcertPlaceSearchResult({
   concertPlaceList,
@@ -17,6 +18,9 @@ function ConcertPlaceSearchResult({
               <div className="concert-place-info">
                 <h3>{concert_place.name}</h3>
                 <p>{concert_place.address}</p>
+              </div>
+              <div>
+                <OpeningHoursDay hours={concert_place.openingHours} />
               </div>
             </Link>
           </li>

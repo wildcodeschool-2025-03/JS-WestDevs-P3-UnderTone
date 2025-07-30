@@ -1,0 +1,28 @@
+.result {
+  a {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    img {
+      width: 100px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+  }
+  h3,
+  p {
+    margin: 0;
+    padding: 0 16px;
+  }
+  div:last-of-type {
+    align-self: flex-end;
+  }
+}
+
+.concert-place-info {
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
