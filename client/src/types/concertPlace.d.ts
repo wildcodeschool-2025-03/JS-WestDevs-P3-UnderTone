@@ -47,7 +47,8 @@ type FilteredConcertPlaceList = {
   id: string;
   name: string;
   type: string;
-  profil_picture: string;
+  address: string;
+  profile_picture: string;
   openingHours: {
     weekDay: string;
     openingHourNoon: string | null;

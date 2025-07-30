@@ -17,6 +17,12 @@ function ConcertPlaceSearchForm() {
     FilteredConcertPlaceList[]
   >([]);
 
+  useEffect(() => {
+    fetch("http://localhost:3310/api/search/concert-place")
+      .then((res) => res.json())
+      .then((data) => setFilteredConcertPlaceList(data));
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLFormElement>) => {
     const formData = new FormData(e.currentTarget);
     const name = formData.get("name")?.toString() || "";

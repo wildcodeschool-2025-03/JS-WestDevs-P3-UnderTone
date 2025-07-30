@@ -16,6 +16,7 @@ function ConcertPlaceSearchResult({
               />
               <div className="concert-place-info">
                 <h3>{concert_place.name}</h3>
+                <p>{concert_place.address}</p>
               </div>
             </Link>
           </li>
