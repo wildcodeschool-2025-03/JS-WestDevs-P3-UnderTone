@@ -57,9 +57,24 @@ class UserRepository {
     profile_picture: string | null,
     birthdate: string | null,
   ) {
+    const columns: string[] = [];
+    const values: string[] = [];
+
+    if (profile_picture) {
+      columns.push("profile_picture = ?");
+      values.push(profile_picture);
+    }
+
+    if (birthdate) {
+      columns.push("birthdate = ?");
+      values.push(birthdate);
+    }
+
+    const columnsSet = columns.join(", ");
+
     const [result] = await databaseClient.query<Result>(
-      "UPDATE user SET profile_picture = ?, birthdate = ? WHERE id = ?",
-      [profile_picture, birthdate, id],
+      `UPDATE user SET ${columnsSet} WHERE id = ?`,
+      [...values, id],
     );
 
     return result.affectedRows;

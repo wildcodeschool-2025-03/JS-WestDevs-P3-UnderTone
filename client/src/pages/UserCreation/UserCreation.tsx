@@ -19,12 +19,8 @@ function UserCreation() {
         toast.success("🎊 Vos données ont bien été enregistrées 🎊");
         toast.info("Vous allez être redirigé !");
         setTimeout(() => {
-          switch (user?.status) {
-            case "user":
-              navigate("/app/account");
-              break;
-          }
-        }, 2000);
+          navigate("/app/account");
+        }, 1500);
       }
     });
   };
