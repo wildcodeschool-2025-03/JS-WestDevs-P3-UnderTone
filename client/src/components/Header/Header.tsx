@@ -14,7 +14,6 @@ function Header() {
   const handleAvatarToggle = () => {
     setShowPopover((prev) => !prev);
   };
-
   return (
     <header>
       <nav className={`navbar ${showLinks ? "show-nav" : "hide-nav"}`}>
@@ -36,13 +35,11 @@ function Header() {
                 </Link>
               </li>
             )}
-
             <li>
               <Link to="research" onClick={handleShowLinks}>
                 RECHERCHE
               </Link>
             </li>
-
             <li>
               <Link to="contact" onClick={handleShowLinks}>
                 CONTACT
