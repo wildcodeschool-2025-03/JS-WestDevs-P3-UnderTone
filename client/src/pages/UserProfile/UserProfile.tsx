@@ -131,7 +131,7 @@ function UserProfile() {
               upcommingEvents.map((event) => (
                 <li key={event.id}>
                   <Link to={`/app/event/${event.id}`}>
-                    <img src={event.image} alt={event.name} />
+                    {event.image && <img src={event.image} alt={event.name} />}
                     <ul>
                       <li>{event.name}</li>
                       <li>{event.concert_place}</li>
@@ -140,8 +140,10 @@ function UserProfile() {
                           .map((artist) => artist.name)
                           .join(" - ")}
                       </li>
+                    </ul>
+                    <ul>
                       <li>{event.date.toLocaleDateString()}</li>
-                      <li>{event.hour}</li>
+                      <li>{event.hour.split(":").slice(0, -1).join("h")}</li>
                     </ul>
                   </Link>
                 </li>
