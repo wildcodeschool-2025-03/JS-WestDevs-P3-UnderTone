@@ -50,7 +50,6 @@ const readFavorite: RequestHandler = async (req, res) => {
     }
     res.sendStatus(200);
   } catch (err) {
-    console.warn(err);
     res.status(500).json({ error: "Erreur serveur" });
   }
 };
@@ -79,7 +78,6 @@ const addFavorite: RequestHandler = async (req, res) => {
 
     res.status(201).json({ message: "Ajouté aux favoris" });
   } catch (err) {
-    console.warn(err);
     res.status(500).json({ error: "Erreur serveur" });
   }
 };

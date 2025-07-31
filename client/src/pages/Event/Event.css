@@ -1,5 +1,5 @@
 .event-page {
-  height: calc(100vh - 56px - 75px);
+  min-height: calc(100vh - 56px - 75px);
   display: flex;
   justify-content: center;
   padding-bottom: 32px;
@@ -32,6 +32,8 @@
     img {
       max-height: fit-content;
       width: 100px;
+      height: 67px;
+      object-fit: cover;
       border-radius: 10px;
       margin-left: 16px;
     }
@@ -99,6 +101,9 @@
       margin-top: 8px;
       font-size: 1.1rem;
       color: var(--darker-text-color);
+    }
+    p:last-of-type {
+      white-space: pre-wrap;
     }
   }
 }

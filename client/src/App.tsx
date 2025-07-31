@@ -11,7 +11,7 @@ function App() {
       <Outlet />
       <Footer />
       <ToastContainer
-        position="top-center"
+        position="bottom-left"
         autoClose={3000}
         theme="dark"
         newestOnTop={true}

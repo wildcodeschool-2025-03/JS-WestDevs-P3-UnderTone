@@ -21,7 +21,7 @@ function UserCreation() {
         setTimeout(() => {
           switch (user?.status) {
             case "user":
-              navigate("/app/reserach");
+              navigate("/app/account");
               break;
           }
         }, 2000);
