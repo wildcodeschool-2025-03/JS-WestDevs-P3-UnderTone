@@ -137,6 +137,7 @@ INSERT INTO artist_music_style
 (artist_id, music_style_id)
 VALUES
 (1, 4),
+(1, 2),
 (1, 13),
 (1, 14), 
 (1, 16), 
@@ -171,11 +172,11 @@ INSERT INTO concert_place
 (user_id, name, description, web_site, profile_picture, facebook_link, instagram_link, x_link, menu, address) 
 VALUES
 (2, "Vent Débarasse", "Vent Débarasse vous invite à savourer des plats faits maison, principalements maritimes, au rythme de la musique live. \n\nChaque soir, des artistes montent sur scène pour accompagner votre repas de notes jazz, soul ou pop ! 🍹 🪇 🎵", "vent-debarasse.fr", "http://localhost:3310/assets/images/concert-place-profile-picture/vent-debarasse.jpg", "https://www.facebook.com", "https://www.instagram.com", "https://www.twitter.com", "http://localhost:3310/assets/menus/vent-debarasse.pdf", '3 rue Erik Satie\n44400 Rezé'), 
-(3, "Guillaume et Fils", "Chez Guillaume et Fils, dégustez une cuisine locale raffinée au son d’ensembles jazz intimistes. \n\nCe lieu chaleureux mêle élégance et convivialité, parfait pour une soirée entre amis ou un dîner romantique. \n\nLes chefs travaillent des produits frais du marché tandis que des musiciens talentueux vous enveloppent de leurs mélodies feutrées.", "https://www.guillaume-et-fils.fr", 'http://localhost:3310/assets/images/concert-place-profile-picture/improfilguillaume.png', "https://www.facebook.com", "https://www.instagram.com", '', '', '62, chemin Bernadette Couturier, 44800 Saint-Herblain' ), 
+(3, "Guillaume et Fils", "Chez Guillaume et Fils, dégustez une cuisine locale raffinée au son d’ensembles jazz intimistes. \n\nCe lieu chaleureux mêle élégance et convivialité, parfait pour une soirée entre amis ou un dîner romantique. \n\nLes chefs travaillent des produits frais du marché tandis que des musiciens talentueux vous enveloppent de leurs mélodies feutrées.", "https://www.guillaume-et-fils.fr", 'http://localhost:3310/assets/images/concert-place-profile-picture/improfilguillaume.png', "https://www.facebook.com", "https://www.instagram.com", '', 'http://localhost:3310/assets/menus/menu2guillaumeetfils.pdf', '62, chemin Bernadette Couturier, 44800 Saint-Herblain' ), 
 (4,  "Weber", "Le Weber est le repaire incontournable des fans de rock indépendant. \n\nTous les jeudis, des scènes ouvertes enflamment l’endroit, attirant musiciens locaux et passionnés de riffs bruts. \n\nLe lieu propose une carte riche en bières artisanales et burgers maison dans une ambiance industrielle et chaleureuse, fidèle à l’esprit underground.", 
-"https://www.weber.fr", "http://localhost:3310/assets/images/concert-place-profile-picture/improfilweber.png", "https://www.facebook.com", "https://www.instagram.com", "https://www.twitter.com", '', '12, rue Jérôme Guillou, 44380 Saint-Nazaire' ), 
-(5, "Maillot", "Chez Maillot, les saveurs des îles rencontrent les rythmes afro-caraïbéens dans un décor haut en couleurs. \n\nTapas épicées, rhums arrangés, concerts live de percussions et guitares créoles animent vos soirées. \n\nTous les week-ends, la piste s’anime et invite à la danse dans une ambiance conviviale et festive.", "https://www.maillot.fr", "http://localhost:3310/assets/images/concert-place-profile-picture/improfilmaillot.png", "", "https://www.instagram.com", '', '', '32, rue de Michaud, 44100 Nantes'), 
-(6, 'Toussaint', "Le piano-bar Toussaint séduit par son atmosphère feutrée, ses banquettes en velours et ses lumières tamisées. \n\nDes artistes soul, jazz ou chanson française s’y produisent chaque soir. \n\nParfait pour une soirée posée autour d’un bon vin ou d’un cocktail signature, ce lieu invite à la détente et à la contemplation musicale.", "https://www.toussaint.fr", "http://localhost:3310/assets/images/concert-place-profile-picture/improfiltoussaint.png", "https://www.facebook.com", "https://www.instagram.com", "https://www.twitter.com", '', '1, avenue Colas, 44200 Rezé');
+"https://www.weber.fr", "http://localhost:3310/assets/images/concert-place-profile-picture/improfilweber.png", "https://www.facebook.com", "https://www.instagram.com", "https://www.twitter.com", 'http://localhost:3310/assets/menus/menu1weber.pdf', '12, rue Jérôme Guillou, 44380 Saint-Nazaire' ), 
+(5, "Maillot", "Chez Maillot, les saveurs des îles rencontrent les rythmes afro-caraïbéens dans un décor haut en couleurs. \n\nTapas épicées, rhums arrangés, concerts live de percussions et guitares créoles animent vos soirées. \n\nTous les week-ends, la piste s’anime et invite à la danse dans une ambiance conviviale et festive.", "https://www.maillot.fr", "http://localhost:3310/assets/images/concert-place-profile-picture/improfilmaillot.png", "", "https://www.instagram.com", '', 'http://localhost:3310/assets/menus/menu1maillot.pdf', '32, rue de Michaud, 44100 Nantes'), 
+(6, 'Toussaint', "Le piano-bar Toussaint séduit par son atmosphère feutrée, ses banquettes en velours et ses lumières tamisées. \n\nDes artistes soul, jazz ou chanson française s’y produisent chaque soir. \n\nParfait pour une soirée posée autour d’un bon vin ou d’un cocktail signature, ce lieu invite à la détente et à la contemplation musicale.", "https://www.toussaint.fr", "http://localhost:3310/assets/images/concert-place-profile-picture/improfiltoussaint.png", "https://www.facebook.com", "https://www.instagram.com", "https://www.twitter.com", 'http://localhost:3310/assets/menus/menu1toussaint.pdf', '1, avenue Colas, 44200 Rezé');
 
 CREATE TABLE favorite_concert_place (
 user_id INT NOT NULL,
@@ -313,7 +314,13 @@ UNIQUE (date, hour, concert_place_id)
 
 INSERT INTO event (name, date, hour, image, is_validated, concert_place_id, description)
 VALUES (
-  'Soirée Rock & Chill', '2025-07-10', '20:00', 'http://localhost:3310/assets/images/artist-photo/pexels-meline-waxx-44315-165971.png', true, 2, 'Une soirée inoubliable de rock avec des artistes locaux et de la bonne ambiance.');
+  'Soirée Rock & Chill', '2025-07-31', '20:00', 'http://localhost:3310/assets/images/artist-photo/pexels-meline-waxx-44315-165971.png', 1, 2, 'Une soirée inoubliable de rock avec des artistes locaux et de la bonne ambiance.'),
+  ("Festival Rock 2025", "2025-07-31", "20:00",'http://localhost:3310/assets/images/event/rock_festival_2025.png', 1, 4, "Un festival de rock incontournable rassemblant des groupes légendaires et de jeunes talents. \n\nLes scènes en salle accueilleront des performances explosives du début de soirée jusqu'à minuit. Des food trucks et stands de merchandising seront à disposition du public. \n\nUne ambiance festive et électrique garantie pour tous les amateurs de rock."),
+  ("Soirée Jazz", "2025-07-31","19:30","http://localhost:3310/assets/images/event/jazz_parc_2025.png", 1, 6, "Une soirée magique dédiée au jazz, sous les étoiles dans un parc paisible. \n\nDes musiciens de renom se succéderont sur scène pour interpréter des classiques et des compositions originales. \n\nL'atmosphère chaleureuse sera parfaite pour une sortie entre amis ou en couple. Des boissons et en-cas raffinés seront proposés sur place. Apportez votre plaid pour profiter confortablement de la soirée."), 
+  ("Nuit Électro", "2025-07-31", "22:00", "http://localhost:3310/assets/images/event/nuit_electro_2025.png", 1, 5, "Vibrez toute la nuit au rythme de l’électro avec les meilleurs DJ du moment. \n\nUn show lumière impressionnant accompagnera chaque performance. Les basses feront vibrer le sol dans une ambiance euphorique. \n\nLe dress code fluo est encouragé pour s’immerger totalement dans l’univers du festival. Des zones chill-out et boissons énergisantes seront à disposition."), 
+  ("Festival Indie Pop", "2025-08-01", "17:00", "http://localhost:3310/assets/images/event/indie_pop_festival.png", 1, 2, "Trois jours de musique indie pop avec une programmation variée et éclectique. Le festival mettra en avant des artistes émergents et confirmés dans un cadre verdoyant. Des ateliers artistiques et expositions compléteront l'expérience musicale. Le public pourra profiter d’un camping aménagé sur place. Un rendez-vous annuel à ne pas manquer pour les fans de pop alternative."), 
+  ("Live Acoustique Intimiste", "2025-08-01", "19:00", "http://localhost:3310/assets/images/event/live_acoustique.png", 1, 3, "Un concert intimiste pour découvrir des artistes en version acoustique. Dans une ambiance feutrée, les musiciens partageront leurs compositions les plus personnelles. \n\nLe lieu, petit et chaleureux, favorisera une vraie proximité avec le public. \n\nDes boissons chaudes et desserts maison seront proposés. Une expérience douce et sincère pour les amateurs de musique authentique.")
+  ;
 
 
 CREATE TABLE event_artist (
@@ -328,7 +335,14 @@ FOREIGN KEY (artist_id) REFERENCES artist(user_id)
 );
 
 INSERT INTO event_artist (event_id, artist_id, artist_presence)
-VALUES (1, 1, 1);
+VALUES (1, 1, 1),
+(2, 8, 1),
+(2, 9, 1),
+(3, 1, 1), 
+(4, 7, 1), 
+(5, 1, 1), 
+(6, 8, 1)
+;
 
 CREATE TABLE favorite_event (
 user_id INT NOT NULL,
