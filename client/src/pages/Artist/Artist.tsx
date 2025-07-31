@@ -23,6 +23,9 @@ function Artist() {
         facebook_link: artist.facebook_link,
         instagram_link: artist.instagram_link,
         x_link: artist.x_link,
+        spotify_link: artist.spotify_link,
+        deezer_link: artist.deezer_link,
+        youtube_link: artist.youtube_link,
       });
   }, [artist]);
 
