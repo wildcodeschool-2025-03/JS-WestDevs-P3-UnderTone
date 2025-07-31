@@ -85,7 +85,6 @@ const refreshToken: RequestHandler = (req, res, next) => {
       result: { id: userId, status: userStatus },
     });
   } catch (err) {
-    console.error((err as Error).message);
     res.sendStatus(500);
   }
 };
@@ -112,7 +111,7 @@ const verifyRequesterId: RequestHandler = async (req, res, next) => {
     req.body.verifyToken = verifyToken;
     next();
   } catch (err) {
-    console.error((err as Error).message);
+    next(err);
   }
 };
 

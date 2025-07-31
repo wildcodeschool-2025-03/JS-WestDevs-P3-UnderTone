@@ -17,7 +17,7 @@ function EventSearchResult({ eventList }: { eventList: EventLinkData[] }) {
                 </p>
               </div>
               <div className="event-artist">
-                <p>{event.hour}</p>
+                <p>{event.hour.split(":").slice(0, -1).join("h")}</p>
               </div>
             </Link>
           </li>
