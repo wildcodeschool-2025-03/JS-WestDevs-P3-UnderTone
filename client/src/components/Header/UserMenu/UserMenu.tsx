@@ -39,13 +39,23 @@ function UserMenu({ showPopover, setShowPopover }: UserMenuProps) {
                 Mon compte
               </Link>
 
-              {user?.status === "artist" && (
+              {user?.status === "artist" && user.id && (
                 <Link
-                  to="/app/artist-profile"
+                  to={`/app/artist/${user.id}`}
                   onClick={() => setShowPopover(false)}
                   className="popover-link"
                 >
                   Mon profil artiste
+                </Link>
+              )}
+
+              {user?.status === "concert_place" && user.id && (
+                <Link
+                  to={`/app/concert-place/${user.id}`}
+                  onClick={() => setShowPopover(false)}
+                  className="popover-link"
+                >
+                  Mon profil établissement
                 </Link>
               )}
 

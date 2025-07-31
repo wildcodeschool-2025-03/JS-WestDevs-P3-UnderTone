@@ -20,7 +20,6 @@ const readProfile: RequestHandler = async (req, res, next) => {
 const readDataPresence: RequestHandler = async (req, res, next) => {
   try {
     const { userId, userStatus } = req.body.verifyToken as JwtPayload;
-    console.log(userStatus);
 
     const searchedStatus = ["artist", "concert_place"];
 
